@@ -1,0 +1,37 @@
+﻿@model AESHiringManagement.Models.UserModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<div style="text-align: center; margin: 20px;">
+
+    <div class="content-header">@ViewBag.Title</div>
+    @using (Html.BeginForm("Authenticate", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="form-container box-shadow">
+            <div style="display: table-row;">
+                <div class="form-title">@Html.LabelFor(m => m.userName)</div>
+                <div class="form-content">
+                    @Html.TextBoxFor(m => m.userName, new { Class = "field-input", style = "width: 250px;", maxlength = "9" })
+                    <br />
+                    <div id="validation">@Html.ValidationMessageFor(m => m.userName)</div>
+                </div>
+            </div>
+            <div style="display: table-row;">
+                <div class="form-title">@Html.LabelFor(m => m.password)</div>
+                <div class="form-content">
+                    @Html.TextBoxFor(m => m.password, new { Class = "field-input", style = "width: 250px;", type = "password" })
+                    <br />
+                    <div id="validation">@Html.ValidationMessageFor(m => m.password)</div>
+                </div>
+            </div>
+
+        </div>
+
+        <input type="submit" value="Log In" />        <br />
+        <br />
+        <div class="content-subheader" style="font-size:large">Contact system admin to reset password.</div>
+    }
+</div>

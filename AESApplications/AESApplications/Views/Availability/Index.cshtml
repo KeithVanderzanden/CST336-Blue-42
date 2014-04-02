@@ -1,0 +1,190 @@
+﻿@model AESApplications.Models.AvailabilityModel
+
+@{
+    ViewBag.Title = "Your availability";
+    var listItems = new List<Object>{
+                       new { Value = 0, Text = "N/A"},
+                       new { Value = 1 , Text = "12:00am" },
+                       new { Value = 2 , Text = "1:00am" },
+                       new { Value = 3 , Text = "2:00am" },
+                       new { Value = 4 , Text = "3:00am" },
+                       new { Value = 5 , Text = "4:00am" },
+                       new { Value = 6 , Text = "5:00am" },
+                       new { Value = 7 , Text = "6:00am" },
+                       new { Value = 8 , Text = "7:00am" },
+                       new { Value = 9 , Text = "8:00am" },
+                       new { Value = 10 , Text = "9:00am" },
+                       new { Value = 11 , Text = "10:00am" },
+                       new { Value = 12 , Text = "11:00am" },
+                       new { Value = 13 , Text = "12:00pm" },
+                       new { Value = 14 , Text = "1:00pm" },
+                       new { Value = 15 , Text = "2:00pm" },
+                       new { Value = 16 , Text = "3:00pm" },
+                       new { Value = 17 , Text = "4:00pm" },
+                       new { Value = 18 , Text = "5:00pm" },
+                       new { Value = 19 , Text = "6:00pm" },
+                       new { Value = 20 , Text = "7:00pm" },
+                       new { Value = 21 , Text = "8:00pm" },
+                       new { Value = 22 , Text = "9:00pm" },
+                       new { Value = 23 , Text = "10:00pm" },
+                       new { Value = 24 , Text = "11:00pm" }
+                    };
+    var selectList = new SelectList(listItems, "Value", "Text");
+}
+
+<div style="text-align: center; margin: 20px;">
+
+    <div class="content-header">@ViewBag.Title</div>
+
+    @using (Html.BeginForm("Index", "Availability", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="question-container">
+            @Html.HiddenFor(m => m.applicantId, Model.applicantId)
+            <div style="display: table-row;">
+                <div class="question">@Html.LabelFor(m => m.fullTimeYN)</div>
+                <div class="form-content">
+                    <div class="radio-button">
+                        @Html.Label("Yes")
+                        @if (Model.fullTimeYN != null && Model.fullTimeYN.CompareTo("y") == 0)
+                        {
+                            @Html.RadioButtonFor(m => m.fullTimeYN, "y", new { Checked = "checked" })
+                        }
+                        else
+                        {
+                            @Html.RadioButtonFor(m => m.fullTimeYN, "y")
+                        }
+                    </div>
+                    <div class="radio-button" style="border-left: 1px solid #3790db;">
+                        @Html.Label("No")
+                        @if (Model.fullTimeYN == null  || Model.fullTimeYN.CompareTo("n") == 0)
+                        {
+                            @Html.RadioButtonFor(m => m.fullTimeYN, "n", new { Checked = "checked" })
+                        }
+                        else
+                        {
+                            @Html.RadioButtonFor(m => m.fullTimeYN, "n")
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: table-row;">
+                <div class="question">@Html.LabelFor(m => m.daysYN)</div>
+                <div class="form-content">
+                    <div class="radio-button">
+                        @Html.Label("Yes")
+                        @if (Model.daysYN != null && Model.daysYN.CompareTo("y") == 0)
+                        {
+                            @Html.RadioButtonFor(m => m.daysYN, "y", new { Checked = "checked" }) }
+                        else
+                        {
+                            @Html.RadioButtonFor(m => m.daysYN, "y")
+                        }
+                    </div>
+                    <div class="radio-button" style="border-left: 1px solid #3790db;">
+                        @Html.Label("No")
+                         @if (Model.daysYN == null || Model.daysYN.CompareTo("n") == 0)
+                        {
+                            @Html.RadioButtonFor(m => m.daysYN, "n", new { Checked = "checked" })
+                        }
+                        else
+                        { @Html.RadioButtonFor(m => m.daysYN, "n") }
+                    </div>
+                </div>
+            </div>
+            <div style="display: table-row;">
+                <div class="question">@Html.LabelFor(m => m.eveningsYN)</div>
+                <div class="form-content">
+                    <div class="radio-button">
+                        @Html.Label("Yes")
+                        @if (Model.eveningsYN != null && Model.eveningsYN.CompareTo("y") == 0)
+                        {
+                            @Html.RadioButtonFor(m => m.eveningsYN, "y", new { Checked = "checked" }) }
+                        else
+                        {
+                            @Html.RadioButtonFor(m => m.eveningsYN, "y")
+                        }
+                    </div>
+                    <div class="radio-button" style="border-left: 1px solid #3790db;">
+                        @Html.Label("No") 
+                        @if (Model.eveningsYN == null || Model.eveningsYN.CompareTo("n") == 0)
+                        {
+                            @Html.RadioButtonFor(m => m.eveningsYN, "n", new { Checked = "checked" })
+                        }
+                        else
+                        { @Html.RadioButtonFor(m => m.eveningsYN, "n") }
+                    </div>
+                </div>
+            </div>
+            <div style="display: table-row;">
+                <div class="question">@Html.LabelFor(m => m.weekendsYN)</div>
+                <div class="form-content">
+                    <div class="radio-button">
+                        @Html.Label("Yes")
+                        @if (Model.weekendsYN != null && Model.weekendsYN.CompareTo("y") == 0)
+                        {
+                            @Html.RadioButtonFor(m => m.weekendsYN, "y", new { Checked = "checked" }) }
+                        else
+                        {
+                            @Html.RadioButtonFor(m => m.weekendsYN, "y")
+                        }
+                    </div>
+                    <div class="radio-button" style="border-left: 1px solid #3790db;">
+                        @Html.Label("No") 
+                        @if (Model.weekendsYN == null || Model.weekendsYN.CompareTo("n") == 0)
+                        {
+                            @Html.RadioButtonFor(m => m.weekendsYN, "n", new { Checked = "checked" })
+                        }
+                        else
+                        { @Html.RadioButtonFor(m => m.weekendsYN, "n") }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="question-container">
+            <div style="display: table-row;">
+                <div class="form-title">
+                    @Html.LabelFor(m => m.salaryExpected)
+                </div>
+                <div class="form-content">
+                    @Html.TextBoxFor(m => m.salaryExpected, new { Class = "field-input", style = "width: 150px;" })
+                </div>
+            </div>
+        </div>
+        <div class="question-container shadow-box">
+            <div style="display: table-row">
+                <div class="question" style="width:100px;"></div>
+                <div class="table-content">Monday</div>
+                <div class="table-content">Tuesday</div>
+                <div class="table-content">Wednexday</div>
+                <div class="table-content">Thursday</div>
+                <div class="table-content">Friday</div>
+                <div class="table-content">Saturday</div>
+                <div class="table-content">Sunday</div>
+            </div>
+            <div style="display: table-row">
+                <div class="question" style="width:100px;">From:</div>
+                <div class="table-content">@Html.DropDownListFor(m => m.mondayFrom, selectList, new { @class = "drop" })</div>
+                <div class="table-content">@Html.DropDownListFor(m => m.tuesdayFrom, selectList, new { @class = "drop" })</div>
+                <div class="table-content">@Html.DropDownListFor(m => m.wednesdayFrom, selectList, new { @class = "drop" })</div>
+                <div class="table-content">@Html.DropDownListFor(m => m.thursdayFrom, selectList, new { @class = "drop" })</div>
+                <div class="table-content">@Html.DropDownListFor(m => m.fridayFrom, selectList, new { @class = "drop" })</div>
+                <div class="table-content">@Html.DropDownListFor(m => m.saturdayFrom, selectList, new { @class = "drop" })</div>
+                <div class="table-content">@Html.DropDownListFor(m => m.sundayFrom, selectList, new { @class = "drop" })</div>
+            </div>
+            <div style="display: table-row">
+                <div class="question" style="width:100px;">To:</div>
+                <div class="table-content">@Html.DropDownListFor(m => m.mondayTo, selectList, new { @class = "drop" })</div>
+                <div class="table-content">@Html.DropDownListFor(m => m.tuesdayTo, selectList, new { @class = "drop" })</div>
+                <div class="table-content">@Html.DropDownListFor(m => m.wednesdayTo, selectList, new { @class = "drop" })</div>
+                <div class="table-content">@Html.DropDownListFor(m => m.thursdayTo, selectList, new { @class = "drop" })</div>
+                <div class="table-content">@Html.DropDownListFor(m => m.fridayTo, selectList, new { @class = "drop" })</div>
+                <div class="table-content">@Html.DropDownListFor(m => m.saturdayTo, selectList, new { @class = "drop" })</div>
+                <div class="table-content">@Html.DropDownListFor(m => m.sundayTo, selectList, new { @class = "drop" })</div>
+            </div>
+        </div>
+        <input type="submit" value="Continue" />
+    }
+</div>

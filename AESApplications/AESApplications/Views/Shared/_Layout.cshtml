@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>@ViewBag.Title - A.E.S. Job Application Kiosk</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+</head>
+
+<body style="background-color: gray;">
+
+    <div class="container box-shadow">
+
+        <div style="display: table-row;">
+            <div class="header text-shadow background-header-footer" style="display: table-cell">
+                A.E.S. Job Application Kiosk
+
+            </div>
+        </div>
+        @if (((string)Session["Status"]).CompareTo("LoggedIn") == 0 && ((string)Session["DisableMenu"]).CompareTo("No") == 0)
+        {
+            string unfinishedColor = ((string)Session["LoginType"]).CompareTo("Return") == 0 ? "background-color:yellow" : "background-color:red";
+            <div style="display: table-row;">
+                <div id="menu">
+                    <ul>
+                        @{string style = ((string)this.Session["LocalJobs"]).CompareTo("Done") == 0 ? "background-color:#296ca5" : unfinishedColor; }
+                        <li style="@style">@Html.ActionLink("Select Jobs", "Index", "LocalJobs")</li>
+                        @{style = ((string)this.Session["PersonalInfo"]).CompareTo("Done") == 0 ? "background-color:#296ca5" : unfinishedColor; }
+                        <li style="@style">@Html.ActionLink("About You", "Index", "PersonalInfo")</li>
+                        @{style = ((string)this.Session["Availability"]).CompareTo("Done") == 0 ? "background-color:#296ca5" : unfinishedColor; }
+                        <li style="@style">@Html.ActionLink("Availability", "Index", "Availability")</li>
+                        @{style = ((string)this.Session["JobHistory"]).CompareTo("Done") == 0 ? "background-color:#296ca5" : unfinishedColor; }
+                        <li style="@style">@Html.ActionLink("Job History", "Index", "JobHistory")</li>
+                        @{style = ((string)this.Session["Education"]).CompareTo("Done") == 0 ? "background-color:#296ca5" : unfinishedColor; }
+                        <li style="@style">@Html.ActionLink("Education", "Index", "Education")</li>
+                        @{style = ((string)this.Session["Reference"]).CompareTo("Done") == 0 ? "background-color:#296ca5" : unfinishedColor; }
+                        <li style="@style">@Html.ActionLink("References", "Index", "References")</li>
+                        @{style = ((string)this.Session["ESignature"]).CompareTo("Done") == 0 ? "background-color:#296ca5" : unfinishedColor; }
+                        <li style="@style">@Html.ActionLink("Submit Application", "Index", "ESignature")</li>
+                        <li>@Html.ActionLink("Exit", "Welcome", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        }
+        <div style="display: table-row;">
+            <div class="content" style="display: table-cell">
+                @RenderBody()
+            </div>
+        </div>
+
+        <div style="display: table-row;">
+            <div class="navigation background-nav" style="display: table-cell">
+                @Html.Partial("_NavigationPartial")
+            </div>
+        </div>
+
+        <div style="display: table-row;">
+            <div class="footer background-header-footer" style="display: table-cell">
+                &copy; @DateTime.Now.Year - A.E.S. Incorporated
+            </div>
+        </div>
+
+    </div>
+
+    @RenderSection("scripts", required: false)
+
+</body>
+
+</html>

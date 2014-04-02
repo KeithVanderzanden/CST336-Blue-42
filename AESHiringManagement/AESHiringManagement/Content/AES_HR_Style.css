@@ -1,0 +1,480 @@
+﻿body {
+    background-color:#686868;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+/* Shared styles */
+
+.box-shadow {
+
+    -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+.background-button {
+    background-color: #e08e2a;
+}
+
+.background-blue {
+    background-color: #3790db;
+}
+
+.background-header-footer {
+    background-color: #7D7D7D;
+}
+
+.background-nav {
+    background-color: #a9c4db;
+}
+
+.text-shadow {
+    text-shadow: 0px 0px 10px #000000;
+}
+
+/* Page layout */
+
+div.container {
+    display: table;
+    margin: 0 auto;
+    min-height: 96vh;
+    width: 86vw;
+    border-radius: 10px;
+    border: 5px solid #1B1B1B;
+    background-color: #686868;
+}
+
+div.header {
+    color: white;
+    letter-spacing: -1.5px;
+    font-size: 150%;
+    padding: 20px;
+}
+
+div.content {
+    border-color: black;
+    height: 100%;
+    background-color:black;
+    border-radius: 4px;
+    border:solid;
+    border-width: 3px;
+    vertical-align: top;
+    color: white;
+    padding: 2px;
+}
+
+div.navigation {
+    height: 80px;
+}
+
+div.footer {
+    padding: 20px;
+    text-align: center;
+    border-radius:4px;
+    color: white;
+}
+
+/* Page elements. */
+
+div.content-header {
+    color: #296ca5;
+    font-size: 235%;
+    padding-bottom: 10px;
+    margin: 0 60px 40px 60px;
+    border-bottom: 4px solid gray;
+}
+
+div.content-subheader {
+    color: gray;
+    font-size: 200%;
+}
+
+input[type=submit], input[type=button] {
+    background-color: darkgrey;
+    border-radius: 10px;
+    height: 40px;
+    padding: 0 20px 0 20px;
+    color: white;
+    text-decoration: none;
+    font-size: large;
+    outline: none;
+    border: none;
+    margin-top: 40px;
+}
+
+    input[type=submit]:hover, input[type=button]:hover {
+        background-color: #296ca5;
+    }
+
+input[type=checkbox] {
+    height: 25px;
+    width: 25px;
+}
+
+#storeid-textfield {
+    color: #e08e2a;
+    height: 30px;
+    padding: 0 20px 0 20px;
+    border-radius: 10px;
+    border: 5px solid #e08e2a;
+    text-align: center;
+    font-size: large;
+}
+
+/* Local Jobs View */
+
+div.position-container {
+    background-color: #3790db;
+    padding: 5px;
+    margin: 20px auto;
+    width: 95%;
+}
+
+    div.position-container:hover {
+        background-color: #3fa2f6;
+    }
+
+div.position-toggleable {
+    vertical-align: top;
+}
+
+div.position-detail-partial-title {
+    color: white;
+    font-size: 1.25em;
+    height: 25px;
+    padding: 0 5px 0 5px;
+    text-align: left;
+}
+
+div.position-detail-partial-content {
+    background-color: white;
+    text-align: left;
+    padding: 5px;
+}
+
+div.position-detail-title {
+    text-align: right;
+    padding: 0 10px 0 10px;
+    width: 150px;
+    color: white;
+    font-size: 1.25em;
+}
+
+div.position-detail-content {
+    text-align: left;
+    padding: 10px;
+    background-color: white;
+}
+
+div.position-apply {
+    padding: 10px;
+    width: 80px;
+    background-color: #00b85c;
+    font-size: 1.25em;
+    color: white;
+}
+
+/* End Local Jobs View */
+
+/* Begin Personal Info View */
+
+div.form-container {
+    display: table;
+    width: inherit;
+    margin: 0 auto;
+    background-color: #3790db;
+}
+
+div.form-title {
+    display: table-cell;
+    text-align: center;
+    padding: 5px 5px 0 5px;
+    vertical-align: top;
+    color: white;
+    background-color: darkgrey;
+    font-size: 1.15em;
+}
+
+div.form-content {
+    display: table-cell;
+    text-align: center;
+    align-self:center;
+    padding: 5px;
+    background-color: grey;
+    color: gray;
+    width: 260px;
+}
+
+.field-input {
+    max-width: 95%;
+    border-top: none;
+    height: 30px;
+    font-size: 20px;
+    border-bottom-color: gray;
+    border-bottom: solid;
+    border-left: thin;
+    border-right: none;
+    background-color: #F5F5F0;
+    border-bottom: 1px solid #a9c4db;
+    overflow: hidden;
+}
+
+div#validation {
+    line-height: 30px;
+    color: red;
+}
+
+/* End Personal Info View */
+
+/* Begin Questionnaire View */
+
+div.question-container {
+    display: table;
+    margin: auto auto;
+    padding: 5px;
+    width: 60vw;
+    background-color: #3790db;
+}
+
+div.question {
+    display: table-cell;
+    text-align: right;
+    padding: 5px 10px 5px 5px;
+    width: 250px;
+    color: white;
+    font-size: 1.15em;
+}
+
+div.radio-button {
+    display: table-cell;
+    text-align: center;
+    width: 30px;
+    padding: 5px;
+    background-color: white;
+}
+
+/* End Questionnaire View */
+
+/* Begin Availability View*/
+
+div.table-content {
+    display: table-cell;
+    text-align: center;
+    padding: 5px;
+    background-color: white;
+    color: gray;
+}
+
+.drop {
+    font-size: 90%;
+}
+/* End Availability View */
+
+/* Begin Job History View */
+
+div.jobhistory-container {
+    width: 60vw;
+    margin: 0 auto;
+}
+
+div.jobhistory-tab {
+    margin: 20px auto 0 auto;
+    display: table;
+    width: inherit;
+    color: white;
+    background-color: #00b85c;
+    font-size: 1.2em;
+}
+
+div.job-bottom-box {
+    background-color: #296ca5;
+    padding: 10px;
+    line-height: 20px;
+    color: white;
+    font-size: 1.15em;
+    border: 1px solid #296ca5;
+}
+
+    div.job-bottom-box:hover {
+        background-color: #3280c2;
+        border: 1px solid #3280c2;
+    }
+
+/* End Job History View */
+
+/* Start menu bar */
+#menu {
+    display: table;
+    height: 40px;
+    float:left;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 0px 10px #000000;
+    background-color: #B7B7BA;
+    border-radius: 4px;
+    max-width: 10vw;
+    min-width: 10vw;
+}
+
+    #menu ul {
+        list-style-type: none;
+        height: auto;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    #menu li {
+        background-color: #232323;
+        display:list-item;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin: 2px;
+        max-width: 10vw;
+        border-radius:4px;
+    }
+
+    #menu a {
+        text-decoration: none;
+        color: white;
+        max-width: 10vw;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        width: 10vw;
+        border-radius: 4px;
+    }
+
+        #menu li:hover {
+            background-color: #575757;
+        }
+        #menu a:hover {
+            color:darkred;
+        }
+
+#alert-window {
+    display:block;
+    width: 10vw;
+    height: 15vh;
+    border-radius: 4px;
+    border:solid;
+    border-width: 3px;
+    border-color: gray;
+    background-color: black;
+    color: darkred;
+    text-align:center;
+}
+/* End menu bar*/
+/*Start dashboard*/
+.dashboard-names {
+    display:table-cell;
+    border:solid;
+    width: 15vw;
+    max-width: 18vw;
+    min-width: 18vw;
+    height: 100vh;
+    border-radius: 4px;
+    border-color: grey;
+    border-width: 2px;
+    padding: 5px;
+    margin:0px;
+}
+
+.dashboard-application {
+    display:table-cell;
+    max-width: 65.5vw;
+    min-width: 65.5vw;
+    border:solid;
+    height: 100vh;
+    border-radius: 4px;
+    border-color: grey;
+    border-width: 2px;
+    padding: 5px;
+    margin:0px;
+}
+
+input[type=submit].dashboard-button {
+    background-color: black;
+    border-radius: 0px;
+    padding: 0 4px 0 4px;
+    text-align: left;
+    color: white;
+    text-decoration: none;
+    font-size: small;
+    outline: none;
+    border: none;
+    margin-top: 2px;
+    width: 15vw;
+    max-width: 15vw;
+}
+
+.dashboard-entry {
+    background-color:black;
+    color: white;
+    border:none;
+    border-color: grey;
+    border-width: 1px;
+    padding: 4px;
+}
+
+.app-disp {
+    padding-left: 5px;
+    padding-bottom: 4px;
+    background-color: black;
+    color: white;
+}
+
+.app-textarea {
+    min-width: 65vw;
+    max-width: 65vw;
+    height: 20vh;
+    background-color:black;
+    color: white;
+}
+
+.app-field {
+    border:solid;
+    border-color:grey;
+    border-width: 1px;
+    height: 5vh;
+    margin:0px;
+}
+
+Label {
+    font-size: x-small;
+    vertical-align:top;
+    border:none;
+    word-wrap:normal;
+}
+/*End dashboard*/

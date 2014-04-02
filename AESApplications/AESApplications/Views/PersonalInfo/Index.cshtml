@@ -1,0 +1,142 @@
+﻿@model AESApplications.Models.PersonalInfoModel
+
+@{
+    ViewBag.Title = "About You";
+}
+
+<div style="text-align: center; margin: 20px;">
+
+    <div class="content-header">@ViewBag.Title</div>
+
+    @using (Html.BeginForm("Index", "PersonalInfo", FormMethod.Post))
+    {
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="form-container box-shadow">
+
+            <div style="display: table-row;">
+                <div class="form-title">@Html.LabelFor(m => m.name_first)</div>
+                <div class="form-content">
+                    @Html.TextBoxFor(m => m.name_first, new { Class = "field-input", style = "width: 200px; text-transform:capitalize;" })
+                    <br />
+                    <div id="validation">@Html.ValidationMessageFor(m => m.name_first)</div>
+                </div>
+            </div>
+            
+            <div style="display: table-row;">
+                <div class="form-title">@Html.LabelFor(m => m.name_middle)</div>
+                <div class="form-content">
+                    @Html.TextBoxFor(m => m.name_middle, new { Class = "field-input", style = "width: 20px; text-transform: uppercase;", maxlength = "1" })
+                    <br />
+                    <div id="validation">@Html.ValidationMessageFor(m => m.name_middle)</div>
+                </div>
+            </div>
+
+            <div style="display: table-row;">
+                <div class="form-title">@Html.LabelFor(m => m.name_last)</div>
+                <div class="form-content">
+                    @Html.TextBoxFor(m => m.name_last, new { Class = "field-input", style = "width: 200px;text-transform:capitalize;" })
+                    <br />
+                    <div id="validation">@Html.ValidationMessageFor(m => m.name_last)</div>
+                </div>
+            </div>
+
+            <div style="display: table-row;">
+                <div class="form-title">@Html.LabelFor(m => m.name_alt)</div>
+                <div class="form-content">
+                    @Html.TextBoxFor(m => m.name_alt, new { Class = "field-input", style = "width: 200px; text-transform:capitalize;" })
+                    <br />
+                    <div id="validation">@Html.ValidationMessageFor(m => m.name_alt)</div>
+                </div>
+            </div>
+
+            <div style="display: table-row;">
+                <div class="form-title">@Html.LabelFor(m => m.street)</div>
+                <div class="form-content">
+                    @Html.TextBoxFor(m => m.street, new { Class = "field-input", style = "width: 300px; text-transform:capitalize;" })
+                    <br />
+                    <div id="validation">@Html.ValidationMessageFor(m => m.street)</div>
+                </div>
+            </div>
+
+            <div style="display: table-row;">
+                <div class="form-title">@Html.LabelFor(m => m.city)</div>
+                <div class="form-content">
+                    @Html.TextBoxFor(m => m.city, new { Class = "field-input", style = "width: 150px; text-transform:capitalize" })
+                    <br />
+                    <div id="validation">@Html.ValidationMessageFor(m => m.city)</div>
+                </div>
+            </div>
+
+            <div style="display: table-row;">
+                <div class="form-title">@Html.LabelFor(m => m.state)</div>
+                <div class="form-content">
+                    @Html.TextBoxFor(m => m.state, new { Class = "field-input", style = "width: 30px; text-transform: uppercase;", maxlength = "2" })
+                    <br />
+                    <div id="validation">@Html.ValidationMessageFor(m => m.state)</div>
+                </div>
+            </div>
+
+            <div style="display: table-row;">
+                <div class="form-title">@Html.LabelFor(m => m.zip)</div>
+                <div class="form-content">
+                    @Html.TextBoxFor(m => m.zip, new { Class = "field-input", style = "width: 100px;", maxlength = "5" })
+                    <br />
+                    <div id="validation">@Html.ValidationMessageFor(m => m.zip)</div>
+                </div>
+            </div>
+            
+            <div style="display: table-row;">
+                <div class="form-title">@Html.LabelFor(m => m.phone_num)</div>
+                <div class="form-content">
+                    @Html.TextBoxFor(m => m.phone_num, new { Class = "field-input", style = "width: 150px;" })
+                    <br />
+                    <div id="validation">@Html.ValidationMessageFor(m => m.phone_num)</div>
+                </div>
+            </div>
+            <div style="display: table-row;">
+                <div class="form-title">@Html.LabelFor(m => m.email)</div>
+                <div class="form-content">
+                    @Html.TextBoxFor(m => m.email, new { Class = "field-input", style = "width: 250px;" })
+                    <br />
+                    <div id="validation">@Html.ValidationMessageFor(m => m.email)</div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="content-subheader" style="font-size:medium">The following is required to access your application at a future date.  Your social security number will become your login name.</div>
+        <br />
+        <div class="form-container box-shadow">
+            
+            <div style="display: table-row;">
+                <div class="form-title">@Html.LabelFor(m => m.ssn)</div>
+                <div class="form-content">
+                    @Html.TextBoxFor(m => m.ssn, new { Class = "field-input", style = "width: 150px;", maxlength = "9"})
+                    <br />
+                    <div id="validation">@Html.ValidationMessageFor(m => m.ssn)</div>
+                </div>
+            </div>
+            <div style="display: table-row;">
+                <div class="form-title">@Html.LabelFor(m => m.password)</div>
+                <div class="form-content">
+                    @Html.TextBoxFor(m => m.password, new { Class = "field-input", style = "width: 250px;", maxlength = "50", type = "password" })
+                    <br />
+                    <div id="validation">@Html.ValidationMessageFor(m => m.password)</div>
+                </div>
+            </div>
+            <div style="display: table-row;">
+                <div class="form-title">@Html.LabelFor(m => m.passVerification)</div>
+                <div class="form-content">
+                    @Html.TextBoxFor(m => m.passVerification, new { Class = "field-input", style = "width: 250px;", maxlength = "50", type = "password" })
+                    <br />
+                    <div id="validation">@Html.ValidationMessageFor(m => m.passVerification)</div>
+                </div>
+            </div>
+        </div>
+        <input type="submit" value="Continue" />
+        <input type="button" value="Exit" onclick="location.href='@Url.Action("Welcome", "Home")'" />
+    }
+
+</div>

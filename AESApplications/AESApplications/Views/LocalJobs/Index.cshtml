@@ -1,0 +1,148 @@
+﻿@model List<AESApplications.Models.JobModel>
+
+@{
+    ViewBag.Title = "Local Jobs";
+}
+
+<div style="text-align: center; margin: 20px;">
+
+    <div class="content-header">@ViewBag.Title</div>
+
+    <div class="content-subheader">Click a job position to show or hide details.</div>
+
+    @using (Html.BeginForm("Index", "Questionnaire", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        foreach (var job in Model)
+        {
+            <div class="position-container box-shadow" style="display: table;">
+
+                <div class="position-toggleable" style="display: table-cell;">
+
+                    <div>
+
+                        <div style="display: table; min-height: 80px; min-width: 100%;">
+
+                            <div style="display: table-row;">
+                                <div class="position-detail-partial-title" style="width: 150px; display: table-cell;">Store Location</div>
+                                <div class="position-detail-partial-title" style="width: 150px; display: table-cell;">Job Title</div>
+                                <div class="position-detail-partial-title">Description</div>
+                            </div>
+
+                            <div style="display: table-row;">
+                                <div class="position-detail-partial-content" style="width: 150px; display: table-cell;">@job.location</div>
+                                <div class="position-detail-partial-content" style="width: 150px; display: table-cell;">@job.title</div>
+                                <div class="position-detail-partial-content" style="display: table-cell;">@job.description.Substring(0, job.description.Length < 125 ? job.description.Length : 125)...</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="position-complete" style="display: none;">
+
+                        <div style="display: table;">
+
+                            <div style="display: table-row;">
+                                <div class="position-detail-title" style="display: table-cell">Store Location</div>
+                                <div class="position-detail-content" style="display: table-cell">@job.location</div>
+                            </div>
+
+                            <div style="display: table-row;">
+                                <div class="position-detail-title" style="display: table-cell">Job Title</div>
+                                <div class="position-detail-content" style="display: table-cell">@job.title</div>
+                            </div>
+
+                            <div style="display: table-row;">
+                                <div class="position-detail-title" style="display: table-cell">Description</div>
+                                <div class="position-detail-content" style="display: table-cell">@job.description</div>
+                            </div>
+
+                            <div style="display: table-row;">
+                                <div class="position-detail-title" style="display: table-cell">Education</div>
+                                <div class="position-detail-content" style="display: table-cell">@job.education</div>
+                            </div>
+
+                            <div style="display: table-row;">
+                                <div class="position-detail-title" style="display: table-cell">Requirements</div>
+                                <div class="position-detail-content" style="display: table-cell">@job.requirements</div>
+                            </div>
+
+                            <div style="display: table-row;">
+                                <div class="position-detail-title" style="display: table-cell">Hours</div>
+                                <div class="position-detail-content" style="display: table-cell">
+                                    <table border="1">
+                                        <thead><tr>
+                                                   <td ></td>
+                                                   <td align="center" width="100px"> Monday </td>
+                                                   <td align="center" width="100px"> Tuesday </td>
+                                                   <td align="center" width="100px"> Wednesday </td>
+                                                   <td align="center" width="100px"> Thursday </td>
+                                                   <td align="center" width="100px"> Friday </td>
+                                                   <td align="center" width="100px"> Saturday </td>
+                                                   <td align="center" width="100px"> Sunday </td>
+                                        </tr></thead>
+                                        <tr>
+                                            <td>From:</td>
+                                            <td align="center">@job.mondayFrom </td>
+                                            <td align="center">@job.tuesdayFrom</td>
+                                            <td align="center">@job.wednesdayFrom</td>
+                                            <td align="center">@job.thursdayFrom</td>
+                                            <td align="center">@job.fridayFrom</td>
+                                            <td align="center">@job.saturdayFrom</td>
+                                            <td align="center">@job.sundayFrom</td>
+                                        </tr>
+                                        <tr>
+                                            <td align ="center">To:</td>
+                                            <td align="center">@job.mondayTo</td>
+                                            <td align="center">@job.tuesdayTo</td>
+                                            <td align="center">@job.wednesdayTo</td>
+                                            <td align="center">@job.thursdayTo</td>
+                                            <td align="center">@job.fridayTo</td>
+                                            <td align="center">@job.saturdayTo</td>
+                                            <td align="center">@job.sundayTo</td>
+                                        </tr>
+                                    </table> 
+                                </div>
+                            </div>
+
+                            <div style="display: table-row;">
+                                <div class="position-detail-title" style="display: table-cell">Pay</div>
+                                <div class="position-detail-content" style="display: table-cell">@job.pay</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="position-apply text-shadow box-shadow" style="display: table-cell;">
+                    @{var isChecked = job.selected == 1 ? "checked" : "";}
+                    <input type="checkbox" id="@job.jobId" name="@job.jobId.ToString()" @isChecked/>
+                    <br />
+                    Add
+                </div>
+
+            </div>
+
+        }
+
+        <input type="submit" value="Apply" />
+    }
+
+    <script>
+
+        $('.position-toggleable')
+        .css('cursor', 'default')
+        .click(
+          function () {
+              $(this).children().slideToggle('fast');
+          }
+        )
+
+    </script>
+
+</div>

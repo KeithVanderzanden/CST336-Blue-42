@@ -1,0 +1,1175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AESDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ApplicantAuth">
+          <Key>
+            <PropertyRef Name="applicantId" />
+          </Key>
+          <Property Name="applicantId" Type="int" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="applicantId" />
+            <PropertyRef Name="availablePosId" />
+          </Key>
+          <Property Name="applicantId" Type="int" Nullable="false" />
+          <Property Name="availablePosId" Type="int" Nullable="false" />
+          <Property Name="storeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Availability">
+          <Key>
+            <PropertyRef Name="applicantId" />
+          </Key>
+          <Property Name="applicantId" Type="int" Nullable="false" />
+          <Property Name="salaryExpected" Type="varchar" MaxLength="50" />
+          <Property Name="fullTimeYN" Type="char" MaxLength="1" />
+          <Property Name="daysYN" Type="char" MaxLength="1" />
+          <Property Name="eveningsYN" Type="char" MaxLength="1" />
+          <Property Name="weekendsYN" Type="char" MaxLength="1" />
+          <Property Name="mondayFrom" Type="time" Precision="7" />
+          <Property Name="mondayTo" Type="time" Precision="7" />
+          <Property Name="tuesdayFrom" Type="time" Precision="7" />
+          <Property Name="tuesdayTo" Type="time" Precision="7" />
+          <Property Name="wednesdayFrom" Type="time" Precision="7" />
+          <Property Name="wednesdayTo" Type="time" Precision="7" />
+          <Property Name="thursdayFrom" Type="time" Precision="7" />
+          <Property Name="thursdayTo" Type="time" Precision="7" />
+          <Property Name="fridayFrom" Type="time" Precision="7" />
+          <Property Name="fridayTo" Type="time" Precision="7" />
+          <Property Name="saturdayFrom" Type="time" Precision="7" />
+          <Property Name="saturdayTo" Type="time" Precision="7" />
+          <Property Name="sundayFrom" Type="time" Precision="7" />
+          <Property Name="sundayTo" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="AvailablePosition">
+          <Key>
+            <PropertyRef Name="availablePosId" />
+          </Key>
+          <Property Name="availablePosId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="storeId" Type="int" Nullable="false" />
+          <Property Name="positionId" Type="int" Nullable="false" />
+          <Property Name="mondayFrom" Type="time" Precision="7" />
+          <Property Name="mondayTo" Type="time" Precision="7" />
+          <Property Name="tuesdayFrom" Type="time" Precision="7" />
+          <Property Name="tuesdayTo" Type="time" Precision="7" />
+          <Property Name="wednesdayFrom" Type="time" Precision="7" />
+          <Property Name="wednesdayTo" Type="time" Precision="7" />
+          <Property Name="thursdayFrom" Type="time" Precision="7" />
+          <Property Name="thursdayTo" Type="time" Precision="7" />
+          <Property Name="fridayFrom" Type="time" Precision="7" />
+          <Property Name="fridayTo" Type="time" Precision="7" />
+          <Property Name="saturdayFrom" Type="time" Precision="7" />
+          <Property Name="saturdayTo" Type="time" Precision="7" />
+          <Property Name="sundayFrom" Type="time" Precision="7" />
+          <Property Name="sundayTo" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="applicantId" />
+            <PropertyRef Name="educationId" />
+          </Key>
+          <Property Name="applicantId" Type="int" Nullable="false" />
+          <Property Name="educationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="street" Type="varchar" MaxLength="50" />
+          <Property Name="city" Type="varchar" MaxLength="50" />
+          <Property Name="stateAbrev" Type="char" MaxLength="2" />
+          <Property Name="zip" Type="varchar" MaxLength="10" />
+          <Property Name="yearFrom" Type="varchar" MaxLength="4" />
+          <Property Name="yearTo" Type="varchar" MaxLength="4" />
+          <Property Name="graduatedYN" Type="char" MaxLength="1" />
+          <Property Name="degreeMajor" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ElectronicSig">
+          <Key>
+            <PropertyRef Name="applicantId" />
+          </Key>
+          <Property Name="applicantId" Type="int" Nullable="false" />
+          <Property Name="date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="JobHistory">
+          <Key>
+            <PropertyRef Name="applicantId" />
+            <PropertyRef Name="jobHistoryId" />
+          </Key>
+          <Property Name="applicantId" Type="int" Nullable="false" />
+          <Property Name="jobHistoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employer" Type="varchar" MaxLength="50" />
+          <Property Name="fromDate" Type="date" />
+          <Property Name="toDate" Type="date" />
+          <Property Name="street" Type="varchar" MaxLength="50" />
+          <Property Name="city" Type="varchar" MaxLength="50" />
+          <Property Name="stateAbrev" Type="char" MaxLength="2" />
+          <Property Name="zip" Type="varchar" MaxLength="10" />
+          <Property Name="phone" Type="varchar" MaxLength="16" />
+          <Property Name="supervisor" Type="varchar" MaxLength="50" />
+          <Property Name="position" Type="varchar" MaxLength="50" />
+          <Property Name="startSalary" Type="varchar" MaxLength="50" />
+          <Property Name="endSalary" Type="varchar" MaxLength="50" />
+          <Property Name="reasonLeave" Type="varchar" MaxLength="50" />
+          <Property Name="duties" Type="varchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="JobsAppliedFor">
+          <Key>
+            <PropertyRef Name="appId" />
+            <PropertyRef Name="posId" />
+          </Key>
+          <Property Name="appId" Type="int" Nullable="false" />
+          <Property Name="posId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Managers">
+          <Key>
+            <PropertyRef Name="managerId" />
+          </Key>
+          <Property Name="managerId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="permission" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notes">
+          <Key>
+            <PropertyRef Name="applicantId" />
+          </Key>
+          <Property Name="applicantId" Type="int" Nullable="false" />
+          <Property Name="personalInfoNotes" Type="varchar" MaxLength="3000" />
+          <Property Name="educationNotes" Type="varchar" MaxLength="3000" />
+          <Property Name="availabilityNotes" Type="varchar" MaxLength="3000" />
+          <Property Name="referenceNotes" Type="varchar" MaxLength="3000" />
+          <Property Name="jobHistoryNotes" Type="varchar" MaxLength="3000" />
+        </EntityType>
+        <EntityType Name="PersonalInfo">
+          <Key>
+            <PropertyRef Name="applicantId" />
+          </Key>
+          <Property Name="applicantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="middleName" Type="varchar" MaxLength="50" />
+          <Property Name="lastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="socialNum" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="street" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="state" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="zip" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="16" />
+          <Property Name="alias" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="positionId" />
+          </Key>
+          <Property Name="positionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="requirements" Type="varchar" MaxLength="2000" />
+          <Property Name="education" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="pay" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="questionId" />
+          </Key>
+          <Property Name="questionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="theQuestion" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="theAnswer" Type="nchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Questionaire">
+          <Key>
+            <PropertyRef Name="questionId" />
+            <PropertyRef Name="positionId" />
+          </Key>
+          <Property Name="questionaireId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="questionId" Type="int" Nullable="false" />
+          <Property Name="positionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="References">
+          <Key>
+            <PropertyRef Name="applicantId" />
+            <PropertyRef Name="referenceId" />
+          </Key>
+          <Property Name="applicantId" Type="int" Nullable="false" />
+          <Property Name="referenceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="16" />
+          <Property Name="company" Type="varchar" MaxLength="50" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="storeId" />
+          </Key>
+          <Property Name="storeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="street" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="state" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="zip" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AvailablePosition_Application">
+          <End Role="AvailablePosition" Type="Self.AvailablePosition" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AvailablePosition">
+              <PropertyRef Name="availablePosId" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="availablePosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInfo_ApplicantAuth">
+          <End Role="PersonalInfo" Type="Self.PersonalInfo" Multiplicity="1" />
+          <End Role="ApplicantAuth" Type="Self.ApplicantAuth" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalInfo">
+              <PropertyRef Name="applicantId" />
+            </Principal>
+            <Dependent Role="ApplicantAuth">
+              <PropertyRef Name="applicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInfo_Application">
+          <End Role="PersonalInfo" Type="Self.PersonalInfo" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalInfo">
+              <PropertyRef Name="applicantId" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="applicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInfo_Availability">
+          <End Role="PersonalInfo" Type="Self.PersonalInfo" Multiplicity="1" />
+          <End Role="Availability" Type="Self.Availability" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalInfo">
+              <PropertyRef Name="applicantId" />
+            </Principal>
+            <Dependent Role="Availability">
+              <PropertyRef Name="applicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInfo_Education">
+          <End Role="PersonalInfo" Type="Self.PersonalInfo" Multiplicity="1" />
+          <End Role="Education" Type="Self.Education" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalInfo">
+              <PropertyRef Name="applicantId" />
+            </Principal>
+            <Dependent Role="Education">
+              <PropertyRef Name="applicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInfo_ElectronicSig">
+          <End Role="PersonalInfo" Type="Self.PersonalInfo" Multiplicity="1" />
+          <End Role="ElectronicSig" Type="Self.ElectronicSig" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalInfo">
+              <PropertyRef Name="applicantId" />
+            </Principal>
+            <Dependent Role="ElectronicSig">
+              <PropertyRef Name="applicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInfo_JobHistory">
+          <End Role="PersonalInfo" Type="Self.PersonalInfo" Multiplicity="1" />
+          <End Role="JobHistory" Type="Self.JobHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalInfo">
+              <PropertyRef Name="applicantId" />
+            </Principal>
+            <Dependent Role="JobHistory">
+              <PropertyRef Name="applicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInfo_Notes">
+          <End Role="PersonalInfo" Type="Self.PersonalInfo" Multiplicity="1" />
+          <End Role="Notes" Type="Self.Notes" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalInfo">
+              <PropertyRef Name="applicantId" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="applicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInfo_References">
+          <End Role="PersonalInfo" Type="Self.PersonalInfo" Multiplicity="1" />
+          <End Role="References" Type="Self.References" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalInfo">
+              <PropertyRef Name="applicantId" />
+            </Principal>
+            <Dependent Role="References">
+              <PropertyRef Name="applicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Position_AvailablePosition">
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="AvailablePosition" Type="Self.AvailablePosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="positionId" />
+            </Principal>
+            <Dependent Role="AvailablePosition">
+              <PropertyRef Name="positionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Position_Questionaire">
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="Questionaire" Type="Self.Questionaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="positionId" />
+            </Principal>
+            <Dependent Role="Questionaire">
+              <PropertyRef Name="positionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Questionaire">
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
+          <End Role="Questionaire" Type="Self.Questionaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="questionId" />
+            </Principal>
+            <Dependent Role="Questionaire">
+              <PropertyRef Name="questionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Store_Application">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="storeId" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="storeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Store_AvailablePosition">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="AvailablePosition" Type="Self.AvailablePosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="storeId" />
+            </Principal>
+            <Dependent Role="AvailablePosition">
+              <PropertyRef Name="storeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AESDatabaseModelStoreContainer">
+          <EntitySet Name="ApplicantAuth" EntityType="Self.ApplicantAuth" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Availability" EntityType="Self.Availability" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AvailablePosition" EntityType="Self.AvailablePosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education" EntityType="Self.Education" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ElectronicSig" EntityType="Self.ElectronicSig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobHistory" EntityType="Self.JobHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobsAppliedFor" EntityType="Self.JobsAppliedFor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Managers" EntityType="Self.Managers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonalInfo" EntityType="Self.PersonalInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Questionaire" EntityType="Self.Questionaire" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="References" EntityType="Self.References" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AvailablePosition_Application" Association="Self.FK_AvailablePosition_Application">
+            <End Role="AvailablePosition" EntitySet="AvailablePosition" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInfo_ApplicantAuth" Association="Self.FK_PersonalInfo_ApplicantAuth">
+            <End Role="PersonalInfo" EntitySet="PersonalInfo" />
+            <End Role="ApplicantAuth" EntitySet="ApplicantAuth" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInfo_Application" Association="Self.FK_PersonalInfo_Application">
+            <End Role="PersonalInfo" EntitySet="PersonalInfo" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInfo_Availability" Association="Self.FK_PersonalInfo_Availability">
+            <End Role="PersonalInfo" EntitySet="PersonalInfo" />
+            <End Role="Availability" EntitySet="Availability" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInfo_Education" Association="Self.FK_PersonalInfo_Education">
+            <End Role="PersonalInfo" EntitySet="PersonalInfo" />
+            <End Role="Education" EntitySet="Education" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInfo_ElectronicSig" Association="Self.FK_PersonalInfo_ElectronicSig">
+            <End Role="PersonalInfo" EntitySet="PersonalInfo" />
+            <End Role="ElectronicSig" EntitySet="ElectronicSig" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInfo_JobHistory" Association="Self.FK_PersonalInfo_JobHistory">
+            <End Role="PersonalInfo" EntitySet="PersonalInfo" />
+            <End Role="JobHistory" EntitySet="JobHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInfo_Notes" Association="Self.FK_PersonalInfo_Notes">
+            <End Role="PersonalInfo" EntitySet="PersonalInfo" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInfo_References" Association="Self.FK_PersonalInfo_References">
+            <End Role="PersonalInfo" EntitySet="PersonalInfo" />
+            <End Role="References" EntitySet="References" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Position_AvailablePosition" Association="Self.FK_Position_AvailablePosition">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="AvailablePosition" EntitySet="AvailablePosition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Position_Questionaire" Association="Self.FK_Position_Questionaire">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="Questionaire" EntitySet="Questionaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Questionaire" Association="Self.FK_Question_Questionaire">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Questionaire" EntitySet="Questionaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Store_Application" Association="Self.FK_Store_Application">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Store_AvailablePosition" Association="Self.FK_Store_AvailablePosition">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="AvailablePosition" EntitySet="AvailablePosition" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AESDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="applicantId" />
+            <PropertyRef Name="availablePosId" />
+          </Key>
+          <Property Name="applicantId" Type="Int32" Nullable="false" />
+          <Property Name="availablePosId" Type="Int32" Nullable="false" />
+          <Property Name="storeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AvailablePosition" Relationship="Self.FK_AvailablePosition_Application" FromRole="Application" ToRole="AvailablePosition" />
+          <NavigationProperty Name="PersonalInfo" Relationship="Self.FK_PersonalInfo_Application" FromRole="Application" ToRole="PersonalInfo" />
+          <NavigationProperty Name="Store" Relationship="Self.FK_Store_Application" FromRole="Application" ToRole="Store" />
+        </EntityType>
+        <EntityType Name="Availability">
+          <Key>
+            <PropertyRef Name="applicantId" />
+          </Key>
+          <Property Name="applicantId" Type="Int32" Nullable="false" />
+          <Property Name="salaryExpected" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fullTimeYN" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="daysYN" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="eveningsYN" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="weekendsYN" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mondayFrom" Type="Time" Precision="7" />
+          <Property Name="mondayTo" Type="Time" Precision="7" />
+          <Property Name="tuesdayFrom" Type="Time" Precision="7" />
+          <Property Name="tuesdayTo" Type="Time" Precision="7" />
+          <Property Name="wednesdayFrom" Type="Time" Precision="7" />
+          <Property Name="wednesdayTo" Type="Time" Precision="7" />
+          <Property Name="thursdayFrom" Type="Time" Precision="7" />
+          <Property Name="thursdayTo" Type="Time" Precision="7" />
+          <Property Name="fridayFrom" Type="Time" Precision="7" />
+          <Property Name="fridayTo" Type="Time" Precision="7" />
+          <Property Name="saturdayFrom" Type="Time" Precision="7" />
+          <Property Name="saturdayTo" Type="Time" Precision="7" />
+          <Property Name="sundayFrom" Type="Time" Precision="7" />
+          <Property Name="sundayTo" Type="Time" Precision="7" />
+          <NavigationProperty Name="PersonalInfo" Relationship="Self.FK_PersonalInfo_Availability" FromRole="Availability" ToRole="PersonalInfo" />
+        </EntityType>
+        <EntityType Name="AvailablePosition">
+          <Key>
+            <PropertyRef Name="availablePosId" />
+          </Key>
+          <Property Name="availablePosId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="storeId" Type="Int32" Nullable="false" />
+          <Property Name="positionId" Type="Int32" Nullable="false" />
+          <Property Name="mondayFrom" Type="Time" Precision="7" />
+          <Property Name="mondayTo" Type="Time" Precision="7" />
+          <Property Name="tuesdayFrom" Type="Time" Precision="7" />
+          <Property Name="tuesdayTo" Type="Time" Precision="7" />
+          <Property Name="wednesdayFrom" Type="Time" Precision="7" />
+          <Property Name="wednesdayTo" Type="Time" Precision="7" />
+          <Property Name="thursdayFrom" Type="Time" Precision="7" />
+          <Property Name="thursdayTo" Type="Time" Precision="7" />
+          <Property Name="fridayFrom" Type="Time" Precision="7" />
+          <Property Name="fridayTo" Type="Time" Precision="7" />
+          <Property Name="saturdayFrom" Type="Time" Precision="7" />
+          <Property Name="saturdayTo" Type="Time" Precision="7" />
+          <Property Name="sundayFrom" Type="Time" Precision="7" />
+          <Property Name="sundayTo" Type="Time" Precision="7" />
+          <NavigationProperty Name="Applications" Relationship="Self.FK_AvailablePosition_Application" FromRole="AvailablePosition" ToRole="Application" />
+          <NavigationProperty Name="Position" Relationship="Self.FK_Position_AvailablePosition" FromRole="AvailablePosition" ToRole="Position" />
+          <NavigationProperty Name="Store" Relationship="Self.FK_Store_AvailablePosition" FromRole="AvailablePosition" ToRole="Store" />
+        </EntityType>
+        <EntityType Name="ElectronicSig">
+          <Key>
+            <PropertyRef Name="applicantId" />
+          </Key>
+          <Property Name="applicantId" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PersonalInfo" Relationship="Self.FK_PersonalInfo_ElectronicSig" FromRole="ElectronicSig" ToRole="PersonalInfo" />
+        </EntityType>
+        <EntityType Name="JobHistory">
+          <Key>
+            <PropertyRef Name="applicantId" />
+            <PropertyRef Name="jobHistoryId" />
+          </Key>
+          <Property Name="applicantId" Type="Int32" Nullable="false" />
+          <Property Name="jobHistoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fromDate" Type="DateTime" Precision="0" />
+          <Property Name="toDate" Type="DateTime" Precision="0" />
+          <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="stateAbrev" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="zip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="supervisor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="startSalary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="endSalary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="reasonLeave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="duties" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PersonalInfo" Relationship="Self.FK_PersonalInfo_JobHistory" FromRole="JobHistory" ToRole="PersonalInfo" />
+        </EntityType>
+        <EntityType Name="JobsAppliedFor">
+          <Key>
+            <PropertyRef Name="appId" />
+            <PropertyRef Name="posId" />
+          </Key>
+          <Property Name="appId" Type="Int32" Nullable="false" />
+          <Property Name="posId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="managerId" />
+          </Key>
+          <Property Name="managerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="permission" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Note">
+          <Key>
+            <PropertyRef Name="applicantId" />
+          </Key>
+          <Property Name="applicantId" Type="Int32" Nullable="false" />
+          <Property Name="personalInfoNotes" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="educationNotes" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="referenceNotes" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="jobHistoryNotes" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PersonalInfo" Relationship="Self.FK_PersonalInfo_Notes" FromRole="Notes" ToRole="PersonalInfo" />
+          <Property Name="availabilityNotes" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PersonalInfo">
+          <Key>
+            <PropertyRef Name="applicantId" />
+          </Key>
+          <Property Name="applicantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="middleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="socialNum" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="state" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="zip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="alias" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Applications" Relationship="Self.FK_PersonalInfo_Application" FromRole="PersonalInfo" ToRole="Application" />
+          <NavigationProperty Name="Availability" Relationship="Self.FK_PersonalInfo_Availability" FromRole="PersonalInfo" ToRole="Availability" />
+          <NavigationProperty Name="ElectronicSig" Relationship="Self.FK_PersonalInfo_ElectronicSig" FromRole="PersonalInfo" ToRole="ElectronicSig" />
+          <NavigationProperty Name="JobHistories" Relationship="Self.FK_PersonalInfo_JobHistory" FromRole="PersonalInfo" ToRole="JobHistory" />
+          <NavigationProperty Name="Note" Relationship="Self.FK_PersonalInfo_Notes" FromRole="PersonalInfo" ToRole="Notes" />
+          <NavigationProperty Name="References" Relationship="Self.FK_PersonalInfo_References" FromRole="PersonalInfo" ToRole="References" />
+          <NavigationProperty Name="ApplicantAuth" Relationship="AESDatabaseModel.FK_PersonalInfo_ApplicantAuth" FromRole="PersonalInfo" ToRole="ApplicantAuth" />
+          <NavigationProperty Name="Educations" Relationship="AESDatabaseModel.FK_PersonalInfo_Education" FromRole="PersonalInfo" ToRole="Education" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="positionId" />
+          </Key>
+          <Property Name="positionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="requirements" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="education" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pay" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AvailablePositions" Relationship="Self.FK_Position_AvailablePosition" FromRole="Position" ToRole="AvailablePosition" />
+          <NavigationProperty Name="Questionaires" Relationship="Self.FK_Position_Questionaire" FromRole="Position" ToRole="Questionaire" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="questionId" />
+          </Key>
+          <Property Name="questionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="theQuestion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="theAnswer" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Questionaires" Relationship="Self.FK_Question_Questionaire" FromRole="Question" ToRole="Questionaire" />
+        </EntityType>
+        <EntityType Name="Questionaire">
+          <Key>
+            <PropertyRef Name="questionId" />
+            <PropertyRef Name="positionId" />
+          </Key>
+          <Property Name="questionaireId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="questionId" Type="Int32" Nullable="false" />
+          <Property Name="positionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Position" Relationship="Self.FK_Position_Questionaire" FromRole="Questionaire" ToRole="Position" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_Question_Questionaire" FromRole="Questionaire" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="Reference">
+          <Key>
+            <PropertyRef Name="applicantId" />
+            <PropertyRef Name="referenceId" />
+          </Key>
+          <Property Name="applicantId" Type="Int32" Nullable="false" />
+          <Property Name="referenceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="company" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PersonalInfo" Relationship="Self.FK_PersonalInfo_References" FromRole="References" ToRole="PersonalInfo" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="storeId" />
+          </Key>
+          <Property Name="storeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="state" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="zip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Applications" Relationship="Self.FK_Store_Application" FromRole="Store" ToRole="Application" />
+          <NavigationProperty Name="AvailablePositions" Relationship="Self.FK_Store_AvailablePosition" FromRole="Store" ToRole="AvailablePosition" />
+        </EntityType>
+        <Association Name="FK_AvailablePosition_Application">
+          <End Role="AvailablePosition" Type="Self.AvailablePosition" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AvailablePosition">
+              <PropertyRef Name="availablePosId" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="availablePosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInfo_Application">
+          <End Role="PersonalInfo" Type="Self.PersonalInfo" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalInfo">
+              <PropertyRef Name="applicantId" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="applicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Store_Application">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="storeId" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="storeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInfo_Availability">
+          <End Role="PersonalInfo" Type="Self.PersonalInfo" Multiplicity="1" />
+          <End Role="Availability" Type="Self.Availability" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalInfo">
+              <PropertyRef Name="applicantId" />
+            </Principal>
+            <Dependent Role="Availability">
+              <PropertyRef Name="applicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Position_AvailablePosition">
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="AvailablePosition" Type="Self.AvailablePosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="positionId" />
+            </Principal>
+            <Dependent Role="AvailablePosition">
+              <PropertyRef Name="positionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Store_AvailablePosition">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="AvailablePosition" Type="Self.AvailablePosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="storeId" />
+            </Principal>
+            <Dependent Role="AvailablePosition">
+              <PropertyRef Name="storeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInfo_ElectronicSig">
+          <End Role="PersonalInfo" Type="Self.PersonalInfo" Multiplicity="1" />
+          <End Role="ElectronicSig" Type="Self.ElectronicSig" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalInfo">
+              <PropertyRef Name="applicantId" />
+            </Principal>
+            <Dependent Role="ElectronicSig">
+              <PropertyRef Name="applicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInfo_JobHistory">
+          <End Role="PersonalInfo" Type="Self.PersonalInfo" Multiplicity="1" />
+          <End Role="JobHistory" Type="Self.JobHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalInfo">
+              <PropertyRef Name="applicantId" />
+            </Principal>
+            <Dependent Role="JobHistory">
+              <PropertyRef Name="applicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInfo_Notes">
+          <End Role="PersonalInfo" Type="Self.PersonalInfo" Multiplicity="1" />
+          <End Role="Notes" Type="Self.Note" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalInfo">
+              <PropertyRef Name="applicantId" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="applicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalInfo_References">
+          <End Role="PersonalInfo" Type="Self.PersonalInfo" Multiplicity="1" />
+          <End Role="References" Type="Self.Reference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalInfo">
+              <PropertyRef Name="applicantId" />
+            </Principal>
+            <Dependent Role="References">
+              <PropertyRef Name="applicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Position_Questionaire">
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="Questionaire" Type="Self.Questionaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="positionId" />
+            </Principal>
+            <Dependent Role="Questionaire">
+              <PropertyRef Name="positionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Questionaire">
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
+          <End Role="Questionaire" Type="Self.Questionaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="questionId" />
+            </Principal>
+            <Dependent Role="Questionaire">
+              <PropertyRef Name="questionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AESDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Applications" EntityType="Self.Application" />
+          <EntitySet Name="Availabilities" EntityType="Self.Availability" />
+          <EntitySet Name="AvailablePositions" EntityType="Self.AvailablePosition" />
+          <EntitySet Name="ElectronicSigs" EntityType="Self.ElectronicSig" />
+          <EntitySet Name="JobHistories" EntityType="Self.JobHistory" />
+          <EntitySet Name="JobsAppliedFors" EntityType="Self.JobsAppliedFor" />
+          <EntitySet Name="Managers" EntityType="Self.Manager" />
+          <EntitySet Name="Notes" EntityType="Self.Note" />
+          <EntitySet Name="PersonalInfoes" EntityType="Self.PersonalInfo" />
+          <EntitySet Name="Positions" EntityType="Self.Position" />
+          <EntitySet Name="Questions" EntityType="Self.Question" />
+          <EntitySet Name="Questionaires" EntityType="Self.Questionaire" />
+          <EntitySet Name="References" EntityType="Self.Reference" />
+          <EntitySet Name="Stores" EntityType="Self.Store" />
+          <AssociationSet Name="FK_AvailablePosition_Application" Association="Self.FK_AvailablePosition_Application">
+            <End Role="AvailablePosition" EntitySet="AvailablePositions" />
+            <End Role="Application" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInfo_Application" Association="Self.FK_PersonalInfo_Application">
+            <End Role="PersonalInfo" EntitySet="PersonalInfoes" />
+            <End Role="Application" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Store_Application" Association="Self.FK_Store_Application">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="Application" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInfo_Availability" Association="Self.FK_PersonalInfo_Availability">
+            <End Role="PersonalInfo" EntitySet="PersonalInfoes" />
+            <End Role="Availability" EntitySet="Availabilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Position_AvailablePosition" Association="Self.FK_Position_AvailablePosition">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="AvailablePosition" EntitySet="AvailablePositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Store_AvailablePosition" Association="Self.FK_Store_AvailablePosition">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="AvailablePosition" EntitySet="AvailablePositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInfo_ElectronicSig" Association="Self.FK_PersonalInfo_ElectronicSig">
+            <End Role="PersonalInfo" EntitySet="PersonalInfoes" />
+            <End Role="ElectronicSig" EntitySet="ElectronicSigs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInfo_JobHistory" Association="Self.FK_PersonalInfo_JobHistory">
+            <End Role="PersonalInfo" EntitySet="PersonalInfoes" />
+            <End Role="JobHistory" EntitySet="JobHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInfo_Notes" Association="Self.FK_PersonalInfo_Notes">
+            <End Role="PersonalInfo" EntitySet="PersonalInfoes" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInfo_References" Association="Self.FK_PersonalInfo_References">
+            <End Role="PersonalInfo" EntitySet="PersonalInfoes" />
+            <End Role="References" EntitySet="References" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Position_Questionaire" Association="Self.FK_Position_Questionaire">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="Questionaire" EntitySet="Questionaires" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Questionaire" Association="Self.FK_Question_Questionaire">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Questionaire" EntitySet="Questionaires" />
+          </AssociationSet>
+          <EntitySet Name="ApplicantAuths" EntityType="AESDatabaseModel.ApplicantAuth" />
+          <AssociationSet Name="FK_PersonalInfo_ApplicantAuth" Association="AESDatabaseModel.FK_PersonalInfo_ApplicantAuth">
+            <End Role="PersonalInfo" EntitySet="PersonalInfoes" />
+            <End Role="ApplicantAuth" EntitySet="ApplicantAuths" />
+          </AssociationSet>
+          <EntitySet Name="Educations" EntityType="AESDatabaseModel.Education" />
+          <AssociationSet Name="FK_PersonalInfo_Education" Association="AESDatabaseModel.FK_PersonalInfo_Education">
+            <End Role="PersonalInfo" EntitySet="PersonalInfoes" />
+            <End Role="Education" EntitySet="Educations" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ApplicantAuth">
+          <Key>
+            <PropertyRef Name="applicantId" />
+          </Key>
+          <Property Name="applicantId" Type="Int32" Nullable="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PersonalInfo" Relationship="AESDatabaseModel.FK_PersonalInfo_ApplicantAuth" FromRole="ApplicantAuth" ToRole="PersonalInfo" />
+        </EntityType>
+        <Association Name="FK_PersonalInfo_ApplicantAuth">
+          <End Type="AESDatabaseModel.PersonalInfo" Role="PersonalInfo" Multiplicity="1" />
+          <End Type="AESDatabaseModel.ApplicantAuth" Role="ApplicantAuth" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalInfo">
+              <PropertyRef Name="applicantId" />
+            </Principal>
+            <Dependent Role="ApplicantAuth">
+              <PropertyRef Name="applicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="applicantId" />
+            <PropertyRef Name="educationId" />
+          </Key>
+          <Property Name="applicantId" Type="Int32" Nullable="false" />
+          <Property Name="educationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="stateAbrev" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="zip" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="yearFrom" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="yearTo" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="graduatedYN" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="degreeMajor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PersonalInfo" Relationship="AESDatabaseModel.FK_PersonalInfo_Education" FromRole="Education" ToRole="PersonalInfo" />
+        </EntityType>
+        <Association Name="FK_PersonalInfo_Education">
+          <End Type="AESDatabaseModel.PersonalInfo" Role="PersonalInfo" Multiplicity="1" />
+          <End Type="AESDatabaseModel.Education" Role="Education" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalInfo">
+              <PropertyRef Name="applicantId" />
+            </Principal>
+            <Dependent Role="Education">
+              <PropertyRef Name="applicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AESDatabaseModelStoreContainer" CdmEntityContainer="AESDatabaseEntities">
+          <EntitySetMapping Name="Applications">
+            <EntityTypeMapping TypeName="AESDatabaseModel.Application">
+              <MappingFragment StoreEntitySet="Application">
+                <ScalarProperty Name="applicantId" ColumnName="applicantId" />
+                <ScalarProperty Name="availablePosId" ColumnName="availablePosId" />
+                <ScalarProperty Name="storeId" ColumnName="storeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Availabilities">
+            <EntityTypeMapping TypeName="AESDatabaseModel.Availability">
+              <MappingFragment StoreEntitySet="Availability">
+                <ScalarProperty Name="applicantId" ColumnName="applicantId" />
+                <ScalarProperty Name="salaryExpected" ColumnName="salaryExpected" />
+                <ScalarProperty Name="fullTimeYN" ColumnName="fullTimeYN" />
+                <ScalarProperty Name="daysYN" ColumnName="daysYN" />
+                <ScalarProperty Name="eveningsYN" ColumnName="eveningsYN" />
+                <ScalarProperty Name="weekendsYN" ColumnName="weekendsYN" />
+                <ScalarProperty Name="mondayFrom" ColumnName="mondayFrom" />
+                <ScalarProperty Name="mondayTo" ColumnName="mondayTo" />
+                <ScalarProperty Name="tuesdayFrom" ColumnName="tuesdayFrom" />
+                <ScalarProperty Name="tuesdayTo" ColumnName="tuesdayTo" />
+                <ScalarProperty Name="wednesdayFrom" ColumnName="wednesdayFrom" />
+                <ScalarProperty Name="wednesdayTo" ColumnName="wednesdayTo" />
+                <ScalarProperty Name="thursdayFrom" ColumnName="thursdayFrom" />
+                <ScalarProperty Name="thursdayTo" ColumnName="thursdayTo" />
+                <ScalarProperty Name="fridayFrom" ColumnName="fridayFrom" />
+                <ScalarProperty Name="fridayTo" ColumnName="fridayTo" />
+                <ScalarProperty Name="saturdayFrom" ColumnName="saturdayFrom" />
+                <ScalarProperty Name="saturdayTo" ColumnName="saturdayTo" />
+                <ScalarProperty Name="sundayFrom" ColumnName="sundayFrom" />
+                <ScalarProperty Name="sundayTo" ColumnName="sundayTo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AvailablePositions">
+            <EntityTypeMapping TypeName="AESDatabaseModel.AvailablePosition">
+              <MappingFragment StoreEntitySet="AvailablePosition">
+                <ScalarProperty Name="availablePosId" ColumnName="availablePosId" />
+                <ScalarProperty Name="storeId" ColumnName="storeId" />
+                <ScalarProperty Name="positionId" ColumnName="positionId" />
+                <ScalarProperty Name="mondayFrom" ColumnName="mondayFrom" />
+                <ScalarProperty Name="mondayTo" ColumnName="mondayTo" />
+                <ScalarProperty Name="tuesdayFrom" ColumnName="tuesdayFrom" />
+                <ScalarProperty Name="tuesdayTo" ColumnName="tuesdayTo" />
+                <ScalarProperty Name="wednesdayFrom" ColumnName="wednesdayFrom" />
+                <ScalarProperty Name="wednesdayTo" ColumnName="wednesdayTo" />
+                <ScalarProperty Name="thursdayFrom" ColumnName="thursdayFrom" />
+                <ScalarProperty Name="thursdayTo" ColumnName="thursdayTo" />
+                <ScalarProperty Name="fridayFrom" ColumnName="fridayFrom" />
+                <ScalarProperty Name="fridayTo" ColumnName="fridayTo" />
+                <ScalarProperty Name="saturdayFrom" ColumnName="saturdayFrom" />
+                <ScalarProperty Name="saturdayTo" ColumnName="saturdayTo" />
+                <ScalarProperty Name="sundayFrom" ColumnName="sundayFrom" />
+                <ScalarProperty Name="sundayTo" ColumnName="sundayTo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ElectronicSigs">
+            <EntityTypeMapping TypeName="AESDatabaseModel.ElectronicSig">
+              <MappingFragment StoreEntitySet="ElectronicSig">
+                <ScalarProperty Name="applicantId" ColumnName="applicantId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobHistories">
+            <EntityTypeMapping TypeName="AESDatabaseModel.JobHistory">
+              <MappingFragment StoreEntitySet="JobHistory">
+                <ScalarProperty Name="applicantId" ColumnName="applicantId" />
+                <ScalarProperty Name="jobHistoryId" ColumnName="jobHistoryId" />
+                <ScalarProperty Name="employer" ColumnName="employer" />
+                <ScalarProperty Name="fromDate" ColumnName="fromDate" />
+                <ScalarProperty Name="toDate" ColumnName="toDate" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="stateAbrev" ColumnName="stateAbrev" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="supervisor" ColumnName="supervisor" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="startSalary" ColumnName="startSalary" />
+                <ScalarProperty Name="endSalary" ColumnName="endSalary" />
+                <ScalarProperty Name="reasonLeave" ColumnName="reasonLeave" />
+                <ScalarProperty Name="duties" ColumnName="duties" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobsAppliedFors">
+            <EntityTypeMapping TypeName="AESDatabaseModel.JobsAppliedFor">
+              <MappingFragment StoreEntitySet="JobsAppliedFor">
+                <ScalarProperty Name="posId" ColumnName="posId" />
+                <ScalarProperty Name="appId" ColumnName="appId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Managers">
+            <EntityTypeMapping TypeName="AESDatabaseModel.Manager">
+              <MappingFragment StoreEntitySet="Managers">
+                <ScalarProperty Name="permission" ColumnName="permission" />
+                <ScalarProperty Name="managerId" ColumnName="managerId" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notes">
+            <EntityTypeMapping TypeName="AESDatabaseModel.Note">
+              <MappingFragment StoreEntitySet="Notes">
+                <ScalarProperty Name="availabilityNotes" ColumnName="availabilityNotes" />
+                <ScalarProperty Name="applicantId" ColumnName="applicantId" />
+                <ScalarProperty Name="personalInfoNotes" ColumnName="personalInfoNotes" />
+                <ScalarProperty Name="educationNotes" ColumnName="educationNotes" />
+                <ScalarProperty Name="referenceNotes" ColumnName="referenceNotes" />
+                <ScalarProperty Name="jobHistoryNotes" ColumnName="jobHistoryNotes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonalInfoes">
+            <EntityTypeMapping TypeName="AESDatabaseModel.PersonalInfo">
+              <MappingFragment StoreEntitySet="PersonalInfo">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="applicantId" ColumnName="applicantId" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="middleName" ColumnName="middleName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="socialNum" ColumnName="socialNum" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="alias" ColumnName="alias" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Positions">
+            <EntityTypeMapping TypeName="AESDatabaseModel.Position">
+              <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="positionId" ColumnName="positionId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="requirements" ColumnName="requirements" />
+                <ScalarProperty Name="education" ColumnName="education" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="pay" ColumnName="pay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="AESDatabaseModel.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="questionId" ColumnName="questionId" />
+                <ScalarProperty Name="theQuestion" ColumnName="theQuestion" />
+                <ScalarProperty Name="theAnswer" ColumnName="theAnswer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questionaires">
+            <EntityTypeMapping TypeName="AESDatabaseModel.Questionaire">
+              <MappingFragment StoreEntitySet="Questionaire">
+                <ScalarProperty Name="questionaireId" ColumnName="questionaireId" />
+                <ScalarProperty Name="questionId" ColumnName="questionId" />
+                <ScalarProperty Name="positionId" ColumnName="positionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="References">
+            <EntityTypeMapping TypeName="AESDatabaseModel.Reference">
+              <MappingFragment StoreEntitySet="References">
+                <ScalarProperty Name="applicantId" ColumnName="applicantId" />
+                <ScalarProperty Name="referenceId" ColumnName="referenceId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stores">
+            <EntityTypeMapping TypeName="AESDatabaseModel.Store">
+              <MappingFragment StoreEntitySet="Store">
+                <ScalarProperty Name="storeId" ColumnName="storeId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicantAuths">
+            <EntityTypeMapping TypeName="AESDatabaseModel.ApplicantAuth">
+              <MappingFragment StoreEntitySet="ApplicantAuth">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="applicantId" ColumnName="applicantId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Educations">
+            <EntityTypeMapping TypeName="AESDatabaseModel.Education">
+              <MappingFragment StoreEntitySet="Education">
+                <ScalarProperty Name="degreeMajor" ColumnName="degreeMajor" />
+                <ScalarProperty Name="graduatedYN" ColumnName="graduatedYN" />
+                <ScalarProperty Name="yearTo" ColumnName="yearTo" />
+                <ScalarProperty Name="yearFrom" ColumnName="yearFrom" />
+                <ScalarProperty Name="zip" ColumnName="zip" />
+                <ScalarProperty Name="stateAbrev" ColumnName="stateAbrev" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="educationId" ColumnName="educationId" />
+                <ScalarProperty Name="applicantId" ColumnName="applicantId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

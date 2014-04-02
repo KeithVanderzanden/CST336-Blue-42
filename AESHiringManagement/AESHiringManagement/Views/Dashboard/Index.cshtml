@@ -1,0 +1,22 @@
+﻿
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+<div id="Partial" class="dashboard-names">
+    @Html.Partial("WaitList")
+</div>
+<div class="dashboard-application">
+    @Html.Partial("Application")
+</div>
+
+<script type="text/x-jquery-tmpl">
+$(document).ready(function () {
+            setInterval(function () {
+            var url = "@(Html.Raw(Url.Action("WaitList", "Dashboard")))";
+            $("#Partial").load(url);
+            }, 5000);
+
+            $.ajaxSetup({ cache: false });
+});
+</script>

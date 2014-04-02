@@ -1,0 +1,97 @@
+﻿using AESApplications.DataServiceReference;
+using AESApplications.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
+
+namespace AESApplications.Controllers
+{
+    public class QuestionnaireController : Controller
+    {
+         //
+        // GET: /Questionnaire/
+        [HttpPost]
+        public async Task<ActionResult> Index(FormCollection fc )
+        {
+            Session["DisableMenu"] = "Yes";
+            var questions = new List<QuestionModel>();
+            List<int> ids = new List<int>();
+            for (int i = 1; i < fc.Count; i++ )
+            {
+                 ids.Add(Convert.ToInt32(fc.Keys.Get(i)));
+            }
+            if (ids.Count < 1)
+                return RedirectToAction("Index", "LocalJobs");
+            else
+                this.Session.Add("jobIds", ids.ToArray());
+            
+            using (var client = new DataServiceClient())
+            {
+                var tempQuestions = await client.getQuestionsAsync(ids.ToArray());
+                foreach (var question in tempQuestions)
+                {
+                    var tempQuestion = new QuestionModel();
+                    tempQuestion.question = question.theQuestion;
+                    tempQuestion.correctAnswer = question.theAnswer;
+                    questions.Add(tempQuestion);
+                }
+            }
+            return View(questions);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> CheckQuestions(List<QuestionModel> questionnair)
+        {
+            Session["DisableMenu"] = "No";
+            bool questionFailed = false;
+            if (questionnair != null)
+            {
+                foreach (var question in questionnair)
+                {
+                    if (question.correctAnswer[0] != question.response[0])
+                        questionFailed = true;
+                }
+            }
+            if (questionFailed) 
+            {
+                return RedirectToAction("Fail", "Questionnaire"); 
+            }
+            if (((string)Session["Status"]).CompareTo("LoggedIn") == 0)
+            {
+                using (var client = new DataServiceClient())
+                {
+                    if (!await client.updateJobIdsAsync(Convert.ToInt32(Session["ApplicantId"]), (int[])this.Session["jobIds"]))
+                    {
+                        //error storing jobIds (when logged in this is stored after questionnair)    
+                    }
+                    else
+                    {
+                        this.Session["LocalJobs"] = "Done";
+                    }
+                }
+            }
+            return RedirectToAction("Index","PersonalInfo");
+        }
+
+        public ActionResult Fail() 
+        {
+            return View();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+     

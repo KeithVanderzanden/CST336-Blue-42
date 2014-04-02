@@ -1,0 +1,204 @@
+﻿@model AESHiringManagement.Models.Application
+
+@Html.Label("Personal:")
+<div class="dashboard-entry">
+    <section class="app-field" style="width:38vw;float:left;">
+        @Html.Label("Name (First, MI, Last):")
+        @Html.DisplayFor(m => m.application.personalInfo.firstName, new { Class = "app-disp" })
+        @Html.DisplayFor(m => m.application.personalInfo.middleName, new { Class = "app-disp" })
+        @Html.DisplayFor(m => m.application.personalInfo.lastName, new { Class = "app-disp" })
+    </section>
+    <section class ="app-field" style="width:26.6vw;float:right;">
+        @Html.Label("Social Security Number:")
+        @Html.DisplayFor(m => m.application.personalInfo.socialNum, new { Class = "app-disp" })
+    </section>
+    <section class="app-field" style="width:38vw;float:left;">
+        @Html.Label("Address (Street, City, State, Zip):")
+        @Html.DisplayFor(m => m.application.personalInfo.street, new { Class = "app-disp" })
+        @Html.DisplayFor(m => m.application.personalInfo.city, new { Class = "app-disp" })
+        @Html.DisplayFor(m => m.application.personalInfo.state, new { Class = "app-disp" })
+        @Html.DisplayFor(m => m.application.personalInfo.zip, new { Class = "app-disp" })
+    </section>
+    <section class="app-field" style="width:26.6vw;float:right;">
+        @Html.Label("Phone:")
+        @Html.DisplayFor(m => m.application.personalInfo.Phone, new { Class = "app-disp" })
+    </section>
+    <section class="app-field" style="width:30vw;float:left;">
+        @Html.Label("Aliases:")
+        @Html.DisplayFor(m => m.application.personalInfo.alias, new { Class = "app-disp" })
+    </section>
+    <section class="app-field" style="width:34.6vw;float:right;">
+        @Html.Label("Email Address:")
+        @Html.DisplayFor(m => m.application.personalInfo.email, new { Class = "app-disp" })
+    </section>
+</div>
+<div class="dashboard-entry">
+    @Html.TextAreaFor(m => m.notes.personalInfoNotes, new { Class = "app-textarea" })
+</div>
+@Html.Label("Position:")
+<div class="dashboard-entry">
+    <section class="app-field" style="width:64.6vw;float:left;">
+        @Html.Label("Positions Applying for:")
+        <!--Need to load this data or add it to the application-->
+    </section>
+    <section class="app-field" style="width:8.4vw;height:10vh;float:left;">
+        @Html.Label("Days/Hours Available:", new { style = "width:4vw; " })
+        @Html.Label("From:")
+        @Html.Label("To:")
+    </section>
+    <section class="app-field" style="width: 5vw; float: left; height: 3.5vh;">@Html.DisplayFor(m => m.application.availability.mondayFrom, new { Class = "app-disp" })</section>
+    <section class="app-field" style="width: 5vw; float: left; height: 3.5vh;">@Html.DisplayFor(m => m.application.availability.tuesdayFrom, new { Class = "app-disp" })</section>
+    <section class="app-field" style="width: 5vw; float: left; height: 3.5vh;">@Html.DisplayFor(m => m.application.availability.wednesdayFrom, new { Class = "app-disp" })</section>
+    <section class="app-field" style="width: 5vw; float: left; height: 3.5vh;">@Html.DisplayFor(m => m.application.availability.thursdayFrom, new { Class = "app-disp" })</section>
+    <section class="app-field" style="width: 5vw; float: left; height: 3.5vh;">@Html.DisplayFor(m => m.application.availability.fridayFrom, new { Class = "app-disp" })</section>
+    <section class="app-field" style="width: 5vw; float: left; height: 3.5vh;">@Html.DisplayFor(m => m.application.availability.saturdayFrom, new { Class = "app-disp" })</section>
+    <section class="app-field" style="width: 5vw; float: left; height: 3.5vh;">@Html.DisplayFor(m => m.application.availability.sundayFrom, new { Class = "app-disp" })</section>
+    <section class="app-field" style="width:11vw;float:right;">
+        @Html.Label("Salary Expectation:")
+        @Html.DisplayFor(m => m.application.availability.salaryExpected, new { Class = "app-disp" })
+    </section>
+    <section class="app-field" style="width:9vw;float:right;">
+        @Html.Label("Full Time (y/n):")
+        @Html.DisplayFor(m => m.application.availability.fullTimeYN, new { Class = "app-disp" })
+    </section>
+    <section class="app-field" style="width: 5vw; float: left; height: 3.5vh;">@Html.DisplayFor(m => m.application.availability.mondayTo, new { Class = "app-disp" })</section>
+    <section class="app-field" style="width: 5vw; float: left; height: 3.5vh;">@Html.DisplayFor(m => m.application.availability.tuesdayTo, new { Class = "app-disp" })</section>
+    <section class="app-field" style="width: 5vw; float: left; height: 3.5vh;">@Html.DisplayFor(m => m.application.availability.wednesdayTo, new { Class = "app-disp" })</section>
+    <section class="app-field" style="width: 5vw; float: left; height: 3.5vh;">@Html.DisplayFor(m => m.application.availability.thursdayTo, new { Class = "app-disp" })</section>
+    <section class="app-field" style="width: 5vw; float: left; height: 3.5vh;">@Html.DisplayFor(m => m.application.availability.fridayTo, new { Class = "app-disp" })</section>
+    <section class="app-field" style="width: 5vw; float: left; height: 3.5vh;">@Html.DisplayFor(m => m.application.availability.saturdayTo, new { Class = "app-disp" })</section>
+    <section class="app-field" style="width: 5vw; float: left; height: 3.5vh;">@Html.DisplayFor(m => m.application.availability.sundayTo, new { Class = "app-disp" })</section>
+    <section class="app-field" style="width:5vw;float:right;">
+        @Html.Label("Days? (y/n):")
+        @Html.DisplayFor(m => m.application.availability.daysYN, new { Class = "app-disp" })
+    </section>
+    <section class="app-field" style="width:7.4vw;float:right;">
+        @Html.Label("Evenings?:")
+        @Html.DisplayFor(m => m.application.availability.eveningsYN, new { Class = "app-disp" })
+    </section>
+    <section class ="app-field" style="width:7.4vw;float:right;">
+        @Html.Label("Weekends:")
+        @Html.DisplayFor(m => m.application.availability.weekendsYN, new { Class = "app-disp" })
+    </section>
+    @Html.Label("M", new { style = "width: 5vw; height: 3.5vh; float:left; text-align:center;" })
+    @Html.Label("T", new { style = "width: 5vw; height: 3.5vh; float:left; text-align:center;" })
+    @Html.Label("W", new { style = "width: 5vw; height: 3.5vh; float:left; text-align:center;" })
+    @Html.Label("Th", new { style = "width: 5vw; height: 3.5vh; float:left; text-align:center;" })
+    @Html.Label("F", new { style = "width: 5vw; height: 3.5vh; float:left; text-align:center;" })
+    @Html.Label("S", new { style = "width: 5vw; height: 3.5vh; float:left; text-align:center;" })
+    @Html.Label("Su", new { style = "width: 5vw; height: 3.5vh; float:left; text-align:center;" })
+</div>
+<div class="dashboard-entry">
+    @Html.TextAreaFor(m => m.notes.availabilityNotes, new { Class = "app-textarea" })
+</div>
+@Html.Label("Job History:")
+@for (int i = 0; i < 3; ++i)
+{
+    <div class="dashboard-entry">
+        <section class="app-field" style="width:35.6vw;float:left;">
+            @Html.Label("Employer:")
+            @Html.DisplayFor(m => m.application.jobHistory[i].employer, new { Class = "app-disp" })
+        </section>
+        <section class="app-field" style="width:14.4vw;float:left;">
+            @Html.Label("From (mo/yr):")
+            @Html.DisplayFor(m => m.application.jobHistory[i].fromDate, new { Class = "app-disp" })
+        </section>
+        <section class="app-field" style="width:14.4vw;float:left;">
+            @Html.Label("To (mo/yr):")
+            @Html.DisplayFor(m => m.application.jobHistory[i].toDate, new { Class = "app-disp" })
+        </section>
+        <section class="app-field" style="width:35.6vw;float:left;">
+            @Html.Label("Address (Street, City, State, Zip):")
+            @Html.DisplayFor(m => m.application.jobHistory[i].street, new { Class = "app-disp" })
+            @Html.DisplayFor(m => m.application.jobHistory[i].city, new { Class = "app-disp" })
+            @Html.DisplayFor(m => m.application.jobHistory[i].stateAbrev, new { Class = "app-disp" })
+            @Html.DisplayFor(m => m.application.jobHistory[i].zip, new { Class = "app-disp" })
+        </section>
+        <section class="app-field" style="width:14.4vw;float:left;">
+            @Html.Label("Phone:")
+            @Html.DisplayFor(m => m.application.jobHistory[i].phone, new { Class = "app-disp" })
+        </section>
+        <section class="app-field" style="width:14.4vw;float:left;">
+            @Html.Label("Supervisor:")
+            @Html.DisplayFor(m => m.application.jobHistory[i].supervisor, new { Class = "app-disp" })
+        </section>
+        <section class="app-field" style="width:35.6vw;float:left;">
+            @Html.Label("Position:")
+            @Html.DisplayFor(m => m.application.jobHistory[i].position, new { Class = "app-disp" })
+        </section>
+        <section class="app-field" style="width:14.4vw;float:left;">
+            @Html.Label("Starting salary:")
+            @Html.DisplayFor(m => m.application.jobHistory[i].startSalary, new { Class = "app-disp" })
+        </section>
+        <section class="app-field" style="width:14.4vw;float:left;">
+            @Html.Label("Ending salary:")
+            @Html.DisplayFor(m => m.application.jobHistory[i].endSalary, new { Class = "app-disp" })
+        </section>
+        <section class="app-field" style="width:64.4vw;float:left;">
+            @Html.Label("Reason for leaving:")
+            @Html.DisplayFor(m => m.application.jobHistory[i].reasonLeave, new { Class = "app-disp" })
+        </section>
+        <section class="app-field" style="width:64.4vw;float:left;height:10vh;">
+            @Html.Label("Describe your responsibilities:")
+            @Html.DisplayFor(m => m.application.jobHistory[i].duties, new { Class = "app-disp" })
+        </section>
+    </div>
+}
+<div class="dashboard-entry">
+    @Html.TextAreaFor(m => m.notes.jobHistoryNotes, new { Class = "app-textarea" })
+</div>
+@Html.Label("Education:")
+@for (int i = 0; i < 3; ++i)
+{
+    <div class="dashboard-entry">
+        <section class="app-field" style="width:26vw;float:left;">
+            @Html.Label("Name and address of school:")
+            @Html.DisplayFor(m => m.application.education[i].name, new { Class = "app-disp" })
+            @Html.DisplayFor(m => m.application.education[i].street, new { Class = "app-disp" })
+            @Html.DisplayFor(m => m.application.education[i].city, new { Class = "app-disp" })
+            @Html.DisplayFor(m => m.application.education[i].stateAbrev, new { Class = "app-disp" })
+            @Html.DisplayFor(m => m.application.education[i].zip, new { Class = "app-disp" })
+        </section>
+        <section class="app-field" style="width:12vw;float:left;">
+            @Html.Label("Years attended:")
+            @Html.DisplayFor(m => m.application.education[i].yearFrom, new { Class = "app-disp" })
+            @Html.DisplayFor(m => m.application.education[i].yearTo, new { Class = "app-disp" })
+        </section>
+        <section class="app-field" style="width:12vw;float:left;">
+            @Html.Label("Graduated (y/n):")
+            @Html.DisplayFor(m => m.application.education[i].graduatedYN, new { Class = "app-disp" })
+        </section>
+        <section class="app-field" style="width:14vw;float:left;">
+            @Html.Label("Degree/major:")
+            @Html.DisplayFor(m => m.application.education[i].degreeMajor, new { Class = "app-disp" })
+        </section>
+    </div>
+}
+<div class="dashboard-entry">
+    @Html.TextAreaFor(m => m.notes.educationNotes, new { Class = "app-textarea" })
+</div>
+@Html.Label("References:")
+@for (int i = 0; i < 3; ++i)
+{
+    <div class="dashboard-entry">
+        <section class="app-field" style="width:20vw;float:left;">
+            @Html.Label("Name:")
+            @Html.DisplayFor(m => m.application.reference[i].name, new { Class = "app-disp" })
+        </section>
+        <section class="app-field" style="width:14vw;float:left;">
+            @Html.Label("Phone:")
+            @Html.DisplayFor(m => m.application.reference[i].phone, new { Class = "app-disp" })
+        </section>
+        <section class="app-field" style="width:14vw;float:left;">
+            @Html.Label("Company:")
+            @Html.DisplayFor(m => m.application.reference[i].company, new { Class = "app-disp" })
+        </section>
+        <section class="app-field" style="width:14vw;float:left;">
+            @Html.Label("Title:")
+            @Html.DisplayFor(m => m.application.reference[i].title, new { Class = "app-disp" })
+        </section>
+    </div>
+}
+<div class="dashboard-entry">
+    @Html.TextAreaFor(m => m.notes.referenceNotes, new { Class = "app-textarea" })
+</div>

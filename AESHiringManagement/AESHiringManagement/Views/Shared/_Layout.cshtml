@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>
+    @if (((string)Session["Status"]).CompareTo("LoggedIn") == 0)
+    {
+        @Html.Partial("_MenuBar")
+    }
+    <div class="container box-shadow">
+        <div style="display: table-row;">
+            <div class="content" style="display: table-cell">
+                @RenderBody()
+            </div>
+        </div>
+        <div style="display: table-row;">
+            <div class="footer background-header-footer" style="display: table-cell">
+                @DateTime.Now.Year - A.E.S. Incorporated
+            </div>
+        </div>
+    </div>
+    
+    @RenderSection("scripts", required: false)
+</body>
+</html>

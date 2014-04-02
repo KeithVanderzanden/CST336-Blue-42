@@ -1,0 +1,21 @@
+﻿<div style="display: table-cell">
+
+    @if (ViewBag.LeftButtonLink != null && !ViewBag.LeftButtonLink.Equals(""))
+    {
+        <form action="@ViewBag.LeftButtonLink" method="get">
+            <input type="submit" value="Go to Previous Form" name="Back" />
+        </form>
+    }
+
+</div>
+
+<div style="display: table-cell">
+
+    @if (ViewBag.RightButtonLink != null && !ViewBag.RightButtonLink.Equals(""))
+    {
+        <form action="@ViewBag.RightButtonLink" method="get">
+            <input type="submit" value="Go to Next Form" name="Next" />
+        </form>
+    }
+
+</div>

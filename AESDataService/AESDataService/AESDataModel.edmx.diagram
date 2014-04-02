@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d3cb2bda3d0d4de48197cf2cc103c1d1" Name="Diagram1">
+        <EntityTypeShape EntityType="AESDatabaseModel.Application" Width="1.5" PointX="9.875" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabaseModel.Availability" Width="1.5" PointX="2.375" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabaseModel.AvailablePosition" Width="1.5" PointX="0.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabaseModel.ElectronicSig" Width="1.5" PointX="4" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabaseModel.JobHistory" Width="1.5" PointX="6.125" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabaseModel.JobsAppliedFor" Width="1.5" PointX="9" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabaseModel.Manager" Width="1.5" PointX="7.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabaseModel.Note" Width="1.5" PointX="6.125" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabaseModel.PersonalInfo" Width="1.5" PointX="4.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabaseModel.Position" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabaseModel.Question" Width="1.5" PointX="8.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabaseModel.Questionaire" Width="1.5" PointX="2.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabaseModel.Reference" Width="1.5" PointX="4.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AESDatabaseModel.Store" Width="1.5" PointX="2.5" PointY="8.875" IsExpanded="true" />
+        <AssociationConnector Association="AESDatabaseModel.FK_AvailablePosition_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="AESDatabaseModel.FK_PersonalInfo_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="AESDatabaseModel.FK_Store_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="AESDatabaseModel.FK_PersonalInfo_Availability" ManuallyRouted="false" />
+        <AssociationConnector Association="AESDatabaseModel.FK_Position_AvailablePosition" ManuallyRouted="false" />
+        <AssociationConnector Association="AESDatabaseModel.FK_Store_AvailablePosition" ManuallyRouted="false" />
+        <AssociationConnector Association="AESDatabaseModel.FK_PersonalInfo_ElectronicSig" ManuallyRouted="false" />
+        <AssociationConnector Association="AESDatabaseModel.FK_PersonalInfo_JobHistory" ManuallyRouted="false" />
+        <AssociationConnector Association="AESDatabaseModel.FK_PersonalInfo_Notes" ManuallyRouted="false" />
+        <AssociationConnector Association="AESDatabaseModel.FK_PersonalInfo_References" ManuallyRouted="false" />
+        <AssociationConnector Association="AESDatabaseModel.FK_Position_Questionaire" ManuallyRouted="false" />
+        <AssociationConnector Association="AESDatabaseModel.FK_Question_Questionaire" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AESDatabaseModel.ApplicantAuth" Width="1.5" PointX="0.625" PointY="9" />
+        <AssociationConnector Association="AESDatabaseModel.FK_PersonalInfo_ApplicantAuth" />
+        <EntityTypeShape EntityType="AESDatabaseModel.Education" Width="1.5" PointX="8" PointY="3.375" />
+        <AssociationConnector Association="AESDatabaseModel.FK_PersonalInfo_Education" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
