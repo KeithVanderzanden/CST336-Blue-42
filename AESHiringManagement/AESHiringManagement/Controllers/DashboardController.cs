@@ -10,11 +10,10 @@ namespace AESHiringManagement.Controllers
 {
     public class DashboardController : Controller
     {
-        //
+
         // GET: /Dashboard/
         public ActionResult Index()
         {
-            HttpContext.Response.AddHeader("refresh", "10; url=" + Url.Action());
             return View(new AESHiringManagement.Models.Application());
         }
 
@@ -35,9 +34,12 @@ namespace AESHiringManagement.Controllers
             return View("Index", model);
         }
 
-        public ActionResult WaitList()
+        [OutputCache(Duration = 0)]
+        [HttpGet]
+        public ActionResult RefreshPending()
         {
-            return PartialView("WaitList");
+            return PartialView("_Pending");
         }
+
 	}
 }

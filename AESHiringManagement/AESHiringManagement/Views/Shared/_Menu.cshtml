@@ -1,0 +1,38 @@
+﻿<div id="menu" class="background-blue box-shadow" style="display: table;">
+
+    <div class="list" style="display: table-row;">
+        <ul>
+            <li class="static">@Html.ActionLink("Dashboard", "Index", "Home")</li>
+            <li class="dynamic">Account</li>
+            <li class="collapsible">
+                @Html.ActionLink("Add", "Index", "AddAccount")<br />
+                @Html.ActionLink("Remove", "Index", "RemoveAccount")
+            </li>
+            <li class="dynamic">Store</li>
+            <li class="collapsible">
+                @Html.ActionLink("Add", "Index", "AddStore")<br />
+                @Html.ActionLink("Remove", "Index", "RemoveStore")
+            </li>
+            <li class="dynamic">Position</li>
+            <li class="collapsible">
+                @Html.ActionLink("Add", "Index", "AddPosition")<br />
+                @Html.ActionLink("Remove", "Index", "RemovePosition")
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<script>
+
+    $('.static').css('cursor', 'pointer')
+    $('.dynamic')
+    .css('cursor', 'pointer')
+    .click(
+      function () {
+          $(this).next('li').slideToggle('fast');
+          $(this).toggleClass("background-light-blue");
+      }
+    )
+
+</script>

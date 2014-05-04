@@ -9,23 +9,23 @@
     @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
-    @if (((string)Session["Status"]).CompareTo("LoggedIn") == 0)
-    {
-        @Html.Partial("_MenuBar")
-    }
-    <div class="container box-shadow">
-        <div style="display: table-row;">
-            <div class="content" style="display: table-cell">
-                @RenderBody()
-            </div>
+
+    <div style="display: table;">
+
+        <div style="display: table-cell; padding: 10px 5px 10px 10px;">
+            @if (((string)Session["Status"]).CompareTo("LoggedIn") == 0)
+            {
+                @Html.Partial("_Menu")
+            }
         </div>
-        <div style="display: table-row;">
-            <div class="footer background-header-footer" style="display: table-cell">
-                @DateTime.Now.Year - A.E.S. Incorporated
-            </div>
+
+        <div style="display: table-cell; padding: 10px 5px 10px 5px;">
+            @RenderBody()
         </div>
+
     </div>
-    
+
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
