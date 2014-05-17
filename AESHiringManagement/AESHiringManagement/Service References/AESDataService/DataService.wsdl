@@ -44,6 +44,12 @@
   <wsdl:message name="IDataService_authenticateUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:authenticateUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IDataService_authenticateManager_InputMessage">
+    <wsdl:part name="parameters" element="tns:authenticateManager" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_authenticateManager_OutputMessage">
+    <wsdl:part name="parameters" element="tns:authenticateManagerResponse" />
+  </wsdl:message>
   <wsdl:message name="IDataService_getJobsAppliedFor_InputMessage">
     <wsdl:part name="parameters" element="tns:getJobsAppliedFor" />
   </wsdl:message>
@@ -171,6 +177,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IDataService/authenticateUser" message="tns:IDataService_authenticateUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDataService/authenticateUserResponse" message="tns:IDataService_authenticateUser_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="authenticateManager">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/authenticateManager" message="tns:IDataService_authenticateManager_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/authenticateManagerResponse" message="tns:IDataService_authenticateManager_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="getJobsAppliedFor">
       <wsdl:input wsaw:Action="http://tempuri.org/IDataService/getJobsAppliedFor" message="tns:IDataService_getJobsAppliedFor_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDataService/getJobsAppliedForResponse" message="tns:IDataService_getJobsAppliedFor_OutputMessage" />
@@ -289,6 +299,15 @@
     </wsdl:operation>
     <wsdl:operation name="authenticateUser">
       <soap:operation soapAction="http://tempuri.org/IDataService/authenticateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenticateManager">
+      <soap:operation soapAction="http://tempuri.org/IDataService/authenticateManager" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -14,8 +14,8 @@ namespace AESDataService
     
     public partial class Manager
     {
-        public string managerId { get; set; }
+        public string userName { get; set; }
         public string password { get; set; }
-        public int permission { get; set; }
+        public string permission { get; set; }
     }
 }

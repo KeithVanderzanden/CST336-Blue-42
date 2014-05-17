@@ -31,7 +31,6 @@ namespace AESDataService
         public virtual DbSet<ElectronicSig> ElectronicSigs { get; set; }
         public virtual DbSet<JobHistory> JobHistories { get; set; }
         public virtual DbSet<JobsAppliedFor> JobsAppliedFors { get; set; }
-        public virtual DbSet<Manager> Managers { get; set; }
         public virtual DbSet<Note> Notes { get; set; }
         public virtual DbSet<PersonalInfo> PersonalInfoes { get; set; }
         public virtual DbSet<Position> Positions { get; set; }
@@ -41,5 +40,6 @@ namespace AESDataService
         public virtual DbSet<Store> Stores { get; set; }
         public virtual DbSet<ApplicantAuth> ApplicantAuths { get; set; }
         public virtual DbSet<Education> Educations { get; set; }
+        public virtual DbSet<Manager> Managers { get; set; }
     }
 }

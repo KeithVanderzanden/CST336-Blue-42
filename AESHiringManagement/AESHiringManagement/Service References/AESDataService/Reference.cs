@@ -3205,6 +3205,12 @@ namespace AESHiringManagement.AESDataService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/authenticateUser", ReplyAction="http://tempuri.org/IDataService/authenticateUserResponse")]
         System.Threading.Tasks.Task<int> authenticateUserAsync(string ssn, string password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/authenticateManager", ReplyAction="http://tempuri.org/IDataService/authenticateManagerResponse")]
+        string authenticateManager(string userName, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/authenticateManager", ReplyAction="http://tempuri.org/IDataService/authenticateManagerResponse")]
+        System.Threading.Tasks.Task<string> authenticateManagerAsync(string userName, string password);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/getJobsAppliedFor", ReplyAction="http://tempuri.org/IDataService/getJobsAppliedForResponse")]
         int[] getJobsAppliedFor(int applicantId);
         
@@ -3381,6 +3387,14 @@ namespace AESHiringManagement.AESDataService {
         
         public System.Threading.Tasks.Task<int> authenticateUserAsync(string ssn, string password) {
             return base.Channel.authenticateUserAsync(ssn, password);
+        }
+        
+        public string authenticateManager(string userName, string password) {
+            return base.Channel.authenticateManager(userName, password);
+        }
+        
+        public System.Threading.Tasks.Task<string> authenticateManagerAsync(string userName, string password) {
+            return base.Channel.authenticateManagerAsync(userName, password);
         }
         
         public int[] getJobsAppliedFor(int applicantId) {

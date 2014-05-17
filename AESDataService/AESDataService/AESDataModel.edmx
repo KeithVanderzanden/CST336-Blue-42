@@ -124,11 +124,11 @@
         </EntityType>
         <EntityType Name="Managers">
           <Key>
-            <PropertyRef Name="managerId" />
+            <PropertyRef Name="userName" />
           </Key>
-          <Property Name="managerId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="userName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="permission" Type="int" Nullable="false" />
+          <Property Name="permission" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Notes">
           <Key>
@@ -557,14 +557,6 @@
           <Property Name="appId" Type="Int32" Nullable="false" />
           <Property Name="posId" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Manager">
-          <Key>
-            <PropertyRef Name="managerId" />
-          </Key>
-          <Property Name="managerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="permission" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="Note">
           <Key>
             <PropertyRef Name="applicantId" />
@@ -812,7 +804,6 @@
           <EntitySet Name="ElectronicSigs" EntityType="Self.ElectronicSig" />
           <EntitySet Name="JobHistories" EntityType="Self.JobHistory" />
           <EntitySet Name="JobsAppliedFors" EntityType="Self.JobsAppliedFor" />
-          <EntitySet Name="Managers" EntityType="Self.Manager" />
           <EntitySet Name="Notes" EntityType="Self.Note" />
           <EntitySet Name="PersonalInfoes" EntityType="Self.PersonalInfo" />
           <EntitySet Name="Positions" EntityType="Self.Position" />
@@ -878,6 +869,7 @@
             <End Role="PersonalInfo" EntitySet="PersonalInfoes" />
             <End Role="Education" EntitySet="Educations" />
           </AssociationSet>
+          <EntitySet Name="Managers" EntityType="AESDatabaseModel.Manager" />
         </EntityContainer>
         <EntityType Name="ApplicantAuth">
           <Key>
@@ -929,6 +921,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="userName" />
+          </Key>
+          <Property Name="userName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="permission" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1028,15 +1028,6 @@
               <MappingFragment StoreEntitySet="JobsAppliedFor">
                 <ScalarProperty Name="posId" ColumnName="posId" />
                 <ScalarProperty Name="appId" ColumnName="appId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Managers">
-            <EntityTypeMapping TypeName="AESDatabaseModel.Manager">
-              <MappingFragment StoreEntitySet="Managers">
-                <ScalarProperty Name="permission" ColumnName="permission" />
-                <ScalarProperty Name="managerId" ColumnName="managerId" />
-                <ScalarProperty Name="password" ColumnName="password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1146,6 +1137,15 @@
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="educationId" ColumnName="educationId" />
                 <ScalarProperty Name="applicantId" ColumnName="applicantId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Managers">
+            <EntityTypeMapping TypeName="AESDatabaseModel.Manager">
+              <MappingFragment StoreEntitySet="Managers">
+                <ScalarProperty Name="permission" ColumnName="permission" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
