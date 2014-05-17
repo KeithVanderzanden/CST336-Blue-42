@@ -49,6 +49,9 @@ namespace AESDataService
         int authenticateUser(string ssn, string password);
 
         [OperationContract]
+        string authenticateManager(string userName, string password);
+
+        [OperationContract]
         List<int> getJobsAppliedFor(int applicantId);
 
         [OperationContract]

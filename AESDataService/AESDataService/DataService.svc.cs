@@ -147,6 +147,21 @@ namespace AESDataService
             return authenticated;
         }
 
+
+        public string authenticateManager(string userName, string password)
+        {
+            string perm = "None";
+            using (AESDatabaseEntities context = new AESDatabaseEntities())
+            {
+                if (context.Managers.Any(o => o.userName == userName && o.password == password))
+                {
+                    var info = (from q in context.Managers where q.userName == userName && q.password == password select q).First();
+                    perm = info.permission;
+                }
+            }
+            return perm;
+        }
+
         public List<int> getJobsAppliedFor(int applicantId)
         {
             var jobsAppliedFor = new List<int>();

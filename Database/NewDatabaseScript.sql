@@ -272,10 +272,15 @@ CREATE TABLE [dbo].[Availability]
 
 CREATE TABLE [dbo].[Managers]
 (
-	[managerId] VARCHAR(50) NOT NULL PRIMARY KEY,
+	[userName] VARCHAR(50) NOT NULL PRIMARY KEY,
 	[password] VARCHAR(50) NOT NULL,
-	[permission] INT NOT NULL
+	[permission] VARCHAR(50) NOT NULL
 );
+
+INSERT INTO [dbo].[Managers] VALUES ('Logan', '1', 'Admin');
+INSERT INTO [dbo].[Managers] VALUES ('Keith', '1', 'Staffing Expert');
+INSERT INTO [dbo].[Managers] VALUES ('Chris', '1', 'Hiring Manager');
+INSERT INTO [dbo].[Managers] VALUES ('Dustin', '1', 'Phone Screener');
 
 CREATE TABLE [dbo].[ApplicantAuth]
 (
