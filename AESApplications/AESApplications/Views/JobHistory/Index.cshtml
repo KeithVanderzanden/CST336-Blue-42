@@ -34,14 +34,11 @@
             @Html.HiddenFor(m => m[i].historyId, Model[i].historyId);
             <div class="jobhistory-container box-shadow">
 
-                <div class="jobhistory-tab text-shadow">
-                    <div style="display: table-cell; padding: 10px;">
-                        @getNumberWithSuffix(i + 1) Most Recent Job
-                    </div>
-                    <div style="display: table-cell; background-color: white;"></div>
+                <div class="jobhistory-tab text-shadow" style="padding: 10px;">
+                  @getNumberWithSuffix(i + 1) Most Recent Job
                 </div>
 
-                <div class="form-container" style="display: block;">
+                <div class="form-container">
 
                         <div style="display: table-row;">
                             <div class="form-title">@Html.LabelFor(m => m[i].employer)</div>
@@ -177,10 +174,6 @@
 
                 </div>
 
-                <div class="job-bottom-box">
-                    Click here to expand or hide job fields.
-                </div>
-
             </div>
 
         }
@@ -188,19 +181,5 @@
         <input type="submit" value="Continue" />
 
     }
-
-    <script>
-
-        $('.job-bottom-box').prev('div').hide();
-
-        $('.job-bottom-box')
-        .css('cursor', 'default')
-        .click(
-          function () {
-              $(this).prev('div').slideToggle('fast');
-          }
-        )
-
-    </script>
 
 </div>

@@ -278,10 +278,10 @@ div.job-bottom-box {
     border: 1px solid #296ca5;
 }
 
-    div.job-bottom-box:hover {
-        background-color: #3280c2;
-        border: 1px solid #3280c2;
-    }
+div.job-bottom-box:hover {
+   background-color: #3280c2;
+   border: 1px solid #3280c2;
+}
 
 /* End Job History View */
 
