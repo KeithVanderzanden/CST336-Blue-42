@@ -2,62 +2,73 @@
 
     <div class="list" style="display: table-row;">
         <ul>
-            <li class="static">@Html.ActionLink("Dashboard", "Index", "Home")</li>
+            <li class="static">@Html.ActionLink("Dashboard", "Index", "Dashboard")</li>
 
             @switch ((string)Session["Permission"])
             {
                 case "Admin":
 
                     <li class="dynamic">HR Accounts</li>
+                     //use Accounts controller with different action method for each submenu.
                     <li class="collapsible">
-                        @Html.ActionLink("Create", "CreateAccount", "Dashboard")<br />
-                        @Html.ActionLink("Edit", "EditAccount", "Dashboard")<br />
-                        @Html.ActionLink("Delete", "DeleteAccount", "Dashboard")<br />
-                        @Html.ActionLink("Reset", "ResetAccount", "Dashboard")
+                        @Html.ActionLink("Create", "Create", "Accounts")<br />
+                        @Html.ActionLink("Edit", "Edit", "Accounts")<br />
+                        @Html.ActionLink("Delete", "Delete", "Accounts")<br />
+                        @Html.ActionLink("Reset", "ResetHR", "Accounts")
                     </li>
                     <li class="dynamic">Stores</li>
+                    //use Stores controller with differen action method for each submenu.
                     <li class="collapsible">
-                        @Html.ActionLink("Create", "CreateStore", "Dashboard")<br />
-                        @Html.ActionLink("Edit", "EditStore", "Dashboard")<br />
-                        @Html.ActionLink("Delete", "DeleteStore", "Dashboard")
+                        @Html.ActionLink("Create", "Create", "Stores")<br />
+                        @Html.ActionLink("Edit", "Edit", "Stores")<br />
+                        @Html.ActionLink("Delete", "Delete", "Stores")
                     </li>
 
                     break;
                 case "Staffing Expert":
-
+                    //use Positions Controler with different action method for each submenu
                     <li class="dynamic">Positions</li>
                     <li class="collapsible">
-                        @Html.ActionLink("Create", "CreatePosition", "Dashboard")<br />
-                        @Html.ActionLink("Edit", "EditPosition", "Dashboard")<br />
-                        @Html.ActionLink("Delete", "DeletePosition", "Dashboard")
+                        @Html.ActionLink("Create", "Create", "Positions")<br />
+                        @Html.ActionLink("Edit", "Edit", "Positions")<br />
+                        @Html.ActionLink("Delete", "Delete", "Positions")
                     </li>
 
                     <li class="dynamic">Questions</li>
+                    //use Questions Controler with differen action method for each submenu
                     <li class="collapsible">
-                        @Html.ActionLink("Create", "CreateQuestion", "Dashboard")<br />
-                        @Html.ActionLink("Edit", "EditQuestion", "Dashboard")<br />
-                        @Html.ActionLink("Delete", "DeleteQuestion", "Dashboard")
+                        @Html.ActionLink("Create", "Create", "Questions")<br />
+                        @Html.ActionLink("Edit", "Edit", "Questions")<br />
+                        @Html.ActionLink("Delete", "Delete", "Questions")
                     </li>
 
                     break;
                 case "Hiring Manager":
-
-                    <li class="static">@Html.ActionLink("Applications", "GetApplications", "Dashboard")</li>
-
+                    //Use Applications controller... only one page for all searches....
+                    //combobox for available search types, on selection shows appropriate input boxes
+                    //this controller still needs a method for each search type and a dashboard like 
+                    //veiw that shows instead of wait list the search results to choose from.
+                    //remember that some names can result in more than one applicant
+                    //Search types include, by first and last name, by job opening, and by store id.
+                    <li class="static">@Html.ActionLink("Applications", "Search", "Applications")</li>
+                    
+            
+                    //use JobOpenings controller with an action method for each sub menu option.
                     <li class="dynamic">Job Openings</li>
                     <li class="collapsible">
-                        @Html.ActionLink("Open", "OpenJobOpening", "Dashboard")<br />
-                        @Html.ActionLink("Close", "CloseJobOpening", "Dashboard")
+                        @Html.ActionLink("Open", "Open", "JobOpenings")<br />
+                        @Html.ActionLink("Close", "Close", "JobOpenings")
                     </li>
 
                     break;
                 case "Phone Screener":
-
-                    <li class="static">@Html.ActionLink("Search for Applicant", "GetApplication", "Dashboard")</li>
-
+                     //if we need a new search window between hiring manager and phone screener we will have to change this 
+                     //to another action, and make a new view / model for it.
+                    <li class="static">@Html.ActionLink("Search for Applicant", "Search", "Applications")</li>
+                    //use same accounts controller as management accounts, different action method, different model ect..
                     <li class="dynamic">Applicant Accounts</li>
                     <li class="collapsible">
-                        @Html.ActionLink("Reset", "ResetAccount", "Dashboard")
+                        @Html.ActionLink("Reset", "ResetApplicant", "Accounts")
                     </li>
             
                     break;
