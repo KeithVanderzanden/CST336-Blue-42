@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Zander\Documents\GitHub\CST336-Blue-42\AESDataService\AESDataService\AESDataModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\chrisboese\Documents\GitHub\CST336-Blue-42\AESDataService\AESDataService\AESDataModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

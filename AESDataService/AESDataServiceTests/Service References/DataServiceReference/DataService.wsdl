@@ -1,0 +1,1162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DataService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/AESDataService" />
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:element name="getJobs">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="storeId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getJobsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/AESDataService" minOccurs="0" name="getJobsResult" nillable="true" type="q1:ArrayOfJob" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getStoreInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="storeId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getStoreInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AESDataService" minOccurs="0" name="getStoreInfoResult" nillable="true" type="q2:Store" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getQuestions">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="positionIds" nillable="true" type="q3:ArrayOfint" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getQuestionsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AESDataService" minOccurs="0" name="getQuestionsResult" nillable="true" type="q4:ArrayOfQuestion" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getStoreLocation">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="jobId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getStoreLocationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="getStoreLocationResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getApplicantId">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ssn" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getApplicantIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="getApplicantIdResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="authenticateUser">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ssn" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="authenticateUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="authenticateUserResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="authenticateManager">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="authenticateManagerResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="authenticateManagerResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getJobsAppliedFor">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getJobsAppliedForResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="getJobsAppliedForResult" nillable="true" type="q5:ArrayOfint" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getPersonalInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getPersonalInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/AESDataService" minOccurs="0" name="getPersonalInfoResult" nillable="true" type="q6:PersonalInfo" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAvailability">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAvailabilityResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/AESDataService" minOccurs="0" name="getAvailabilityResult" nillable="true" type="q7:Availability" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getEducation">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getEducationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/AESDataService" minOccurs="0" name="getEducationResult" nillable="true" type="q8:ArrayOfEducation" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getReferences">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getReferencesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/AESDataService" minOccurs="0" name="getReferencesResult" nillable="true" type="q9:ArrayOfReference" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getJobHistories">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getJobHistoriesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/AESDataService" minOccurs="0" name="getJobHistoriesResult" nillable="true" type="q10:ArrayOfJobHistory" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getESignature">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getESignatureResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/AESDataService" minOccurs="0" name="getESignatureResult" nillable="true" type="q11:ElectronicSig" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getApplication">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getApplicationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/AESDataService" minOccurs="0" name="getApplicationResult" nillable="true" type="q12:ApplicantApp" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updatePersonalInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/AESDataService" minOccurs="0" name="personalInfo" nillable="true" type="q13:PersonalInfo" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updatePersonalInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="updatePersonalInfoResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateJobIds">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+            <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ids" nillable="true" type="q14:ArrayOfint" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateJobIdsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="updateJobIdsResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateAvailability">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/AESDataService" minOccurs="0" name="availability" nillable="true" type="q15:Availability" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateAvailabilityResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="updateAvailabilityResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateEducations">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/AESDataService" minOccurs="0" name="educations" nillable="true" type="q16:ArrayOfEducation" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateEducationsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="updateEducationsResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateJobHistory">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/AESDataService" minOccurs="0" name="jobHistory" nillable="true" type="q17:ArrayOfJobHistory" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateJobHistoryResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="updateJobHistoryResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateReferences">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/AESDataService" minOccurs="0" name="references" nillable="true" type="q18:ArrayOfReference" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateReferencesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="updateReferencesResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateElectronicSig">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/AESDataService" minOccurs="0" name="electronicSig" nillable="true" type="q19:ElectronicSig" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateElectronicSigResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="updateElectronicSigResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updatePassword">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/AESDataService" minOccurs="0" name="auth" nillable="true" type="q20:ApplicantAuth" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updatePasswordResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="updatePasswordResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteJobIds">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteJobIdsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="deleteJobIdsResult" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/AESDataService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AESDataService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xs:complexType name="ArrayOfJob">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Job" nillable="true" type="tns:Job" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfJob" nillable="true" type="tns:ArrayOfJob" />
+      <xs:complexType name="Job">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="availablePositionId" type="xs:int" />
+          <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="education" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="fridayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="fridayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="location" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="mondayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="mondayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="pay" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="requirements" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="saturdayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="saturdayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="sundayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="sundayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="thursdayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="thursdayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="title" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="tuesdayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="tuesdayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="wednesdayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="wednesdayTo" nillable="true" type="ser:duration" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Job" nillable="true" type="tns:Job" />
+      <xs:complexType name="Store">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Applications" nillable="true" type="tns:ArrayOfApplication" />
+          <xs:element minOccurs="0" name="AvailablePositions" nillable="true" type="tns:ArrayOfAvailablePosition" />
+          <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="state" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="storeId" type="xs:int" />
+          <xs:element minOccurs="0" name="street" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="zip" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Store" nillable="true" type="tns:Store" />
+      <xs:complexType name="ArrayOfApplication">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Application" nillable="true" type="tns:Application" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfApplication" nillable="true" type="tns:ArrayOfApplication" />
+      <xs:complexType name="Application">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AvailablePosition" nillable="true" type="tns:AvailablePosition" />
+          <xs:element minOccurs="0" name="PersonalInfo" nillable="true" type="tns:PersonalInfo" />
+          <xs:element minOccurs="0" name="Store" nillable="true" type="tns:Store" />
+          <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+          <xs:element minOccurs="0" name="availablePosId" type="xs:int" />
+          <xs:element minOccurs="0" name="storeId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Application" nillable="true" type="tns:Application" />
+      <xs:complexType name="AvailablePosition">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Applications" nillable="true" type="tns:ArrayOfApplication" />
+          <xs:element minOccurs="0" name="Position" nillable="true" type="tns:Position" />
+          <xs:element minOccurs="0" name="Store" nillable="true" type="tns:Store" />
+          <xs:element minOccurs="0" name="availablePosId" type="xs:int" />
+          <xs:element minOccurs="0" name="fridayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="fridayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="mondayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="mondayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="positionId" type="xs:int" />
+          <xs:element minOccurs="0" name="saturdayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="saturdayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="storeId" type="xs:int" />
+          <xs:element minOccurs="0" name="sundayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="sundayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="thursdayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="thursdayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="tuesdayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="tuesdayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="wednesdayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="wednesdayTo" nillable="true" type="ser:duration" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AvailablePosition" nillable="true" type="tns:AvailablePosition" />
+      <xs:complexType name="Position">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AvailablePositions" nillable="true" type="tns:ArrayOfAvailablePosition" />
+          <xs:element minOccurs="0" name="Questionaires" nillable="true" type="tns:ArrayOfQuestionaire" />
+          <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="education" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="pay" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="positionId" type="xs:int" />
+          <xs:element minOccurs="0" name="requirements" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="title" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Position" nillable="true" type="tns:Position" />
+      <xs:complexType name="ArrayOfAvailablePosition">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="AvailablePosition" nillable="true" type="tns:AvailablePosition" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfAvailablePosition" nillable="true" type="tns:ArrayOfAvailablePosition" />
+      <xs:complexType name="ArrayOfQuestionaire">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Questionaire" nillable="true" type="tns:Questionaire" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfQuestionaire" nillable="true" type="tns:ArrayOfQuestionaire" />
+      <xs:complexType name="Questionaire">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Position" nillable="true" type="tns:Position" />
+          <xs:element minOccurs="0" name="Question" nillable="true" type="tns:Question" />
+          <xs:element minOccurs="0" name="positionId" type="xs:int" />
+          <xs:element minOccurs="0" name="questionId" type="xs:int" />
+          <xs:element minOccurs="0" name="questionaireId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Questionaire" nillable="true" type="tns:Questionaire" />
+      <xs:complexType name="Question">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Questionaires" nillable="true" type="tns:ArrayOfQuestionaire" />
+          <xs:element minOccurs="0" name="questionId" type="xs:int" />
+          <xs:element minOccurs="0" name="theAnswer" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="theQuestion" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Question" nillable="true" type="tns:Question" />
+      <xs:complexType name="PersonalInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ApplicantAuth" nillable="true" type="tns:ApplicantAuth" />
+          <xs:element minOccurs="0" name="Applications" nillable="true" type="tns:ArrayOfApplication" />
+          <xs:element minOccurs="0" name="Availability" nillable="true" type="tns:Availability" />
+          <xs:element minOccurs="0" name="Educations" nillable="true" type="tns:ArrayOfEducation" />
+          <xs:element minOccurs="0" name="ElectronicSig" nillable="true" type="tns:ElectronicSig" />
+          <xs:element minOccurs="0" name="JobHistories" nillable="true" type="tns:ArrayOfJobHistory" />
+          <xs:element minOccurs="0" name="Note" nillable="true" type="tns:Note" />
+          <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="References" nillable="true" type="tns:ArrayOfReference" />
+          <xs:element minOccurs="0" name="alias" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+          <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="middleName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="socialNum" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="state" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="street" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="zip" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PersonalInfo" nillable="true" type="tns:PersonalInfo" />
+      <xs:complexType name="ApplicantAuth">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PersonalInfo" nillable="true" type="tns:PersonalInfo" />
+          <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+          <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ApplicantAuth" nillable="true" type="tns:ApplicantAuth" />
+      <xs:complexType name="Availability">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PersonalInfo" nillable="true" type="tns:PersonalInfo" />
+          <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+          <xs:element minOccurs="0" name="daysYN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="eveningsYN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="fridayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="fridayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="fullTimeYN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="mondayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="mondayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="salaryExpected" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="saturdayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="saturdayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="sundayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="sundayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="thursdayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="thursdayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="tuesdayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="tuesdayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="wednesdayFrom" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="wednesdayTo" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="weekendsYN" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Availability" nillable="true" type="tns:Availability" />
+      <xs:complexType name="ArrayOfEducation">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Education" nillable="true" type="tns:Education" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfEducation" nillable="true" type="tns:ArrayOfEducation" />
+      <xs:complexType name="Education">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PersonalInfo" nillable="true" type="tns:PersonalInfo" />
+          <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+          <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="degreeMajor" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="educationId" type="xs:int" />
+          <xs:element minOccurs="0" name="graduatedYN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="stateAbrev" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="street" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="yearFrom" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="yearTo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="zip" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Education" nillable="true" type="tns:Education" />
+      <xs:complexType name="ElectronicSig">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PersonalInfo" nillable="true" type="tns:PersonalInfo" />
+          <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+          <xs:element minOccurs="0" name="date" nillable="true" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ElectronicSig" nillable="true" type="tns:ElectronicSig" />
+      <xs:complexType name="ArrayOfJobHistory">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="JobHistory" nillable="true" type="tns:JobHistory" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfJobHistory" nillable="true" type="tns:ArrayOfJobHistory" />
+      <xs:complexType name="JobHistory">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PersonalInfo" nillable="true" type="tns:PersonalInfo" />
+          <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+          <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="duties" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="employer" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="endSalary" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="fromDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="jobHistoryId" type="xs:int" />
+          <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="position" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="reasonLeave" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="startSalary" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="stateAbrev" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="street" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="supervisor" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="toDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="zip" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="JobHistory" nillable="true" type="tns:JobHistory" />
+      <xs:complexType name="Note">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PersonalInfo" nillable="true" type="tns:PersonalInfo" />
+          <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+          <xs:element minOccurs="0" name="availabilityNotes" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="educationNotes" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="jobHistoryNotes" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="personalInfoNotes" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="referenceNotes" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Note" nillable="true" type="tns:Note" />
+      <xs:complexType name="ArrayOfReference">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Reference" nillable="true" type="tns:Reference" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfReference" nillable="true" type="tns:ArrayOfReference" />
+      <xs:complexType name="Reference">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PersonalInfo" nillable="true" type="tns:PersonalInfo" />
+          <xs:element minOccurs="0" name="applicantId" type="xs:int" />
+          <xs:element minOccurs="0" name="company" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="referenceId" type="xs:int" />
+          <xs:element minOccurs="0" name="title" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Reference" nillable="true" type="tns:Reference" />
+      <xs:complexType name="ArrayOfQuestion">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Question" nillable="true" type="tns:Question" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfQuestion" nillable="true" type="tns:ArrayOfQuestion" />
+      <xs:complexType name="ApplicantApp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="availability" nillable="true" type="tns:Availability" />
+          <xs:element minOccurs="0" name="education" nillable="true" type="tns:ArrayOfEducation" />
+          <xs:element minOccurs="0" name="electronicSig" nillable="true" type="tns:ElectronicSig" />
+          <xs:element minOccurs="0" name="jobHistory" nillable="true" type="tns:ArrayOfJobHistory" />
+          <xs:element minOccurs="0" name="personalInfo" nillable="true" type="tns:PersonalInfo" />
+          <xs:element minOccurs="0" name="reference" nillable="true" type="tns:ArrayOfReference" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ApplicantApp" nillable="true" type="tns:ApplicantApp" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfint">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="int" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfint" nillable="true" type="tns:ArrayOfint" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IDataService_getJobs_InputMessage">
+    <wsdl:part name="parameters" element="tns:getJobs" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getJobs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getJobsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getStoreInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:getStoreInfo" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getStoreInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getStoreInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getQuestions_InputMessage">
+    <wsdl:part name="parameters" element="tns:getQuestions" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getQuestions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getQuestionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getStoreLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:getStoreLocation" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getStoreLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getStoreLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getApplicantId_InputMessage">
+    <wsdl:part name="parameters" element="tns:getApplicantId" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getApplicantId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getApplicantIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_authenticateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:authenticateUser" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_authenticateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:authenticateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_authenticateManager_InputMessage">
+    <wsdl:part name="parameters" element="tns:authenticateManager" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_authenticateManager_OutputMessage">
+    <wsdl:part name="parameters" element="tns:authenticateManagerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getJobsAppliedFor_InputMessage">
+    <wsdl:part name="parameters" element="tns:getJobsAppliedFor" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getJobsAppliedFor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getJobsAppliedForResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getPersonalInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:getPersonalInfo" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getPersonalInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getPersonalInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getAvailability_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAvailability" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getAvailability_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAvailabilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getEducation_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEducation" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getEducation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEducationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getReferences_InputMessage">
+    <wsdl:part name="parameters" element="tns:getReferences" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getReferences_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getReferencesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getJobHistories_InputMessage">
+    <wsdl:part name="parameters" element="tns:getJobHistories" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getJobHistories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getJobHistoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getESignature_InputMessage">
+    <wsdl:part name="parameters" element="tns:getESignature" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getESignature_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getESignatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getApplication_InputMessage">
+    <wsdl:part name="parameters" element="tns:getApplication" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_getApplication_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_updatePersonalInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:updatePersonalInfo" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_updatePersonalInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updatePersonalInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_updateJobIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateJobIds" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_updateJobIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateJobIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_updateAvailability_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateAvailability" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_updateAvailability_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateAvailabilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_updateEducations_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateEducations" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_updateEducations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateEducationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_updateJobHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateJobHistory" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_updateJobHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateJobHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_updateReferences_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateReferences" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_updateReferences_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateReferencesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_updateElectronicSig_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateElectronicSig" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_updateElectronicSig_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateElectronicSigResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_updatePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:updatePassword" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_updatePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updatePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_deleteJobIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteJobIds" />
+  </wsdl:message>
+  <wsdl:message name="IDataService_deleteJobIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteJobIdsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IDataService">
+    <wsdl:operation name="getJobs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/getJobs" message="tns:IDataService_getJobs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/getJobsResponse" message="tns:IDataService_getJobs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getStoreInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/getStoreInfo" message="tns:IDataService_getStoreInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/getStoreInfoResponse" message="tns:IDataService_getStoreInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getQuestions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/getQuestions" message="tns:IDataService_getQuestions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/getQuestionsResponse" message="tns:IDataService_getQuestions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getStoreLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/getStoreLocation" message="tns:IDataService_getStoreLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/getStoreLocationResponse" message="tns:IDataService_getStoreLocation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getApplicantId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/getApplicantId" message="tns:IDataService_getApplicantId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/getApplicantIdResponse" message="tns:IDataService_getApplicantId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="authenticateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/authenticateUser" message="tns:IDataService_authenticateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/authenticateUserResponse" message="tns:IDataService_authenticateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="authenticateManager">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/authenticateManager" message="tns:IDataService_authenticateManager_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/authenticateManagerResponse" message="tns:IDataService_authenticateManager_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getJobsAppliedFor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/getJobsAppliedFor" message="tns:IDataService_getJobsAppliedFor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/getJobsAppliedForResponse" message="tns:IDataService_getJobsAppliedFor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getPersonalInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/getPersonalInfo" message="tns:IDataService_getPersonalInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/getPersonalInfoResponse" message="tns:IDataService_getPersonalInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAvailability">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/getAvailability" message="tns:IDataService_getAvailability_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/getAvailabilityResponse" message="tns:IDataService_getAvailability_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getEducation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/getEducation" message="tns:IDataService_getEducation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/getEducationResponse" message="tns:IDataService_getEducation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getReferences">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/getReferences" message="tns:IDataService_getReferences_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/getReferencesResponse" message="tns:IDataService_getReferences_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getJobHistories">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/getJobHistories" message="tns:IDataService_getJobHistories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/getJobHistoriesResponse" message="tns:IDataService_getJobHistories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getESignature">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/getESignature" message="tns:IDataService_getESignature_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/getESignatureResponse" message="tns:IDataService_getESignature_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getApplication">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/getApplication" message="tns:IDataService_getApplication_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/getApplicationResponse" message="tns:IDataService_getApplication_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updatePersonalInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/updatePersonalInfo" message="tns:IDataService_updatePersonalInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/updatePersonalInfoResponse" message="tns:IDataService_updatePersonalInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateJobIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/updateJobIds" message="tns:IDataService_updateJobIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/updateJobIdsResponse" message="tns:IDataService_updateJobIds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateAvailability">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/updateAvailability" message="tns:IDataService_updateAvailability_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/updateAvailabilityResponse" message="tns:IDataService_updateAvailability_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateEducations">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/updateEducations" message="tns:IDataService_updateEducations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/updateEducationsResponse" message="tns:IDataService_updateEducations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateJobHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/updateJobHistory" message="tns:IDataService_updateJobHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/updateJobHistoryResponse" message="tns:IDataService_updateJobHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateReferences">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/updateReferences" message="tns:IDataService_updateReferences_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/updateReferencesResponse" message="tns:IDataService_updateReferences_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateElectronicSig">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/updateElectronicSig" message="tns:IDataService_updateElectronicSig_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/updateElectronicSigResponse" message="tns:IDataService_updateElectronicSig_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updatePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/updatePassword" message="tns:IDataService_updatePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/updatePasswordResponse" message="tns:IDataService_updatePassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteJobIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/deleteJobIds" message="tns:IDataService_deleteJobIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/deleteJobIdsResponse" message="tns:IDataService_deleteJobIds_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IDataService" type="tns:IDataService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getJobs">
+      <soap:operation soapAction="http://tempuri.org/IDataService/getJobs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStoreInfo">
+      <soap:operation soapAction="http://tempuri.org/IDataService/getStoreInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQuestions">
+      <soap:operation soapAction="http://tempuri.org/IDataService/getQuestions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStoreLocation">
+      <soap:operation soapAction="http://tempuri.org/IDataService/getStoreLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getApplicantId">
+      <soap:operation soapAction="http://tempuri.org/IDataService/getApplicantId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenticateUser">
+      <soap:operation soapAction="http://tempuri.org/IDataService/authenticateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenticateManager">
+      <soap:operation soapAction="http://tempuri.org/IDataService/authenticateManager" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getJobsAppliedFor">
+      <soap:operation soapAction="http://tempuri.org/IDataService/getJobsAppliedFor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPersonalInfo">
+      <soap:operation soapAction="http://tempuri.org/IDataService/getPersonalInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAvailability">
+      <soap:operation soapAction="http://tempuri.org/IDataService/getAvailability" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEducation">
+      <soap:operation soapAction="http://tempuri.org/IDataService/getEducation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReferences">
+      <soap:operation soapAction="http://tempuri.org/IDataService/getReferences" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getJobHistories">
+      <soap:operation soapAction="http://tempuri.org/IDataService/getJobHistories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getESignature">
+      <soap:operation soapAction="http://tempuri.org/IDataService/getESignature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getApplication">
+      <soap:operation soapAction="http://tempuri.org/IDataService/getApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePersonalInfo">
+      <soap:operation soapAction="http://tempuri.org/IDataService/updatePersonalInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateJobIds">
+      <soap:operation soapAction="http://tempuri.org/IDataService/updateJobIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateAvailability">
+      <soap:operation soapAction="http://tempuri.org/IDataService/updateAvailability" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateEducations">
+      <soap:operation soapAction="http://tempuri.org/IDataService/updateEducations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateJobHistory">
+      <soap:operation soapAction="http://tempuri.org/IDataService/updateJobHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateReferences">
+      <soap:operation soapAction="http://tempuri.org/IDataService/updateReferences" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateElectronicSig">
+      <soap:operation soapAction="http://tempuri.org/IDataService/updateElectronicSig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePassword">
+      <soap:operation soapAction="http://tempuri.org/IDataService/updatePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteJobIds">
+      <soap:operation soapAction="http://tempuri.org/IDataService/deleteJobIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DataService">
+    <wsdl:port name="BasicHttpBinding_IDataService" binding="tns:BasicHttpBinding_IDataService">
+      <soap:address location="http://localhost:7513/DataService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
