@@ -47,7 +47,8 @@ namespace AESDataService.Tests
         [Test()]
         public void getStoreLocationTest()
         {
-            Assert.Fail();
+            string s = client.getStoreLocation(1);
+            Assert.AreEqual(s, "Wilsonville, OR");
         }
 
         [Test()]
