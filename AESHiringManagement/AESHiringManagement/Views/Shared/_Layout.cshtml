@@ -11,13 +11,13 @@
 <body>
 
     <div style="display: table;">
+
         <div style="display: table-cell; padding: 10px 5px 10px 10px;">
             @if (((string)Session["Status"]).CompareTo("LoggedIn") == 0)
             {
                 @Html.Partial("_Menu")
             }
         </div>
-
 
         <div style="display: table-cell; padding: 10px 5px 10px 5px;">
             @RenderBody()

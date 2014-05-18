@@ -265,9 +265,9 @@
     <None Include="Service References\AESDataService\DataService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\Dashboard\WaitList.cshtml" />
     <Content Include="Views\Dashboard\Application.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Dashboard\_Pending.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

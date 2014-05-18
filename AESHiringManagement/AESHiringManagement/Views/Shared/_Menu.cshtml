@@ -3,21 +3,65 @@
     <div class="list" style="display: table-row;">
         <ul>
             <li class="static">@Html.ActionLink("Dashboard", "Index", "Home")</li>
-            <li class="dynamic">Account</li>
-            <li class="collapsible">
-                @Html.ActionLink("Add", "Index", "AddAccount")<br />
-                @Html.ActionLink("Remove", "Index", "RemoveAccount")
-            </li>
-            <li class="dynamic">Store</li>
-            <li class="collapsible">
-                @Html.ActionLink("Add", "Index", "AddStore")<br />
-                @Html.ActionLink("Remove", "Index", "RemoveStore")
-            </li>
-            <li class="dynamic">Position</li>
-            <li class="collapsible">
-                @Html.ActionLink("Add", "Index", "AddPosition")<br />
-                @Html.ActionLink("Remove", "Index", "RemovePosition")
-            </li>
+
+            @switch ((string)Session["Permission"])
+            {
+                case "Admin":
+
+                    <li class="dynamic">HR Accounts</li>
+                    <li class="collapsible">
+                        @Html.ActionLink("Create", "CreateAccount", "Dashboard")<br />
+                        @Html.ActionLink("Edit", "EditAccount", "Dashboard")<br />
+                        @Html.ActionLink("Delete", "DeleteAccount", "Dashboard")<br />
+                        @Html.ActionLink("Reset", "ResetAccount", "Dashboard")
+                    </li>
+                    <li class="dynamic">Stores</li>
+                    <li class="collapsible">
+                        @Html.ActionLink("Create", "CreateStore", "Dashboard")<br />
+                        @Html.ActionLink("Edit", "EditStore", "Dashboard")<br />
+                        @Html.ActionLink("Delete", "DeleteStore", "Dashboard")
+                    </li>
+
+                    break;
+                case "Staffing Expert":
+
+                    <li class="dynamic">Positions</li>
+                    <li class="collapsible">
+                        @Html.ActionLink("Create", "CreatePosition", "Dashboard")<br />
+                        @Html.ActionLink("Edit", "EditPosition", "Dashboard")<br />
+                        @Html.ActionLink("Delete", "DeletePosition", "Dashboard")
+                    </li>
+
+                    <li class="dynamic">Questions</li>
+                    <li class="collapsible">
+                        @Html.ActionLink("Create", "CreateQuestion", "Dashboard")<br />
+                        @Html.ActionLink("Edit", "EditQuestion", "Dashboard")<br />
+                        @Html.ActionLink("Delete", "DeleteQuestion", "Dashboard")
+                    </li>
+
+                    break;
+                case "Hiring Manager":
+
+                    <li class="static">@Html.ActionLink("Applications", "GetApplications", "Dashboard")</li>
+
+                    <li class="dynamic">Job Openings</li>
+                    <li class="collapsible">
+                        @Html.ActionLink("Open", "OpenJobOpening", "Dashboard")<br />
+                        @Html.ActionLink("Close", "CloseJobOpening", "Dashboard")
+                    </li>
+
+                    break;
+                case "Phone Screener":
+
+                    <li class="static">@Html.ActionLink("Search for Applicant", "GetApplication", "Dashboard")</li>
+
+                    <li class="dynamic">Applicant Accounts</li>
+                    <li class="collapsible">
+                        @Html.ActionLink("Reset", "ResetAccount", "Dashboard")
+                    </li>
+            
+                    break;
+            }
         </ul>
     </div>
 
