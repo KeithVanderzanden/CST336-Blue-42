@@ -267,7 +267,7 @@
     </None>
     <Content Include="Views\Dashboard\WaitList.cshtml" />
     <Content Include="Views\Dashboard\Application.cshtml" />
-    <Content Include="Views\Shared\_MenuBar.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
