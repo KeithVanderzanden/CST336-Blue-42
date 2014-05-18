@@ -153,9 +153,10 @@ namespace AESDataService
             string perm = "None";
             using (AESDatabaseEntities context = new AESDatabaseEntities())
             {
-                if (context.Managers.Any(o => o.userName == userName && o.password == password))
+                //Needs to be case sensitive
+                if (context.Managers.Any(o => String.Compare(o.userName, userName, StringComparison.CurrentCulture) == 0 && String.Compare(o.password, password, false) == 0))
                 {
-                    var info = (from q in context.Managers where q.userName == userName && q.password == password select q).First();
+                    var info = (from q in context.Managers where q.userName.Equals(userName) && q.password.Equals(password) select q).First();
                     perm = info.permission;
                 }
             }
