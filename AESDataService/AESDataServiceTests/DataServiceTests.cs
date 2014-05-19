@@ -28,7 +28,8 @@ namespace AESDataService.Tests
         [Test()]
         public void getJobsTest()
         {
-            Assert.Fail();
+            var j = client.getJobs(1);
+            Assert.IsNotNull(j);
         }
 
         [Test()]
@@ -41,7 +42,12 @@ namespace AESDataService.Tests
         [Test()]
         public void getQuestionsTest()
         {
-            Assert.Fail();
+            int[] posIds = {0,1,2};
+            var q = client.getQuestions(posIds);
+            Assert.IsNotNull(q);
+            int[] posIdsNull = null;
+            var qNull = client.getQuestions(posIdsNull);
+            Assert.IsNull(qNull);
         }
 
         [Test()]
@@ -54,13 +60,21 @@ namespace AESDataService.Tests
         [Test()]
         public void getApplicantIdTest()
         {
-            Assert.Fail();
+            int x = client.getApplicantId("123456789");
+            Assert.IsInstanceOf<int>(x);
+            int y = client.getApplicantId("");
+            Assert.AreEqual(-1, y);
+            int z = client.getApplicantId(null);
+            Assert.AreEqual(-1, z);
         }
 
         [Test()]
         public void authenticateUserTest()
         {
-            Assert.Fail();
+            int result = client.authenticateUser("123456789", "Apple");
+            Assert.AreNotEqual(-1, result);
+            result = client.authenticateUser("123456789", "apple");
+            Assert.AreEqual(-1, result);
         }
 
         [Test()]

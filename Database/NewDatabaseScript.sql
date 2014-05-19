@@ -273,7 +273,7 @@ CREATE TABLE [dbo].[Availability]
 CREATE TABLE [dbo].[Managers]
 (
 	[userName] VARCHAR(50) NOT NULL PRIMARY KEY,
-	[password] VARCHAR(50) NOT NULL,
+	[password] VARCHAR(50) COLLATE SQL_Latin1_General_CP1_CS_AS NOT NULL,
 	[permission] VARCHAR(50) NOT NULL
 );
 
@@ -285,6 +285,6 @@ INSERT INTO [dbo].[Managers] VALUES ('Dustin', '1', 'Phone Screener');
 CREATE TABLE [dbo].[ApplicantAuth]
 (
 	[applicantId] INT NOT NULL PRIMARY KEY,
-	[password] VARCHAR(50) NOT NULL,
+	[password] VARCHAR(50) COLLATE SQL_Latin1_General_CP1_CS_AS NOT NULL,
 	CONSTRAINT [FK_PersonalInfo_ApplicantAuth] FOREIGN KEY (applicantId) REFERENCES [dbo].[PersonalInfo] ([applicantId])
 );
