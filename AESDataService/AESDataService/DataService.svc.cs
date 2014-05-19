@@ -350,6 +350,49 @@ namespace AESDataService
             app.reference = getReferences(applicantId);
             return app;
         }
+
+        /*New Search Methods
+        [OperationContract]
+        List<int> getApplicationsWithStoreID(int storeId);
+        [OperationContract]
+        List<int> getApplicationsWithJobOpeningID(int jobOpeningId);
+        [OperationContract]
+        List<int> getApplicationsWithName(string firstName, string lastName);
+        */
+        public List<int> getApplicationsWithStoreID(int storeId)
+        {
+            var applications = new List<int>();
+            using (AESDatabaseEntities context = new AESDatabaseEntities())
+            {
+                if (context.Applications.Any(o => o.storeId == storeId))
+                {
+                    applications = (from q in context.Applications where q.storeId == storeId select q.applicantId).ToList();
+                }
+            }
+            return applications;
+        }
+        public List<int> getApplicationsWithJobOpeningID(int jobOpeningId)
+        {
+            var applications = new List<int>();
+            using (AESDatabaseEntities context = new AESDatabaseEntities())
+            {
+                if (context.Applications.Any(o => o.availablePosId == jobOpeningId))
+                {
+                    applications = (from q in context.Applications where q.availablePosId == jobOpeningId select q.applicantId).ToList();
+                }
+            }
+            return applications;
+        }
+        public List<int> getApplicationsWithName(string firstName, string lastName)
+        {
+            var applications = new List<int>();
+            using (AESDatabaseEntities context = new AESDatabaseEntities())
+            {
+                applications = (from p in context.Applications where p.PersonalInfo.firstName == firstName && p.PersonalInfo.lastName == lastName select p.applicantId).ToList();
+            }
+            return applications;
+        }
+        /********************/
         #endregion
 
         #region Create Methods

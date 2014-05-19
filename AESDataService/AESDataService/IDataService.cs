@@ -74,6 +74,30 @@ namespace AESDataService
 
         [OperationContract]
         ApplicantApp getApplication(int applicantId);
+
+        /*New Search Methods*/
+
+        //get list<AppId> based off of storeID
+        //input: int storeID
+        //output: List<int> appIds
+        //returns empty list if none available
+        [OperationContract]
+        List<int> getApplicationsWithStoreID(int storeId);
+
+        //get list<AppId> based off of jobOpeningId
+        //input: int jobOpeningId
+        //output: List<int> appIds
+        //returns empty list if none available
+        [OperationContract]
+        List<int> getApplicationsWithJobOpeningID(int jobOpeningId);
+
+        //get list<AppId> based off of firstname & lastname
+        //input: string firstname, string lastname
+        //output: List<int> appIds
+        //returns empty list if none available
+        [OperationContract]
+        List<int> getApplicationsWithName(string firstName, string lastName);
+        /*******************/
         #endregion
 
         #region Create Methods
