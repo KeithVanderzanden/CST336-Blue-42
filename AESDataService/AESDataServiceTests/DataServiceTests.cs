@@ -80,73 +80,118 @@ namespace AESDataService.Tests
         [Test()]
         public void authenticateManagerTest()
         {
-            Assert.Fail();
+            string result = client.authenticateManager("chris", "Apple");
+            Assert.AreNotEqual("None", result);
+            result = client.authenticateManager("", "");
+            Assert.AreEqual("None", result);
+            result = client.authenticateManager(null, null);
+            Assert.AreEqual("None", result);
         }
 
         [Test()]
         public void getJobsAppliedForTest()
         {
-            Assert.Fail();
+            var result = client.getJobsAppliedFor(1);
+            Assert.IsNotEmpty(result);
+            result = client.getJobsAppliedFor(0);
+            Assert.IsEmpty(result);
         }
 
         [Test()]
         public void getPersonalInfoTest()
         {
-            Assert.Fail();
+            var result = client.getPersonalInfo(1);
+            Assert.IsInstanceOf<PersonalInfo>(result);
+            Assert.AreEqual(result.applicantId,1);
+            Assert.IsNotNull(result.firstName);
+            result = client.getPersonalInfo(0);
+            Assert.IsInstanceOf<PersonalInfo>(result);
+            Assert.IsNull(result.firstName);
         }
 
         [Test()]
         public void getAvailabilityTest()
         {
-            Assert.Fail();
+            var result = client.getAvailability(1);
+            Assert.IsInstanceOf<Availability>(result);
+            Assert.AreEqual(1, result.applicantId);
+            result = client.getAvailability(99999);
+            Assert.IsInstanceOf<Availability>(result);
+            Assert.AreEqual(0, result.applicantId);
         }
 
         [Test()]
         public void getEducationTest()
         {
-            Assert.Fail();
+            var result = client.getEducation(1);
+            Assert.IsNotNull(result);
+            result = client.getEducation(999999);
+            Assert.IsNotNull(result);
         }
 
         [Test()]
         public void getReferencesTest()
         {
-            Assert.Fail();
+            var result = client.getReferences(1);
+            Assert.IsNotNull(result);
+            result = client.getReferences(999999);
+            Assert.IsNotNull(result);
         }
 
         [Test()]
         public void getJobHistoriesTest()
         {
-            Assert.Fail();
+            var result = client.getReferences(1);
+            Assert.IsNotNull(result);
+            result = client.getReferences(999999);
+            Assert.IsNotNull(result);
         }
 
         [Test()]
         public void getESignatureTest()
         {
-            Assert.Fail();
+            var result = client.getESignature(1);
+            Assert.IsNotNull(result);
+            result = client.getESignature(999999);
+            Assert.IsNotNull(result);
         }
 
         [Test()]
         public void getApplicationTest()
         {
-            Assert.Fail();
+            var result = client.getApplication(1);
+            Assert.IsNotNull(result);
+            result = client.getApplication(999999);
+            Assert.IsNotNull(result);
         }
 
         [Test()]
         public void getApplicationsWithStoreIDTest()
         {
-            Assert.Fail();
+            var result = client.getApplicationsWithStoreID(1);
+            Assert.IsNotNull(result);
+            result = client.getApplicationsWithStoreID(999999);
+            Assert.IsNotNull(result);
         }
 
         [Test()]
         public void getApplicationsWithJobOpeningIDTest()
         {
-            Assert.Fail();
+            var result = client.getApplicationsWithJobOpeningID(1);
+            Assert.IsNotNull(result);
+            result = client.getApplicationsWithJobOpeningID(999999);
+            Assert.IsNotNull(result);
         }
 
         [Test()]
         public void getApplicationsWithNameTest()
         {
-            Assert.Fail();
+            var result = client.getApplicationsWithName("","");
+            Assert.IsNotNull(result);
+            result = client.getApplicationsWithName(null, null);
+            Assert.IsNotNull(result);
+            result = client.getApplicationsWithName("chris", "apple");
+            Assert.IsNotNull(result);
         }
 
         [Test()]
