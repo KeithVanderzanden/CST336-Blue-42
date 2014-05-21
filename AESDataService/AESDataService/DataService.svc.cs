@@ -900,7 +900,7 @@ namespace AESDataService
             return success;
         }
 
-        bool updateStatus(int appId, int jobId, string status = "new")
+        public bool updateStatus(int appId, int jobId, string status = "new")
         {
             bool success = true;
             try
