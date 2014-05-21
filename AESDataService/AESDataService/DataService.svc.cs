@@ -862,13 +862,6 @@ namespace AESDataService
             {
                 success = false;
             }
-            var personalInfo = getPersonalInfo(electronicSig.applicantId);
-            using (var client = new AESDataService.WaitListService.WaitListClient())
-            {
-                var sb = new StringBuilder(personalInfo.firstName + " " + personalInfo.middleName + " " + personalInfo.lastName);
-                client.AddApplicant(sb.ToString(), personalInfo.applicantId);
-                client.Close();
-            }
             return success;
         }
 
