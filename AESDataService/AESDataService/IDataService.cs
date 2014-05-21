@@ -126,7 +126,7 @@ namespace AESDataService
         bool updateReferences(List<Reference> references);
 
         [OperationContract]
-        bool updateElectronicSig(ElectronicSig electronicSig);
+        bool updateElectronicSig(ElectronicSig electronicSig, int[] jobId);
 
         [OperationContract]
         bool updatePassword(ApplicantAuth auth);

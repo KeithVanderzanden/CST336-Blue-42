@@ -803,13 +803,47 @@ namespace AESDataService
             return success;
         }
 
-        public bool updateElectronicSig(ElectronicSig electronicSig)
+        public bool updateElectronicSig(ElectronicSig electronicSig, int[] jobId)
         {
             bool success = true;
             try
             {
                 using (AESDatabaseEntities context = new AESDatabaseEntities())
                 {
+                    //Create a list of Application entries based on appId & every jobId applied for
+                    List<Application> applicationEntries = new List<Application>();
+                    foreach (var x in jobId)
+                    {
+                        Application temp = new Application();
+                        temp.applicantId = electronicSig.applicantId;
+                        temp.availablePosId = (from p in context.AvailablePositions where p.availablePosId == x select p.availablePosId).First();
+                        temp.storeId = (from p in context.AvailablePositions where p.availablePosId == x select p.storeId).First();
+                        //add temp.status = "new"
+                        applicationEntries.Add(temp);
+                    }
+
+                    Application[] applicationEntriesArray = applicationEntries.ToArray();
+                    //remove entries from applicationEntries that already exist
+                    int size = applicationEntriesArray.Count();
+                    for (int counter = 0; counter < size; counter++)
+                    {
+                        Application temp = applicationEntriesArray.ElementAt(counter);
+                        if (context.Applications.Any(o => o.availablePosId == temp.availablePosId && o.applicantId == temp.applicantId))
+                            applicationEntriesArray[counter] = null;
+                    }
+
+                    applicationEntries = applicationEntriesArray.ToList();
+
+                    //add new entries to Applications Table
+                    foreach (var entry in applicationEntries)
+                    {
+                        if(entry != null)
+                            context.Applications.Add(entry);
+                    }
+
+                    //save new entries
+                    context.SaveChanges();
+
                     if (context.ElectronicSigs.Any(o => o.applicantId == electronicSig.applicantId))
                     {
                         var entry = (from p in context.ElectronicSigs
@@ -832,7 +866,7 @@ namespace AESDataService
             using (var client = new AESDataService.WaitListService.WaitListClient())
             {
                 var sb = new StringBuilder(personalInfo.firstName + " " + personalInfo.middleName + " " + personalInfo.lastName);
-                client.AddApplicant(sb.ToString(), personalInfo.applicantId) ;
+                client.AddApplicant(sb.ToString(), personalInfo.applicantId);
                 client.Close();
             }
             return success;
