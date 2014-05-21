@@ -26,7 +26,8 @@ namespace AESApplications.Controllers
                 var sig = new ElectronicSig();
                 sig.date = DateTime.Now;
                 sig.applicantId = Convert.ToInt32(this.Session["applicantId"]);
-                int[] _jobIds = (int[])this.Session["jobIds"];
+                //Can't use jobIds session variable here if logging in as a return user, it will always be null.
+                int[] _jobIds = await client.getJobsAppliedForAsync(sig.applicantId);
                 signatureStored = await client.updateElectronicSigAsync(sig, _jobIds);
                 client.Close();
             }
