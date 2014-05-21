@@ -130,6 +130,9 @@ namespace AESDataService
 
         [OperationContract]
         bool updatePassword(ApplicantAuth auth);
+
+        [OperationContract]
+        bool updateStatus(int appId, int jobId, string status = "new");
         #endregion
 
         #region Delete Methods

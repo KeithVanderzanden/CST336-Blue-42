@@ -135,6 +135,7 @@ CREATE TABLE [dbo].[Application]
 	[applicantId] INT NOT NULL,
     [availablePosId] INT NOT NULL,
 	[storeId] INT NOT NULL,
+	[status] VARCHAR(20) NOT NULL,
 	CONSTRAINT [FK_PersonalInfo_Application] FOREIGN KEY (applicantId) REFERENCES [dbo].[PersonalInfo] ([applicantId]),
     CONSTRAINT [FK_AvailablePosition_Application] FOREIGN KEY (availablePosId) REFERENCES [dbo].[AvailablePosition] ([availablePosId]),
     CONSTRAINT [FK_Store_Application] FOREIGN KEY (storeId) REFERENCES [dbo].[Store] ([storeId]),  

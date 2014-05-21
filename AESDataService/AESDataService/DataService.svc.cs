@@ -818,7 +818,7 @@ namespace AESDataService
                         temp.applicantId = electronicSig.applicantId;
                         temp.availablePosId = (from p in context.AvailablePositions where p.availablePosId == x select p.availablePosId).First();
                         temp.storeId = (from p in context.AvailablePositions where p.availablePosId == x select p.storeId).First();
-                        //add temp.status = "new"
+                        temp.status = "new";
                         applicationEntries.Add(temp);
                     }
 
@@ -894,6 +894,25 @@ namespace AESDataService
                 }
             }
             catch (Exception)
+            {
+                success = false;
+            }
+            return success;
+        }
+
+        bool updateStatus(int appId, int jobId, string status = "new")
+        {
+            bool success = true;
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    var application = (from p in context.Applications where p.applicantId == appId && p.availablePosId == jobId select p).First();
+                    application.status = status;
+                    context.SaveChanges();
+                }
+            }
+            catch(Exception)
             {
                 success = false;
             }
