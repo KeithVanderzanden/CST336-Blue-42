@@ -12,7 +12,6 @@ namespace AESHiringManagement.Controllers
     {
         public ActionResult Index()
         {
-            var dashboard = Dashboard.Instance;
             Session["Status"] = "NoUser";
             return View("Login",new UserModel());
         }

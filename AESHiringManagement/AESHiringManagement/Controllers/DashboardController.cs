@@ -21,7 +21,6 @@ namespace AESHiringManagement.Controllers
         public async Task<ActionResult> LoadApplication(AESHiringManagement.Models.Application model)
         {
             int id = Dashboard.getId((Request["selectApp"]).ToString());
-            Dashboard.setStatus(id, 1);
             using (var client = new AESDataService.DataServiceClient())
             {
                 model.application = await client.getApplicationAsync(id);
@@ -38,6 +37,7 @@ namespace AESHiringManagement.Controllers
         [HttpGet]
         public ActionResult RefreshPending()
         {
+            Dashboard.updatePendingApplications("new");
             return PartialView("_Pending");
         }
 
