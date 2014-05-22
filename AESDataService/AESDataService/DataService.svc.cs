@@ -359,6 +359,8 @@ namespace AESDataService
         [OperationContract]
         List<int> getApplicationsWithName(string firstName, string lastName);
         */
+
+        //Updated search methods to remove duplicate records.
         public List<int> getApplicationsWithStoreID(int storeId)
         {
             var applications = new List<int>();
@@ -366,7 +368,12 @@ namespace AESDataService
             {
                 if (context.Applications.Any(o => o.storeId == storeId))
                 {
-                    applications = (from q in context.Applications where q.storeId == storeId select q.applicantId).ToList();
+                    var apps = (from q in context.Applications where q.storeId == storeId select q);
+                    var noDups = apps.GroupBy(x => x.applicantId).Select(y => y.FirstOrDefault());
+                    foreach (var app in noDups)
+                    {
+                        applications.Add(app.applicantId);
+                    }
                 }
             }
             return applications;
@@ -378,7 +385,12 @@ namespace AESDataService
             {
                 if (context.Applications.Any(o => o.availablePosId == jobOpeningId))
                 {
-                    applications = (from q in context.Applications where q.availablePosId == jobOpeningId select q.applicantId).ToList();
+                    var apps = (from q in context.Applications where q.availablePosId == jobOpeningId select q);
+                    var noDups = apps.GroupBy(x => x.applicantId).Select(y => y.FirstOrDefault());
+                    foreach (var app in noDups)
+                    {
+                        applications.Add(app.applicantId);
+                    }
                 }
             }
             return applications;
@@ -388,7 +400,12 @@ namespace AESDataService
             var applications = new List<int>();
             using (AESDatabaseEntities context = new AESDatabaseEntities())
             {
-                applications = (from p in context.Applications where p.PersonalInfo.firstName == firstName && p.PersonalInfo.lastName == lastName select p.applicantId).ToList();
+                var apps = (from p in context.Applications where p.PersonalInfo.firstName == firstName && p.PersonalInfo.lastName == lastName select p);
+                var noDups = apps.GroupBy(x => x.applicantId).Select(y => y.FirstOrDefault());
+                foreach (var app in noDups)
+                {
+                    applications.Add(app.applicantId);
+                }
             }
             return applications;
         }
@@ -406,7 +423,8 @@ namespace AESDataService
                     {
                         id = app.applicantId,
                         fullName = app.PersonalInfo.firstName + " " + app.PersonalInfo.lastName,
-                        time = app.PersonalInfo.ElectronicSig.date.ToString()
+                        time = app.PersonalInfo.ElectronicSig.date.ToString(),
+                        locked = false
                     });
                 }
             }

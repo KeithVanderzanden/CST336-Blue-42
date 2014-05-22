@@ -218,6 +218,8 @@ namespace AESDataService
         public string fullName { get; set; }
         [DataMember]
         public string time { get; set; }
+        [DataMember]
+        public bool locked { get; set; }
     }
 #endregion
 }
