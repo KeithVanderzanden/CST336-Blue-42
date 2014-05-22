@@ -161,10 +161,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Content\Services\IWaitList.cs" />
-    <Compile Include="Content\Services\WaitList.svc.cs">
-      <DependentUpon>WaitList.svc</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\ApplicationsController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
@@ -188,7 +184,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Services\WaitList.svc" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
