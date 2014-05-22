@@ -10,6 +10,7 @@ namespace AESHiringManagement.Models
     public class Dashboard
     {
         private static List<AESDataService.Applicant> pendingApplications = new List<AESDataService.Applicant>();
+        private static List<int> checkedoutApplications = new List<int>();
 
         public static void updatePendingApplications(string status)
         {
@@ -19,14 +20,44 @@ namespace AESHiringManagement.Models
                 var apps = client.getApplicationsWithStatus(status);
                 foreach (var app in apps)
                 {
-                    pendingApplications.Add(app);
+                    bool found = false;
+                    foreach (var c in getCheckedoutApplications())
+                    {
+                        if (app.id == c)
+                        {
+                            found = true;
+                        }
+                    }
+                    if (!found)
+                        pendingApplications.Add(app);
                 }
             }
+        }
+
+        public static List<int> getCheckedoutApplications()
+        {
+            return checkedoutApplications;
         }
 
         public static List<AESDataService.Applicant> getPendingApplications()
         {
             return pendingApplications;
+        }
+
+        public static void checkedoutApplication(int id)
+        {
+            checkedoutApplications.Add(id);
+        }
+
+        public static void releaseApplication(int id)
+        {
+            foreach (var app in checkedoutApplications)
+            {
+                if (app == id)
+                {
+                    checkedoutApplications.Remove(app);
+                }
+            }
         }
 
         public static int getCount()
