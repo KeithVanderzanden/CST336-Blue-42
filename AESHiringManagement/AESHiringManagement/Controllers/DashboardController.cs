@@ -25,6 +25,7 @@ namespace AESHiringManagement.Controllers
             {
                 model.application = await client.getApplicationAsync(id);
                 client.Close();
+                Dashboard.checkoutApplication(id);
             }
             if (model.notes == null)
             {

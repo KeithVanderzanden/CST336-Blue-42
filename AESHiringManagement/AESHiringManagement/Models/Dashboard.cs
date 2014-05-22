@@ -44,7 +44,7 @@ namespace AESHiringManagement.Models
             return pendingApplications;
         }
 
-        public static void checkedoutApplication(int id)
+        public static void checkoutApplication(int id)
         {
             checkedoutApplications.Add(id);
         }
