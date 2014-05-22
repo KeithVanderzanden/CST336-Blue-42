@@ -68,13 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataService.svc" />
-    <None Include="Service References\WaitListService\WaitList.disco" />
-    <None Include="Service References\WaitListService\configuration91.svcinfo" />
-    <None Include="Service References\WaitListService\configuration.svcinfo" />
-    <None Include="Service References\WaitListService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -145,11 +138,6 @@
     <Compile Include="Reference.cs">
       <DependentUpon>AESDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Service References\WaitListService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Store.cs">
       <DependentUpon>AESDataModel.tt</DependentUpon>
     </Compile>
@@ -176,13 +164,6 @@
       <LastGenOutput>AESDataModel.cs</LastGenOutput>
     </Content>
     <Content Include="packages.config" />
-    <None Include="Service References\WaitListService\WaitList.wsdl" />
-    <None Include="Service References\WaitListService\WaitList.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\WaitListService\WaitList1.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -192,12 +173,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\WaitListService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
