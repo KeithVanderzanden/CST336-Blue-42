@@ -215,9 +215,9 @@ namespace AESDataService
         [DataMember]
         public int id { get; set; }
         [DataMember]
-        public string firstName { get; set; }
+        public string fullName { get; set; }
         [DataMember]
-        public string lastName { get; set; }
+        public string time { get; set; }
     }
 #endregion
 }

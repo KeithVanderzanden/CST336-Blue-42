@@ -405,8 +405,8 @@ namespace AESDataService
                     applications.Add(new Applicant
                     {
                         id = app.applicantId,
-                        firstName = app.PersonalInfo.firstName,
-                        lastName = app.PersonalInfo.lastName
+                        fullName = app.PersonalInfo.firstName + " " + app.PersonalInfo.lastName,
+                        time = app.PersonalInfo.ElectronicSig.date.ToString()
                     });
                 }
             }
