@@ -626,6 +626,27 @@ namespace AESDataService
             }
             return result;
         }
+
+        private bool storeNotes(Note notes)
+        {
+            bool result = true;
+
+            if (notes == null)
+                return false;
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    context.Notes.Add(notes);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                result = false;
+            }
+            return result;
+        }
         #endregion
 
         #region Update Methods
@@ -945,6 +966,39 @@ namespace AESDataService
                 }
             }
             catch(Exception)
+            {
+                success = false;
+            }
+            return success;
+        }
+
+        public bool updateNotes(Note notes)
+        {
+            bool success = true;
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    if (context.Notes.Any(o => o.applicantId == notes.applicantId))
+                    {
+                        var entry = (from q in context.Notes
+                                     where q.applicantId == notes.applicantId
+                                     select q).First();
+
+                        entry.availabilityNotes = notes.availabilityNotes;
+                        entry.educationNotes = notes.educationNotes;
+                        entry.jobHistoryNotes = notes.jobHistoryNotes;
+                        entry.personalInfoNotes = notes.personalInfoNotes;
+                        entry.referenceNotes = notes.referenceNotes;
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        success = storeNotes(notes);
+                    }
+                }
+            }
+            catch (Exception)
             {
                 success = false;
             }
