@@ -36,12 +36,12 @@ namespace AESHiringManagement.Models
 
         public static string getName(int id)
         {
-            return pendingApplications.Find(x => x.id.Equals(id)).firstName;
+            return pendingApplications.Find(x => x.id.Equals(id)).fullName;
         }
 
         public static int getId(string name)
         {
-            return pendingApplications.Find(x => x.firstName.Equals(name)).id;
+            return pendingApplications.Find(x => x.fullName.Equals(name)).id;
         }
 
         /*****Old code to use waitlist, To scared to delete this for now >.< *****/

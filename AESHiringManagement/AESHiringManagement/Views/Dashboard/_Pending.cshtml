@@ -20,23 +20,7 @@
                 foreach (var app in AESHiringManagement.Models.Dashboard.getPendingApplications())
                 {
                     string name = AESHiringManagement.Models.Dashboard.getName(app.id);
-                //    string color;
-                //    switch (AESHiringManagement.Models.Dashboard.getStatus(id))
-                //    {
-                //        case 0:
-                //            color = "green";
-                //            break;
-                //        case 1:
-                //            color = "blue";
-                //            break;
-                //        case 2:
-                //            color = "red";
-                //            break;
-                //        default:
-                //            color = "";
-                //            break;
-                <input type="submit" class="dashboard-button" name="selectApp" value="@name" />
-                    //<input type="submit" class="dashboard-button" style="color:@color" name="selectApp" value="@name" />
+                    <input type="submit" class="dashboard-button" name="selectApp" value="@name" />
                     <br />
                 }
             }
