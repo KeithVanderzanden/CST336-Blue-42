@@ -97,6 +97,9 @@ namespace AESDataService
         //returns empty list if none available
         [OperationContract]
         List<int> getApplicationsWithName(string firstName, string lastName);
+
+        [OperationContract]
+        List<Applicant> getApplicationsWithStatus(string status);
         /*******************/
         #endregion
 
@@ -204,6 +207,17 @@ namespace AESDataService
         public List<Reference> reference { get; set; }
         [DataMember]
         public ElectronicSig electronicSig { get; set; }
+    }
+
+    [DataContract]
+    public class Applicant
+    {
+        [DataMember]
+        public int id { get; set; }
+        [DataMember]
+        public string firstName { get; set; }
+        [DataMember]
+        public string lastName { get; set; }
     }
 #endregion
 }

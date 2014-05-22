@@ -392,6 +392,27 @@ namespace AESDataService
             }
             return applications;
         }
+
+        public List<Applicant> getApplicationsWithStatus(string status)
+        {
+            var applications = new List<Applicant>();
+            using (AESDatabaseEntities context = new AESDatabaseEntities())
+            {
+                var apps = (from q in context.Applications where q.status == status select q);
+                var noDups = apps.GroupBy(x => x.applicantId).Select(y => y.FirstOrDefault());
+                foreach (var app in noDups)
+                {
+                    applications.Add(new Applicant
+                    {
+                        id = app.applicantId,
+                        firstName = app.PersonalInfo.firstName,
+                        lastName = app.PersonalInfo.lastName
+                    });
+                }
+            }
+
+            return applications;
+        }
         /********************/
         #endregion
 
