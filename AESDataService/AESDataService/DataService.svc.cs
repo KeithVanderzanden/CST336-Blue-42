@@ -162,6 +162,19 @@ namespace AESDataService
             return perm;
         }
 
+        public string getManagerName(string userName, string password)
+        {
+            string managerName = String.Empty;
+            using (AESDatabaseEntities context = new AESDatabaseEntities())
+            {
+                if (context.Managers.Any(o => o.userName == userName && o.password == password))
+                {
+                    managerName = (from q in context.Managers where q.userName == userName && q.password == password select q.userName).First();
+                }
+            }
+            return managerName;
+        }
+
         public List<int> getJobsAppliedFor(int applicantId)
         {
             var jobsAppliedFor = new List<int>();
