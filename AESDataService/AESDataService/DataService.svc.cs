@@ -1017,6 +1017,37 @@ namespace AESDataService
             }
             return success;
         }
+
+        public bool lockApp(int appId)
+        {
+            bool success = true;
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    var appLock = (from p in context.Applications where appId == p.applicantId select p).First();
+                    appLock.locked = true;
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception) { success = false; }
+            return success;
+        }
+        public bool unlockApp(int appId)
+        {
+            bool success = true;
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    var appLock = (from p in context.Applications where appId == p.applicantId select p).First();
+                    appLock.locked = false;
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception) { success = false; }
+            return success;
+        }
         #endregion
 
         #region Delete Methods

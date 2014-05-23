@@ -141,6 +141,10 @@ namespace AESDataService
         bool updateStatus(int appId, int jobId, string status = "new");
         [OperationContract]
         bool updateNotes(Note notes);
+        [OperationContract]
+        bool lockApp(int appId);
+        [OperationContract]
+        bool unlockApp(int appId);
         #endregion
 
         #region Delete Methods
