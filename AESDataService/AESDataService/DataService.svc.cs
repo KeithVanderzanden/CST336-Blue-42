@@ -434,14 +434,14 @@ namespace AESDataService
             var applications = new List<Applicant>();
             using (AESDatabaseEntities context = new AESDatabaseEntities())
             {
-                var apps = (from q in context.Applications where q.status == status select q);
+                var apps = (from q in context.Applications where q.status == status && q.locked == false select q);
                 var noDups = apps.GroupBy(x => x.applicantId).Select(y => y.FirstOrDefault());
                 foreach (var app in noDups)
                 {
                     Applicant a = new Applicant();
                     a.id = app.applicantId;
                     a.fullName = app.PersonalInfo.firstName + " " + app.PersonalInfo.lastName;
-                    a.locked = false;
+                    a.locked = app.locked;
                     a.note = app.notes;
                     applications.Add(a);
                 }
@@ -1029,8 +1029,11 @@ namespace AESDataService
             {
                 using (AESDatabaseEntities context = new AESDatabaseEntities())
                 {
-                    var appLock = (from p in context.Applications where appId == p.applicantId select p).First();
-                    appLock.locked = true;
+                    var appLock = (from p in context.Applications where appId == p.applicantId select p);
+                    foreach(var x in appLock)
+                    {
+                        x.locked = true;
+                    }
                     context.SaveChanges();
                 }
             }
@@ -1044,8 +1047,11 @@ namespace AESDataService
             {
                 using (AESDatabaseEntities context = new AESDatabaseEntities())
                 {
-                    var appLock = (from p in context.Applications where appId == p.applicantId select p).First();
-                    appLock.locked = false;
+                    var appLock = (from p in context.Applications where appId == p.applicantId select p);
+                    foreach (var x in appLock)
+                    {
+                        x.locked = false;
+                    }
                     context.SaveChanges();
                 }
             }
