@@ -142,7 +142,7 @@ namespace AESDataService
         bool updatePassword(ApplicantAuth auth);
 
         [OperationContract]
-        bool updateStatus(int appId, int jobId, string status = "new");
+        bool updateStatus(int appId, string status = "new");
         [OperationContract]
         bool updateNotes(int appId, string notes = "");
         [OperationContract]
