@@ -104,6 +104,8 @@ namespace AESDataService
         [OperationContract]
         List<Applicant> getApplicationsWithStatus(string status);
         [OperationContract]
+        string getNotes(int appId);
+        [OperationContract]
         string getJobsfromID(int appId);
         /*******************/
         #endregion
