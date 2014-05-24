@@ -335,13 +335,18 @@ namespace AESDataService
         public ApplicantApp getApplication(int applicantId)
         {
             var app = new ApplicantApp();
-            app.availability = getAvailability(applicantId);
-            app.education = getEducation(applicantId);
-            app.electronicSig = getESignature(applicantId);
-            app.jobHistory = getJobHistories(applicantId);
-            app.personalInfo = getPersonalInfo(applicantId);
-            app.reference = getReferences(applicantId);
-            app.notes = getNotes(applicantId);
+            try
+            {
+                app.availability = getAvailability(applicantId);
+                app.education = getEducation(applicantId);
+                app.electronicSig = getESignature(applicantId);
+                app.jobHistory = getJobHistories(applicantId);
+                app.personalInfo = getPersonalInfo(applicantId);
+                app.reference = getReferences(applicantId);
+                app.notes = getNotes(applicantId);
+                app.jobsApplied = getJobsfromID(applicantId);
+            }
+            catch (Exception) { }
             return app;
         }
 
@@ -436,6 +441,25 @@ namespace AESDataService
             return appNotes;
         }
         /********************/
+
+        public string getJobsfromID(int appId)
+        {
+            string temp = "";
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    var x = (from p in context.JobsAppliedFors where p.appId == appId select p).ToList();
+                    foreach(var job in x)
+                    {
+                        temp += (from p in context.Positions where p.positionId == job.posId select p.title).First();
+                        temp += ", ";
+                    }
+                }
+            }
+            catch (Exception) { }
+            return temp;
+        }
         #endregion
 
         #region Create Methods

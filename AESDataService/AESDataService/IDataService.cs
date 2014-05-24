@@ -103,6 +103,8 @@ namespace AESDataService
 
         [OperationContract]
         List<Applicant> getApplicationsWithStatus(string status);
+        [OperationContract]
+        string getJobsfromID(int appId);
         /*******************/
         #endregion
 
@@ -218,6 +220,8 @@ namespace AESDataService
         public ElectronicSig electronicSig { get; set; }
         [DataMember]
         public string notes { get; set; }
+        [DataMember]
+        public string jobsApplied { get; set; }
     }
 
     [DataContract]
