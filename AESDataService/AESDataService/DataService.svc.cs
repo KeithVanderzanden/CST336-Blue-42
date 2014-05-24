@@ -981,15 +981,18 @@ namespace AESDataService
             return success;
         }
 
-        public bool updateStatus(int appId, int jobId, string status = "new")
+        public bool updateStatus(int appId, string status = "new")
         {
             bool success = true;
             try
             {
                 using (AESDatabaseEntities context = new AESDatabaseEntities())
                 {
-                    var application = (from p in context.Applications where p.applicantId == appId && p.availablePosId == jobId select p).First();
-                    application.status = status;
+                    var application = (from p in context.Applications where p.applicantId == appId select p);
+                    foreach (var app in application)
+                    {
+                        app.status = status;
+                    }
                     context.SaveChanges();
                 }
             }
