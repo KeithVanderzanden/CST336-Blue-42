@@ -224,27 +224,7 @@ namespace AESDataService
             {
                 if (context.Availabilities.Any(o => o.applicantId == applicantId))
                 {
-                    var info = (from q in context.Availabilities where q.applicantId == applicantId select q).First();
-                    availability.applicantId = info.applicantId;
-                    availability.daysYN = info.daysYN;
-                    availability.eveningsYN = info.eveningsYN;
-                    availability.fridayFrom = info.fridayFrom;
-                    availability.fridayTo = info.fridayTo;
-                    availability.fullTimeYN = info.fullTimeYN;
-                    availability.mondayFrom = info.mondayFrom;
-                    availability.mondayTo = info.mondayTo;
-                    availability.salaryExpected = info.salaryExpected;
-                    availability.saturdayFrom = info.saturdayFrom;
-                    availability.saturdayTo = info.saturdayTo;
-                    availability.sundayFrom = info.sundayFrom;
-                    availability.sundayTo = info.sundayTo;
-                    availability.thursdayFrom = info.thursdayFrom;
-                    availability.thursdayTo = info.thursdayTo;
-                    availability.tuesdayFrom = info.tuesdayFrom;
-                    availability.tuesdayTo = info.tuesdayTo;
-                    availability.wednesdayFrom = info.wednesdayFrom;
-                    availability.wednesdayTo = info.wednesdayTo;
-                    availability.weekendsYN = info.weekendsYN;
+                    availability = (from q in context.Availabilities where q.applicantId == applicantId select q).First();
                 }
             }
             return availability;
