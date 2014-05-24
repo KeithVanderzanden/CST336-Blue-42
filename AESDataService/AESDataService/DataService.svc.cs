@@ -361,6 +361,7 @@ namespace AESDataService
             app.jobHistory = getJobHistories(applicantId);
             app.personalInfo = getPersonalInfo(applicantId);
             app.reference = getReferences(applicantId);
+            app.notes = getNotes(applicantId);
             return app;
         }
 
@@ -432,17 +433,27 @@ namespace AESDataService
                 var noDups = apps.GroupBy(x => x.applicantId).Select(y => y.FirstOrDefault());
                 foreach (var app in noDups)
                 {
-                    applications.Add(new Applicant
-                    {
-                        id = app.applicantId,
-                        fullName = app.PersonalInfo.firstName + " " + app.PersonalInfo.lastName,
-                        time = app.PersonalInfo.ElectronicSig.date.ToString(),
-                        locked = false
-                    });
+                    Applicant a = new Applicant();
+                    a.id = app.applicantId;
+                    a.fullName = app.PersonalInfo.firstName + " " + app.PersonalInfo.lastName;
+                    a.locked = false;
+                    a.note = app.notes;
+                    applications.Add(a);
                 }
             }
 
             return applications;
+        }
+
+        public string getNotes(int appID)
+        {
+            string appNotes = "";
+            using (AESDatabaseEntities context = new AESDatabaseEntities())
+            {
+                appNotes = (from q in context.Applications where q.applicantId==appID select q.notes).First();
+            }
+
+            return appNotes;
         }
         /********************/
         #endregion
@@ -640,26 +651,6 @@ namespace AESDataService
             return result;
         }
 
-        private bool storeNotes(Note notes)
-        {
-            bool result = true;
-
-            if (notes == null)
-                return false;
-            try
-            {
-                using (AESDatabaseEntities context = new AESDatabaseEntities())
-                {
-                    context.Notes.Add(notes);
-                    context.SaveChanges();
-                }
-            }
-            catch (Exception)
-            {
-                result = false;
-            }
-            return result;
-        }
         #endregion
 
         #region Update Methods
@@ -985,30 +976,19 @@ namespace AESDataService
             return success;
         }
 
-        public bool updateNotes(Note notes)
+        public bool updateNotes(int appId, string notes = "")
         {
             bool success = true;
             try
             {
                 using (AESDatabaseEntities context = new AESDatabaseEntities())
                 {
-                    if (context.Notes.Any(o => o.applicantId == notes.applicantId))
+                    var application = (from p in context.Applications where p.applicantId == appId select p);
+                    foreach (var x in application)
                     {
-                        var entry = (from q in context.Notes
-                                     where q.applicantId == notes.applicantId
-                                     select q).First();
-
-                        entry.availabilityNotes = notes.availabilityNotes;
-                        entry.educationNotes = notes.educationNotes;
-                        entry.jobHistoryNotes = notes.jobHistoryNotes;
-                        entry.personalInfoNotes = notes.personalInfoNotes;
-                        entry.referenceNotes = notes.referenceNotes;
-                        context.SaveChanges();
+                        x.notes = notes;
                     }
-                    else
-                    {
-                        success = storeNotes(notes);
-                    }
+                    context.SaveChanges();
                 }
             }
             catch (Exception)

@@ -119,9 +119,6 @@
     <Compile Include="Manager.cs">
       <DependentUpon>AESDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Note.cs">
-      <DependentUpon>AESDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="PersonalInfo.cs">
       <DependentUpon>AESDataModel.tt</DependentUpon>
     </Compile>

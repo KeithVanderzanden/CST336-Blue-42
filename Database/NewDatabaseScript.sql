@@ -137,6 +137,7 @@ CREATE TABLE [dbo].[Application]
 	[storeId] INT NOT NULL,
 	[status] VARCHAR(20) NOT NULL,
 	[locked] BIT NOT NULL DEFAULT 0,
+	[notes] VARCHAR(500) NULL,
 	CONSTRAINT [FK_PersonalInfo_Application] FOREIGN KEY (applicantId) REFERENCES [dbo].[PersonalInfo] ([applicantId]),
     CONSTRAINT [FK_AvailablePosition_Application] FOREIGN KEY (availablePosId) REFERENCES [dbo].[AvailablePosition] ([availablePosId]),
     CONSTRAINT [FK_Store_Application] FOREIGN KEY (storeId) REFERENCES [dbo].[Store] ([storeId]),  
@@ -234,17 +235,6 @@ CREATE TABLE [dbo].[JobsAppliedFor]
 	[appId] INT NOT NULL,
 	[posId] INT NOT NULL,
 	PRIMARY KEY CLUSTERED ([appId] ASC, [posId] ASC)
-);
-
-CREATE TABLE [dbo].[Notes]
-(
-	[applicantId] INT NOT NULL PRIMARY KEY,
-	[personalInfoNotes] VARCHAR(3000) NULL,
-	[educationNotes] VARCHAR(3000) NULL,
-	[availabilityNotes] VARCHAR(3000) NULL,
-	[referenceNotes] VARCHAR(3000) NULL,
-	[jobHistoryNotes] VARCHAR(3000) NULL,
-	CONSTRAINT [FK_PersonalInfo_Notes] FOREIGN KEY (applicantId) REFERENCES [dbo].[PersonalInfo] ([applicantId])
 );
 
 CREATE TABLE [dbo].[Availability]

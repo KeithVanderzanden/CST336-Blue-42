@@ -140,7 +140,7 @@ namespace AESDataService
         [OperationContract]
         bool updateStatus(int appId, int jobId, string status = "new");
         [OperationContract]
-        bool updateNotes(Note notes);
+        bool updateNotes(int appId, string notes = "");
         [OperationContract]
         bool lockApp(int appId);
         [OperationContract]
@@ -216,6 +216,8 @@ namespace AESDataService
         public List<Reference> reference { get; set; }
         [DataMember]
         public ElectronicSig electronicSig { get; set; }
+        [DataMember]
+        public string notes { get; set; }
     }
 
     [DataContract]
@@ -226,9 +228,9 @@ namespace AESDataService
         [DataMember]
         public string fullName { get; set; }
         [DataMember]
-        public string time { get; set; }
-        [DataMember]
         public bool locked { get; set; }
+        [DataMember]
+        public string note { get; set; }
     }
 #endregion
 }

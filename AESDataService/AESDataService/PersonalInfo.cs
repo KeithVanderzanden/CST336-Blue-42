@@ -39,7 +39,6 @@ namespace AESDataService
         public virtual Availability Availability { get; set; }
         public virtual ElectronicSig ElectronicSig { get; set; }
         public virtual ICollection<JobHistory> JobHistories { get; set; }
-        public virtual Note Note { get; set; }
         public virtual ICollection<Reference> References { get; set; }
         public virtual ApplicantAuth ApplicantAuth { get; set; }
         public virtual ICollection<Education> Educations { get; set; }
