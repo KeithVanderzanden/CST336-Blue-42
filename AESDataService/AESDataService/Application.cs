@@ -17,6 +17,9 @@ namespace AESDataService
         public int applicantId { get; set; }
         public int availablePosId { get; set; }
         public int storeId { get; set; }
+        public string status { get; set; }
+        public bool locked { get; set; }
+        public string notes { get; set; }
     
         public virtual AvailablePosition AvailablePosition { get; set; }
         public virtual PersonalInfo PersonalInfo { get; set; }

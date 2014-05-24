@@ -266,7 +266,6 @@
     <None Include="Service References\AESDataService\DataService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\Dashboard\Application.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Dashboard\_Pending.cshtml" />
     <Content Include="Views\Accounts\Create.cshtml" />
@@ -286,6 +285,7 @@
     <Content Include="Views\Applications\Search.cshtml" />
     <Content Include="Views\JobOpenings\Open.cshtml" />
     <Content Include="Views\JobOpenings\Close.cshtml" />
+    <Content Include="Views\Dashboard\_Application.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
