@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9a9e90ac-3889-4bf7-a5b0-95f94944d51b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9f47c3bc-f5ea-471a-bc5a-9b3fb4b6e7e8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,14 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:7513/DataService.svc?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:7513/DataService.svc?singleWsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="DataService.wsdl" MetadataType="Wsdl" ID="be04c1cb-0ec8-4a28-a634-7181d6619b76" SourceId="1" SourceUrl="http://localhost:7513/DataService.svc?wsdl" />
-    <MetadataFile FileName="DataService.xsd" MetadataType="Schema" ID="a4c56abd-a1b3-4a78-a33f-2354b01707f8" SourceId="1" SourceUrl="http://localhost:7513/DataService.svc?xsd=xsd3" />
-    <MetadataFile FileName="DataService1.xsd" MetadataType="Schema" ID="0b320908-7890-42ab-9b0e-d891f2d9e6f8" SourceId="1" SourceUrl="http://localhost:7513/DataService.svc?xsd=xsd2" />
-    <MetadataFile FileName="DataService2.xsd" MetadataType="Schema" ID="6bec61d1-8388-4160-acee-8167248655aa" SourceId="1" SourceUrl="http://localhost:7513/DataService.svc?xsd=xsd1" />
-    <MetadataFile FileName="DataService3.xsd" MetadataType="Schema" ID="f0aee691-4bd3-489e-a529-dd98b81eff3e" SourceId="1" SourceUrl="http://localhost:7513/DataService.svc?xsd=xsd0" />
+    <MetadataFile FileName="DataService.wsdl" MetadataType="Wsdl" ID="8d8045dc-c635-471c-8677-10562cc6b295" SourceId="1" SourceUrl="http://localhost:7513/DataService.svc?singleWsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

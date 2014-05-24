@@ -20,6 +20,9 @@
           <Property Name="applicantId" Type="int" Nullable="false" />
           <Property Name="availablePosId" Type="int" Nullable="false" />
           <Property Name="storeId" Type="int" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="locked" Type="bit" Nullable="false" />
+          <Property Name="notes" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Availability">
           <Key>
@@ -129,17 +132,6 @@
           <Property Name="userName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="permission" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Notes">
-          <Key>
-            <PropertyRef Name="applicantId" />
-          </Key>
-          <Property Name="applicantId" Type="int" Nullable="false" />
-          <Property Name="personalInfoNotes" Type="varchar" MaxLength="3000" />
-          <Property Name="educationNotes" Type="varchar" MaxLength="3000" />
-          <Property Name="availabilityNotes" Type="varchar" MaxLength="3000" />
-          <Property Name="referenceNotes" Type="varchar" MaxLength="3000" />
-          <Property Name="jobHistoryNotes" Type="varchar" MaxLength="3000" />
         </EntityType>
         <EntityType Name="PersonalInfo">
           <Key>
@@ -293,18 +285,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PersonalInfo_Notes">
-          <End Role="PersonalInfo" Type="Self.PersonalInfo" Multiplicity="1" />
-          <End Role="Notes" Type="Self.Notes" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="PersonalInfo">
-              <PropertyRef Name="applicantId" />
-            </Principal>
-            <Dependent Role="Notes">
-              <PropertyRef Name="applicantId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PersonalInfo_References">
           <End Role="PersonalInfo" Type="Self.PersonalInfo" Multiplicity="1" />
           <End Role="References" Type="Self.References" Multiplicity="*" />
@@ -387,7 +367,6 @@
           <EntitySet Name="JobHistory" EntityType="Self.JobHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobsAppliedFor" EntityType="Self.JobsAppliedFor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Managers" EntityType="Self.Managers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PersonalInfo" EntityType="Self.PersonalInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
@@ -421,10 +400,6 @@
           <AssociationSet Name="FK_PersonalInfo_JobHistory" Association="Self.FK_PersonalInfo_JobHistory">
             <End Role="PersonalInfo" EntitySet="PersonalInfo" />
             <End Role="JobHistory" EntitySet="JobHistory" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonalInfo_Notes" Association="Self.FK_PersonalInfo_Notes">
-            <End Role="PersonalInfo" EntitySet="PersonalInfo" />
-            <End Role="Notes" EntitySet="Notes" />
           </AssociationSet>
           <AssociationSet Name="FK_PersonalInfo_References" Association="Self.FK_PersonalInfo_References">
             <End Role="PersonalInfo" EntitySet="PersonalInfo" />
@@ -466,6 +441,9 @@
           <NavigationProperty Name="AvailablePosition" Relationship="Self.FK_AvailablePosition_Application" FromRole="Application" ToRole="AvailablePosition" />
           <NavigationProperty Name="PersonalInfo" Relationship="Self.FK_PersonalInfo_Application" FromRole="Application" ToRole="PersonalInfo" />
           <NavigationProperty Name="Store" Relationship="Self.FK_Store_Application" FromRole="Application" ToRole="Store" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="locked" Type="Boolean" Nullable="false" />
+          <Property Name="notes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Availability">
           <Key>
@@ -557,18 +535,6 @@
           <Property Name="appId" Type="Int32" Nullable="false" />
           <Property Name="posId" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Note">
-          <Key>
-            <PropertyRef Name="applicantId" />
-          </Key>
-          <Property Name="applicantId" Type="Int32" Nullable="false" />
-          <Property Name="personalInfoNotes" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
-          <Property Name="educationNotes" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
-          <Property Name="referenceNotes" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
-          <Property Name="jobHistoryNotes" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PersonalInfo" Relationship="Self.FK_PersonalInfo_Notes" FromRole="Notes" ToRole="PersonalInfo" />
-          <Property Name="availabilityNotes" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="PersonalInfo">
           <Key>
             <PropertyRef Name="applicantId" />
@@ -588,7 +554,6 @@
           <NavigationProperty Name="Availability" Relationship="Self.FK_PersonalInfo_Availability" FromRole="PersonalInfo" ToRole="Availability" />
           <NavigationProperty Name="ElectronicSig" Relationship="Self.FK_PersonalInfo_ElectronicSig" FromRole="PersonalInfo" ToRole="ElectronicSig" />
           <NavigationProperty Name="JobHistories" Relationship="Self.FK_PersonalInfo_JobHistory" FromRole="PersonalInfo" ToRole="JobHistory" />
-          <NavigationProperty Name="Note" Relationship="Self.FK_PersonalInfo_Notes" FromRole="PersonalInfo" ToRole="Notes" />
           <NavigationProperty Name="References" Relationship="Self.FK_PersonalInfo_References" FromRole="PersonalInfo" ToRole="References" />
           <NavigationProperty Name="ApplicantAuth" Relationship="AESDatabaseModel.FK_PersonalInfo_ApplicantAuth" FromRole="PersonalInfo" ToRole="ApplicantAuth" />
           <NavigationProperty Name="Educations" Relationship="AESDatabaseModel.FK_PersonalInfo_Education" FromRole="PersonalInfo" ToRole="Education" />
@@ -749,18 +714,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PersonalInfo_Notes">
-          <End Role="PersonalInfo" Type="Self.PersonalInfo" Multiplicity="1" />
-          <End Role="Notes" Type="Self.Note" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="PersonalInfo">
-              <PropertyRef Name="applicantId" />
-            </Principal>
-            <Dependent Role="Notes">
-              <PropertyRef Name="applicantId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PersonalInfo_References">
           <End Role="PersonalInfo" Type="Self.PersonalInfo" Multiplicity="1" />
           <End Role="References" Type="Self.Reference" Multiplicity="*" />
@@ -804,7 +757,6 @@
           <EntitySet Name="ElectronicSigs" EntityType="Self.ElectronicSig" />
           <EntitySet Name="JobHistories" EntityType="Self.JobHistory" />
           <EntitySet Name="JobsAppliedFors" EntityType="Self.JobsAppliedFor" />
-          <EntitySet Name="Notes" EntityType="Self.Note" />
           <EntitySet Name="PersonalInfoes" EntityType="Self.PersonalInfo" />
           <EntitySet Name="Positions" EntityType="Self.Position" />
           <EntitySet Name="Questions" EntityType="Self.Question" />
@@ -842,10 +794,6 @@
           <AssociationSet Name="FK_PersonalInfo_JobHistory" Association="Self.FK_PersonalInfo_JobHistory">
             <End Role="PersonalInfo" EntitySet="PersonalInfoes" />
             <End Role="JobHistory" EntitySet="JobHistories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonalInfo_Notes" Association="Self.FK_PersonalInfo_Notes">
-            <End Role="PersonalInfo" EntitySet="PersonalInfoes" />
-            <End Role="Notes" EntitySet="Notes" />
           </AssociationSet>
           <AssociationSet Name="FK_PersonalInfo_References" Association="Self.FK_PersonalInfo_References">
             <End Role="PersonalInfo" EntitySet="PersonalInfoes" />
@@ -938,6 +886,9 @@
           <EntitySetMapping Name="Applications">
             <EntityTypeMapping TypeName="AESDatabaseModel.Application">
               <MappingFragment StoreEntitySet="Application">
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="locked" ColumnName="locked" />
+                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="applicantId" ColumnName="applicantId" />
                 <ScalarProperty Name="availablePosId" ColumnName="availablePosId" />
                 <ScalarProperty Name="storeId" ColumnName="storeId" />
@@ -1028,18 +979,6 @@
               <MappingFragment StoreEntitySet="JobsAppliedFor">
                 <ScalarProperty Name="posId" ColumnName="posId" />
                 <ScalarProperty Name="appId" ColumnName="appId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Notes">
-            <EntityTypeMapping TypeName="AESDatabaseModel.Note">
-              <MappingFragment StoreEntitySet="Notes">
-                <ScalarProperty Name="availabilityNotes" ColumnName="availabilityNotes" />
-                <ScalarProperty Name="applicantId" ColumnName="applicantId" />
-                <ScalarProperty Name="personalInfoNotes" ColumnName="personalInfoNotes" />
-                <ScalarProperty Name="educationNotes" ColumnName="educationNotes" />
-                <ScalarProperty Name="referenceNotes" ColumnName="referenceNotes" />
-                <ScalarProperty Name="jobHistoryNotes" ColumnName="jobHistoryNotes" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

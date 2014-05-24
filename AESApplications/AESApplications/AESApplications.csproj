@@ -217,13 +217,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Service References\DataServiceReference\AESApplications.DataServiceReference.Job.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\DataServiceReference\AESApplications.DataServiceReference.Question.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\DataServiceReference\AESApplications.DataServiceReference.Store.datasource">
+    <Content Include="Service References\DataServiceReference\AESApplications.DataServiceReference.ApplicantApp.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\DataServiceReference\AESApplications.DataServiceReference.Availability.datasource">
@@ -232,19 +226,28 @@
     <Content Include="Service References\DataServiceReference\AESApplications.DataServiceReference.Education.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\DataServiceReference\AESApplications.DataServiceReference.ElectronicSig.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DataServiceReference\AESApplications.DataServiceReference.Job.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\DataServiceReference\AESApplications.DataServiceReference.JobHistory.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\DataServiceReference\AESApplications.DataServiceReference.PersonalInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\DataServiceReference\AESApplications.DataServiceReference.Question.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\DataServiceReference\AESApplications.DataServiceReference.Reference.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\DataServiceReference\AESApplications.DataServiceReference.ApplicantApp.datasource">
+    <Content Include="Service References\DataServiceReference\AESApplications.DataServiceReference.Store.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\DataServiceReference\AESApplications.DataServiceReference.ElectronicSig.datasource">
+    <Content Include="Service References\DataServiceReference\AESApplications.DataServiceReference.Applicant.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\DataServiceReference\configuration91.svcinfo" />
@@ -279,21 +282,9 @@
     <Content Include="Views\PhoneScreen\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Questionnaire\Fail.cshtml" />
-    <None Include="Service References\DataServiceReference\DataService.wsdl" />
-    <None Include="Service References\DataServiceReference\DataService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DataServiceReference\DataService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DataServiceReference\DataService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DataServiceReference\DataService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Views\Availability\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <None Include="Service References\DataServiceReference\DataService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
