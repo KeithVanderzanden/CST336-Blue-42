@@ -460,6 +460,28 @@ namespace AESDataService
 
             return appNotes;
         }
+
+        public List<Store> getAllStores()
+        {
+            var stores = new List<Store>();
+            using (AESDatabaseEntities context = new AESDatabaseEntities())
+            {
+                var found = (from p in context.Stores select p).ToList();
+                foreach (var store in found)
+                {
+                    Store s = new Store();
+                    s.storeId = store.storeId;
+                    s.name = store.name;
+                    s.street = store.street;
+                    s.city = store.city;
+                    s.state = store.state;
+                    s.zip = store.zip;
+                    stores.Add(s);
+                }
+            }
+
+            return stores;
+        }
         /********************/
 
         public string getJobsfromID(int appId)
@@ -665,6 +687,29 @@ namespace AESDataService
                 using (AESDatabaseEntities context = new AESDatabaseEntities())
                 {
                     context.ApplicantAuths.Add(auth);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        /******************Added To create new stores through Management Page*****************/
+
+        private bool storeStoreInfo(Store store)
+        {
+            bool result = true;
+
+            if (store == null)
+                return false;
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    context.Stores.Add(store);
                     context.SaveChanges();
                 }
             }
@@ -1059,6 +1104,41 @@ namespace AESDataService
                 }
             }
             catch (Exception) { success = false; }
+            return success;
+        }
+
+        /****************Added for updating store info on Management site***************/
+
+        public bool updateStore(Store store)
+        {
+            bool success = true;
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    if (context.Stores.Any(o => o.storeId == store.storeId))
+                    {
+                        var entry = (from p in context.Stores 
+                                     where p.storeId == store.storeId 
+                                     select p).First();
+                        entry.storeId = store.storeId;
+                        entry.name = store.name;
+                        entry.street = store.street;
+                        entry.city = store.city;
+                        entry.state = store.state;
+                        entry.zip = store.zip;
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        success = storeStoreInfo(store);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                success = false;
+            }
             return success;
         }
         #endregion

@@ -107,6 +107,9 @@ namespace AESDataService
         string getNotes(int appId);
         [OperationContract]
         string getJobsfromID(int appId);
+
+        [OperationContract]
+        List<Store> getAllStores();
         /*******************/
         #endregion
 
@@ -149,6 +152,9 @@ namespace AESDataService
         bool lockApp(int appId);
         [OperationContract]
         bool unlockApp(int appId);
+
+        [OperationContract]
+        bool updateStore(Store store);
         #endregion
 
         #region Delete Methods
