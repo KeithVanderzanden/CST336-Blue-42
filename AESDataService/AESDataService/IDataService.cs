@@ -110,6 +110,12 @@ namespace AESDataService
 
         [OperationContract]
         List<Store> getAllStores();
+
+        [OperationContract]
+        List<Position> getAllPositions();
+
+        [OperationContract]
+        Position getPosition(int positionId);
         /*******************/
         #endregion
 
@@ -153,8 +159,13 @@ namespace AESDataService
         [OperationContract]
         bool unlockApp(int appId);
 
+        /***********Added for Management app crud operations**********/
+
         [OperationContract]
         bool updateStore(Store store);
+
+        [OperationContract]
+        bool updatePosition(Position position);
         #endregion
 
         #region Delete Methods

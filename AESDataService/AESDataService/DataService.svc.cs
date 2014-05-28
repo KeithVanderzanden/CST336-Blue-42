@@ -482,6 +482,29 @@ namespace AESDataService
 
             return stores;
         }
+
+        public List<Position> getAllPositions()
+        {
+            var positions = new List<Position>();
+            using (AESDatabaseEntities context = new AESDatabaseEntities())
+            {
+                var found = (from p in context.Positions select p).ToList();
+                foreach (var position in found)
+                {
+                    Position p = new Position();
+                    p.positionId = position.positionId;
+                    p.title = position.title;
+                    p.requirements = position.requirements;
+                    p.education = position.education;
+                    p.description = position.description;
+                    p.pay = position.pay;
+                    positions.Add(p);
+                }
+            }
+
+            return positions;
+        }
+
         /********************/
 
         public string getJobsfromID(int appId)
@@ -501,6 +524,31 @@ namespace AESDataService
             }
             catch (Exception) { }
             return temp;
+        }
+
+        public Position getPosition(int positionId)
+        {
+            Position position = new Position();
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    var found = (from p in context.Positions
+                                 where p.positionId == positionId
+                                 select p).First();
+                    position.positionId = found.positionId;
+                    position.title = found.title;
+                    position.requirements = found.requirements;
+                    position.description = found.description;
+                    position.education = found.education;
+                    position.pay = found.pay;
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+            return position;
         }
         #endregion
 
@@ -710,6 +758,27 @@ namespace AESDataService
                 using (AESDatabaseEntities context = new AESDatabaseEntities())
                 {
                     context.Stores.Add(store);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        private bool storePositionInfo(Position position)
+        {
+            bool result = true;
+
+            if (position == null)
+                return false;
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    context.Positions.Add(position);
                     context.SaveChanges();
                 }
             }
@@ -1141,6 +1210,40 @@ namespace AESDataService
             }
             return success;
         }
+
+        public bool updatePosition(Position position)
+        {
+            bool success = true;
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    if (context.Positions.Any(o => o.positionId == position.positionId))
+                    {
+                        var entry = (from p in context.Positions
+                                     where p.positionId == position.positionId
+                                     select p).First();
+                        entry.positionId = position.positionId;
+                        entry.title = position.title;
+                        entry.requirements = position.requirements;
+                        entry.education = position.education;
+                        entry.description = position.description;
+                        entry.pay = position.pay;
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        success = storePositionInfo(position);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                success = false;
+            }
+            return success;
+        }
+
         #endregion
 
         #region Delete Methods
