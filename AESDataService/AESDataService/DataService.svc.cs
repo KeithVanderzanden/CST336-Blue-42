@@ -505,6 +505,25 @@ namespace AESDataService
             return positions;
         }
 
+        public List<Question> getAllQuestions()
+        {
+            var questions = new List<Question>();
+            using (AESDatabaseEntities context = new AESDatabaseEntities())
+            {
+                var found = (from p in context.Questions select p).ToList();
+                foreach (var f in found)
+                {
+                    Question q = new Question();
+                    q.questionId = f.questionId;
+                    q.theQuestion = f.theQuestion;
+                    q.theAnswer = f.theAnswer;
+                    questions.Add(q);
+                }
+            }
+
+            return questions;
+        }
+
         /********************/
 
         public string getJobsfromID(int appId)
@@ -549,6 +568,28 @@ namespace AESDataService
             }
 
             return position;
+        }
+
+        public Question getQuestion(int questionId)
+        {
+            Question question = new Question();
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    var found = (from p in context.Questions
+                                 where p.questionId == questionId
+                                 select p).First();
+                    question.questionId = found.questionId;
+                    question.theQuestion = found.theQuestion;
+                    question.theAnswer = found.theAnswer;
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+            return question;
         }
         #endregion
 
@@ -779,6 +820,27 @@ namespace AESDataService
                 using (AESDatabaseEntities context = new AESDatabaseEntities())
                 {
                     context.Positions.Add(position);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        private bool storeQuestionInfo(Question question)
+        {
+            bool result = true;
+
+            if (question == null)
+                return false;
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    context.Questions.Add(question);
                     context.SaveChanges();
                 }
             }
@@ -1190,7 +1252,6 @@ namespace AESDataService
                         var entry = (from p in context.Stores 
                                      where p.storeId == store.storeId 
                                      select p).First();
-                        entry.storeId = store.storeId;
                         entry.name = store.name;
                         entry.street = store.street;
                         entry.city = store.city;
@@ -1223,7 +1284,6 @@ namespace AESDataService
                         var entry = (from p in context.Positions
                                      where p.positionId == position.positionId
                                      select p).First();
-                        entry.positionId = position.positionId;
                         entry.title = position.title;
                         entry.requirements = position.requirements;
                         entry.education = position.education;
@@ -1234,6 +1294,35 @@ namespace AESDataService
                     else
                     {
                         success = storePositionInfo(position);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                success = false;
+            }
+            return success;
+        }
+
+        public bool updateQuestion(Question question)
+        {
+            bool success = true;
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    if (context.Questions.Any(o => o.questionId == question.questionId))
+                    {
+                        var entry = (from p in context.Questions
+                                     where p.questionId == question.questionId
+                                     select p).First();
+                        entry.theQuestion = question.theQuestion;
+                        entry.theAnswer = question.theAnswer;
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        success = storeQuestionInfo(question);
                     }
                 }
             }

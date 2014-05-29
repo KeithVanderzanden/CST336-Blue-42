@@ -115,7 +115,13 @@ namespace AESDataService
         List<Position> getAllPositions();
 
         [OperationContract]
+        List<Question> getAllQuestions();
+
+        [OperationContract]
         Position getPosition(int positionId);
+
+        [OperationContract]
+        Question getQuestion(int questionId);
         /*******************/
         #endregion
 
@@ -166,6 +172,9 @@ namespace AESDataService
 
         [OperationContract]
         bool updatePosition(Position position);
+
+        [OperationContract]
+        bool updateQuestion(Question question);
         #endregion
 
         #region Delete Methods
