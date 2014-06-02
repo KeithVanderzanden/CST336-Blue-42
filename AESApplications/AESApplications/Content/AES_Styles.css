@@ -23,7 +23,7 @@
 }
 
 .text-shadow {
-    text-shadow: 0px 0px 10px #000000;
+    text-shadow: 0px 0px 10px rgba(0,0,0,0.5);
 }
 
 /* Page layout */
@@ -48,10 +48,6 @@ div.header {
 div.content {
     height: 100%;
     vertical-align: middle;
-}
-
-div.navigation {
-    height: 80px;
 }
 
 div.footer {
@@ -88,9 +84,9 @@ input[type=submit], input[type=button] {
     margin-top: 40px;
 }
 
-    input[type=submit]:hover, input[type=button]:hover {
-        background-color: #296ca5;
-    }
+input[type=submit]:hover, input[type=button]:hover {
+    background-color: #296ca5;
+}
 
 input[type=checkbox] {
     height: 25px;
@@ -286,36 +282,48 @@ div.job-bottom-box:hover {
 /* End Job History View */
 
 /* Start menu bar */
-#menu {
-    height: 40px;
-    font-size: 18px;
-    font-weight: bold;
+
+#menu .menu-container {
     text-align: center;
-    text-shadow: 0px 0px 10px #000000;
-    background-color: #296ca5;
+    line-height: 30px;
+    color: white;
 }
 
-    #menu ul {
-        height: auto;
-        padding: 8px 0px;
-        margin: 0px;
-    }
+#menu .menu-complete {
+    background-color: #428bca;
+}
 
-    #menu li {
-        display: inline;
-        padding: 12px;
-        border-radius:4px;
-    }
+#menu .menu-complete:hover {
+    background-color: #71aad7;
+}
 
-    #menu a {
-        text-decoration: none;
-        color: white;
-        padding: 4px 4px 4px 4px;
-    }
+#menu .menu-incomplete {
+    background-color: #d9534f;
+}
 
-        #menu a:hover {
-            color: #e08e2a;
-            background-color: #3790db;
-        }
+#menu .menu-incomplete:hover {
+    background-color: #e48080;
+}
+
+#menu .menu-incomplete-return {
+    background-color: #f0ad4e;
+}
+
+#menu .menu-incomplete-return:hover {
+    background-color: #f5c485;
+}
+
+#menu ul {
+    height: auto;
+    padding: 10px 0px 10px 0px;
+    margin: 0;
+}
+
+#menu li {
+    display: inline;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
 
 /* End menu bar*/
