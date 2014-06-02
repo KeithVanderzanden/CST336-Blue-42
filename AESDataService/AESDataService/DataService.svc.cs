@@ -851,6 +851,30 @@ namespace AESDataService
             return result;
         }
 
+        private bool storeQuestionnaireInfo(int quesId = -1, int posId = -1)
+        {
+            bool result = true;
+
+            if (posId == -1 || quesId == -1)
+                return false;
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    var qn = new Questionaire();
+                    qn.positionId = posId;
+                    qn.questionId = quesId;
+
+                    context.Questionaires.Add(qn);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                result = false;
+            }
+            return result;
+        }
         #endregion
 
         #region Update Methods
@@ -1333,6 +1357,35 @@ namespace AESDataService
             return success;
         }
 
+        public bool updateQuestionnaire(int quesId, int posId)
+        {
+            bool success = true;
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    if (context.Questionaires.Any(o => o.questionId == quesId && o.positionId == posId))
+                    {
+                        var entry = (from p in context.Questionaires
+                                        where p.questionId == quesId && p.positionId == posId
+                                        select p).First();
+                        entry.positionId = posId;
+                        entry.questionId = quesId;
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        success = storeQuestionnaireInfo(quesId, posId);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                success = false;
+            }
+            return success;
+        }
+
         #endregion
 
         #region Delete Methods
@@ -1349,6 +1402,30 @@ namespace AESDataService
                         context.JobsAppliedFors.Remove(jobAppliedFor);
                         context.SaveChanges();
                     }
+                    success = true;
+                }
+                else
+                {
+                    success = true;
+                }
+            }
+            return success;
+        }
+
+        public bool deleteQuestionnaire(int quesId, int posId)
+        {
+            bool success = false;
+            using (AESDatabaseEntities context = new AESDatabaseEntities())
+            {
+                if (context.Questionaires.Any(o => o.questionId == quesId && o.positionId == posId))
+                {
+                    var entry = (from q in context.Questionaires
+                                 where q.questionId == quesId && q.positionId == posId
+                                 select q).First();
+
+                    context.Questionaires.Remove(entry);
+                    context.SaveChanges();
+
                     success = true;
                 }
                 else

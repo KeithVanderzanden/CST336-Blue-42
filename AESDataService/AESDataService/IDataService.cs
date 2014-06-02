@@ -175,11 +175,17 @@ namespace AESDataService
 
         [OperationContract]
         bool updateQuestion(Question question);
+
+        [OperationContract]
+        bool updateQuestionnaire(int quesId, int posId);
         #endregion
 
         #region Delete Methods
         [OperationContract]
         bool deleteJobIds(int applicantId);
+
+        [OperationContract]
+        bool deleteQuestionnaire(int quesId, int posId);
         #endregion
     }
 
