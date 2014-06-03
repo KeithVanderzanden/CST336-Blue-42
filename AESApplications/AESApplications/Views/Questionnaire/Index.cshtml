@@ -4,14 +4,15 @@
     ViewBag.Title = "Questionnaire";
 }
 
-<div style="text-align: center; margin: 20px;">
+<div class="content">
 
-    <div class="content-header">Please answer a few questions...</div>
+    <h1>Please answer a few questions</h1>
 
     @using (Html.BeginForm("CheckQuestions", "Questionnaire", FormMethod.Post))
     {
 
-        <div class="question-container box-shadow">
+        <fieldset>
+            <legend class="label-blue text-shadow">Questionnaire</legend>
 
             @for (int i = 0; i < Model.Count; i++)
             {
@@ -22,22 +23,30 @@
                 <div style="display: table-row;">
 
                     <div class="question">@Model[i].question</div>
-                    <div class="radio-button">
-                        @Html.Label("Yes")
-                        @Html.RadioButtonFor(m => m[i].response, "y")
+                    <div class="answer">
+                        <div style="float: left; margin-right: 10px;">
+                            <div style="float: left;">
+                                @Html.Label("Yes")
+                            </div>
+                            <div style="float: left;">
+                                @Html.RadioButtonFor(m => m[i].response, "y")
+                            </div>
+                        </div>
+                        <div style="float: left;">
+                            <div style="float: left;">
+                                @Html.Label("No")
+                            </div>
+                            <div style="float: left;">
+                                @Html.RadioButtonFor(m => m[i].response, "n")
+                            </div>
+                        </div>
                     </div>
-                    <div class="radio-button" style="border-left: 1px solid #3790db;">
-                        @Html.Label("No")
-                        @Html.RadioButtonFor(m => m[i].response, "n")
-                    </div>
-
                 </div>
-
             }
 
-        </div>
+        </fieldset>
 
-        <input type="submit" value="Continue" />
+        <input type="submit" value="Continue" class="label-green text-shadow" />
 
     }
 

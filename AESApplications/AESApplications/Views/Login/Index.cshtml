@@ -3,39 +3,46 @@
     ViewBag.Title = "Account Login";
 }
 
-<div style="text-align: center; margin: 20px;">
+<div class="content">
 
-    <div class="content-header">@ViewBag.Title</div>
+    <h1>@ViewBag.Title</h1>
+    <h2>Forgot your password?  Dial 1-800-1TO-HIRE and speak with an agent to have your password reset.</h2>
+
     @using (Html.BeginForm("Index", "Login", FormMethod.Post))
     {
-         @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
 
-        <div class="form-container box-shadow">
-            <div style="display: table-row;">
-                <div class="form-title">@Html.LabelFor(m => m.ssn)</div>
-                <div class="form-content">
-                    @Html.TextBoxFor(m => m.ssn, new { Class = "field-input", style = "width: 150px;", maxlength = "9" })
-                    <br />
-                    <div id="validation">@Html.ValidationMessageFor(m => m.ssn)</div>
+        <fieldset>
+            <legend class="label-blue text-shadow">Account Login</legend>
+
+            <div style="display: table;">
+
+                <div style="display: table-row;">
+                    <div class="question">@Html.LabelFor(m => m.ssn)</div>
+                    <div class="answer">
+                        @Html.TextBoxFor(m => m.ssn, new { style = "width: 150px; float: left;", maxlength = "9" })
+                        <div class="validation">@Html.ValidationMessageFor(m => m.ssn)</div>
+                    </div>
                 </div>
-            </div>
-            <div style="display: table-row;">
-                <div class="form-title">@Html.LabelFor(m => m.password)</div>
-                <div class="form-content">
-                    @Html.TextBoxFor(m => m.password, new { Class = "field-input", style = "width: 250px;", type = "password" })
-                    <br />
-                    <div id="validation">@Html.ValidationMessageFor(m => m.password)</div>
+
+                <div style="display: table-row;">
+                    <div class="question">@Html.LabelFor(m => m.password)</div>
+                    <div class="answer">
+                        @Html.TextBoxFor(m => m.password, new { style = "width: 150px; float: left;", type = "password" })
+                        <div class="validation">@Html.ValidationMessageFor(m => m.password)</div>
+                    </div>
                 </div>
-            </div>
 
             </div>
+
+        </fieldset>
         
-        <input type="submit" value="Log In" />
-        <input type="button" value="Back" onclick="location.href='@Url.Action("Welcome", "Home")'" />
-        <br/>
-        <br/>
-        <div class="content-subheader" style="font-size:large">Forgot your password?  Dial 1-800-1TO-HIRE and speak with an agent to have your password reset.</div>
+        <br />
+
+        <input type="submit" value="Continue" class="label-green text-shadow" style="float: left;"/>
     }
+
+    <input type="submit" value="Back" onclick="location.href='@Url.Action("Welcome", "Home")'" class="label-red text-shadow" />
 
 </div>

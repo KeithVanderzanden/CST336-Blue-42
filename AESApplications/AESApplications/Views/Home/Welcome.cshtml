@@ -2,13 +2,20 @@
     ViewBag.Title = "Main Menu";
 }
 
-<div style="text-align: center;">
+<div class="content">
 
-    <div class="content-header">Welcome to the A.E.S. Job Application Kiosk.</div>
+    <h1>Welcome</h1>
 
-    <div class="content-subheader">Select an option below to begin.</div>
+    <h2 style="font-size: 150%;">
+        Welcome to the A.E.S. Job Application Kiosk.
+        Select an option below to begin.
+    </h2>
 
-    <input type="button" value="Show Local Jobs / New Application" onclick="location.href='@Url.Action("Index", "LocalJobs")'" />
-    <input type="button" value="Login / Change Application" onclick="location.href='@Url.Action("Index", "Login")'" />
+    <br />
+
+    <div style="text-align: center;">
+        <input type="button" value="Show Local Jobs / New Application" onclick="location.href='@Url.Action("Index", "LocalJobs")'" class="label-green text-shadow" />
+        <input type="button" value="Login / Change Application" onclick="location.href='@Url.Action("Index", "Login")'" class="label-green text-shadow" />
+    </div>
 
 </div>

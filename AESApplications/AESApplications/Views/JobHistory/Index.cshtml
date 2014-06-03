@@ -4,9 +4,9 @@
     ViewBag.Title = "Job History";
 }
 
-<div style="text-align: center; margin: 20px;">
+<div class="content">
 
-    <div class="content-header">@ViewBag.Title</div>
+    <h1>@ViewBag.Title</h1>
 
     @functions
     {
@@ -32,83 +32,75 @@
         {
             @Html.HiddenFor(m => m[i].applicantId, Model[i].applicantId);
             @Html.HiddenFor(m => m[i].historyId, Model[i].historyId);
-            <div class="jobhistory-container box-shadow">
+        
+        <fieldset>
+            <legend class="label-blue text-shadow">@getNumberWithSuffix(i + 1) Most Recent Job</legend>
 
-                <div class="jobhistory-tab text-shadow" style="padding: 10px;">
-                  @getNumberWithSuffix(i + 1) Most Recent Job
-                </div>
-
-                <div class="form-container">
+                <div style="display: table;">
 
                         <div style="display: table-row;">
-                            <div class="form-title">@Html.LabelFor(m => m[i].employer)</div>
-                            <div class="form-content">
-                                @Html.TextBoxFor(m => m[i].employer, new { Class = "field-input", style = "width:200px;text-transform:capitalize;" })
-                                <br />
-                                <div id="validation">@Html.ValidationMessageFor(m => m[i].employer)</div>
+                            <div class="question">@Html.LabelFor(m => m[i].employer)</div>
+                            <div class="answer">
+                                @Html.TextBoxFor(m => m[i].employer, new { style = "width: 200px; float: left; text-transform: capitalize;" })
+                                <div class="validation">@Html.ValidationMessageFor(m => m[i].employer)</div>
                             </div>
                         </div>
 
                         <div style="display: table-row;">
-                            <div class="form-title">@Html.LabelFor(m => m[i].street)</div>
-                            <div class="form-content">
-                                @Html.TextBoxFor(m => m[i].street, new { Class = "field-input", style = "width:300px;text-transform:capitalize;" })
-                                <br />
-                                <div id="validation">@Html.ValidationMessageFor(m => m[i].street)</div>
+                            <div class="question">@Html.LabelFor(m => m[i].street)</div>
+                            <div class="answer">
+                                @Html.TextBoxFor(m => m[i].street, new { style = "width: 300px; float: left; text-transform: capitalize;" })
+                                <div class="validation">@Html.ValidationMessageFor(m => m[i].street)</div>
                             </div>
                         </div>
 
                         <div style="display: table-row;">
-                            <div class="form-title">@Html.LabelFor(m => m[i].city)</div>
-                            <div class="form-content">
-                                @Html.TextBoxFor(m => m[i].city, new { Class = "field-input", style = "width:200px;text-transform:capitalize;" })
-                                <br />
-                                <div id="validation">@Html.ValidationMessageFor(m => m[i].city)</div>
+                            <div class="question">@Html.LabelFor(m => m[i].city)</div>
+                            <div class="answer">
+                                @Html.TextBoxFor(m => m[i].city, new { style = "width: 200px; float: left; text-transform: capitalize;" })
+                                <div class="validation">@Html.ValidationMessageFor(m => m[i].city)</div>
                             </div>
                         </div>
 
                         <div style="display: table-row;">
-                            <div class="form-title">@Html.LabelFor(m => m[i].state)</div>
-                            <div class="form-content">
-                                @Html.TextBoxFor(m => m[i].state, new { Class = "field-input", style = "width:30px; text-transform:uppercase;", maxlength = 2 })
-                                <br />
-                                <div id="validation">@Html.ValidationMessageFor(m => m[i].state)</div>
+                            <div class="question">@Html.LabelFor(m => m[i].state)</div>
+                            <div class="answer">
+                                @Html.TextBoxFor(m => m[i].state, new { style = "width: 30px; float: left; text-transform: uppercase;", maxlength = 2 })
+                                <div class="validation">@Html.ValidationMessageFor(m => m[i].state)</div>
                             </div>
                         </div>
 
                         <div style="display: table-row;">
-                            <div class="form-title">@Html.LabelFor(m => m[i].zip)</div>
-                            <div class="form-content">
-                                @Html.TextBoxFor(m => m[i].zip, new { Class = "field-input", style = "width:100px;", maxlength = 5 })
-                                <br />
-                                <div id="validation">@Html.ValidationMessageFor(m => m[i].zip)</div>
+                            <div class="question">@Html.LabelFor(m => m[i].zip)</div>
+                            <div class="answer">
+                                @Html.TextBoxFor(m => m[i].zip, new { style = "width: 100px; float: left;", maxlength = 5 })
+                                <div class="validation">@Html.ValidationMessageFor(m => m[i].zip)</div>
                             </div>
                         </div>
 
                         <div style="display: table-row;">
-                            <div class="form-title">@Html.LabelFor(m => m[i].position)</div>
-                            <div class="form-content">
-                                @Html.TextBoxFor(m => m[i].position, new { Class = "field-input", style = "width:200px;text-transform:capitalize;" })
-                                <br />
-                                <div id="validation">@Html.ValidationMessageFor(m => m[i].position)</div>
+                            <div class="question">@Html.LabelFor(m => m[i].position)</div>
+                            <div class="answer">
+                                @Html.TextBoxFor(m => m[i].position, new { style = "width: 200px; float: left; text-transform: capitalize;" })
+                                <div class="validation">@Html.ValidationMessageFor(m => m[i].position)</div>
                             </div>
                         </div>
 
                         <div style="display: table-row;">
-                            <div class="form-title">@Html.LabelFor(m => m[i].reason_for_leaving)</div>
-                            <div class="form-content">
-                                @Html.TextAreaFor(m => m[i].reason_for_leaving, new { Class = "field-input", style = "width:400px;", maxlength=50 })
-                                <br />
-                                <div id="validation">@Html.ValidationMessageFor(m => m[i].reason_for_leaving)</div>
+                            <div class="question">@Html.LabelFor(m => m[i].reason_for_leaving)</div>
+                            <div class="answer">
+                                @Html.TextAreaFor(m => m[i].reason_for_leaving, new { style = "width: 400px; float: left;", maxlength = 50 })
+                                <div class="validation">@Html.ValidationMessageFor(m => m[i].reason_for_leaving)</div>
                             </div>
                         </div>
 
                         <div style="display: table-row;">
-                            <div class="form-title">@Html.LabelFor(m => m[i].from_month)</div>
-                            <div class="form-content">
-                                @Html.TextBoxFor(m => m[i].from_month, new { Class = "field-input", style = "width:30px;" }) / @Html.TextBoxFor(m => m[i].from_year, new { Class = "field-input", style = "width:60px;" })
-                                <br />
-                                <div id="validation">
+                            <div class="question">@Html.LabelFor(m => m[i].from_month)</div>
+                            <div class="answer">
+                                <div style="float: left;">
+                                    @Html.TextBoxFor(m => m[i].from_month, new { style = "width: 30px;" }) / @Html.TextBoxFor(m => m[i].from_year, new { style = "width: 60px;" })
+                                </div>
+                                <div class="validation">
                                     @Html.ValidationMessageFor(m => m[i].from_month)
                                     @Html.ValidationMessageFor(m => m[i].from_year)
                                 </div>
@@ -116,11 +108,12 @@
                         </div>
 
                         <div style="display: table-row;">
-                            <div class="form-title">@Html.LabelFor(m => m[i].to_month)</div>
-                            <div class="form-content">
-                                @Html.TextBoxFor(m => m[i].to_month, new { Class = "field-input", style = "width:30px;" }) / @Html.TextBoxFor(m => m[i].to_year, new { Class = "field-input", style = "width:60px;" })
-                                <br />
-                                <div id="validation">
+                            <div class="question">@Html.LabelFor(m => m[i].to_month)</div>
+                            <div class="answer">
+                                <div style="float: left;">
+                                    @Html.TextBoxFor(m => m[i].to_month, new { style = "width: 30px;" }) / @Html.TextBoxFor(m => m[i].to_year, new { style = "width: 60px;" })
+                                </div>
+                                <div class="validation">
                                     @Html.ValidationMessageFor(m => m[i].to_month)
                                     @Html.ValidationMessageFor(m => m[i].to_year)
                                 </div>
@@ -128,58 +121,54 @@
                         </div>
 
                         <div style="display: table-row;">
-                            <div class="form-title">@Html.LabelFor(m => m[i].phone)</div>
-                            <div class="form-content">
-                                @Html.TextBoxFor(m => m[i].phone, new { Class = "field-input", style = "width:100px;" })
-                                <br />
-                                <div id="validation">@Html.ValidationMessageFor(m => m[i].phone)</div>
+                            <div class="question">@Html.LabelFor(m => m[i].phone)</div>
+                            <div class="answer">
+                                @Html.TextBoxFor(m => m[i].phone, new { style = "width: 100px; float: left;" })
+                                <div class="validation">@Html.ValidationMessageFor(m => m[i].phone)</div>
                             </div>
                         </div>
 
                         <div style="display: table-row;">
-                            <div class="form-title">@Html.LabelFor(m => m[i].supervisor)</div>
-                            <div class="form-content">
-                                @Html.TextBoxFor(m => m[i].supervisor, new { Class = "field-input", style = "width:200px;text-transform:capitalize;" })
-                                <br />
-                                <div id="validation">@Html.ValidationMessageFor(m => m[i].supervisor)</div>
+                            <div class="question">@Html.LabelFor(m => m[i].supervisor)</div>
+                            <div class="answer">
+                                @Html.TextBoxFor(m => m[i].supervisor, new { style = "width :200px; float: left; text-transform: capitalize;" })
+                                <div class="validation">@Html.ValidationMessageFor(m => m[i].supervisor)</div>
                             </div>
                         </div>
 
                         <div style="display: table-row;">
-                            <div class="form-title">@Html.LabelFor(m => m[i].salary_start)</div>
-                            <div class="form-content">
-                                @Html.TextBoxFor(m => m[i].salary_start, new { Class = "field-input", style = "width:100px;" })
-                                <br />
-                                <div id="validation">@Html.ValidationMessageFor(m => m[i].salary_start)</div>
+                            <div class="question">@Html.LabelFor(m => m[i].salary_start)</div>
+                            <div class="answer">
+                                @Html.TextBoxFor(m => m[i].salary_start, new { style = "width: 100px; float: left;" })
+                                <div class="validation">@Html.ValidationMessageFor(m => m[i].salary_start)</div>
                             </div>
                         </div>
 
                         <div style="display: table-row;">
-                            <div class="form-title">@Html.LabelFor(m => m[i].salary_end)</div>
-                            <div class="form-content">
-                                @Html.TextBoxFor(m => m[i].salary_end, new { Class = "field-input", style = "width:100px;" })
-                                <br />
-                                <div id="validation">@Html.ValidationMessageFor(m => m[i].salary_end)</div>
+                            <div class="question">@Html.LabelFor(m => m[i].salary_end)</div>
+                            <div class="answer">
+                                @Html.TextBoxFor(m => m[i].salary_end, new { style = "width: 100px; float: left;" })
+                                <div class="validation">@Html.ValidationMessageFor(m => m[i].salary_end)</div>
                             </div>
                         </div>
 
                         <div style="display: table-row;">
-                            <div class="form-title">@Html.LabelFor(m => m[i].responsibilities)</div>
-                            <div class="form-content">
-                                @Html.TextAreaFor(m => m[i].responsibilities, new { Class = "field-input", style = "width:400px;", maxlength=2000 })
-                                <br />
-                                <div id="validation">@Html.ValidationMessageFor(m => m[i].responsibilities)</div>
+                            <div class="question">@Html.LabelFor(m => m[i].responsibilities)</div>
+                            <div class="answer">
+                                @Html.TextAreaFor(m => m[i].responsibilities, new { style = "width: 400px; float: left;", maxlength=2000 })
+                                <div class="validation">@Html.ValidationMessageFor(m => m[i].responsibilities)</div>
                             </div>
                         </div>
 
                 </div>
 
-            </div>
+            </fieldset>
+        
+            <br />
 
         }
 
-        <input type="submit" value="Continue" />
-
+        <input type="submit" value="Continue" class="label-green text-shadow" />
     }
 
 </div>

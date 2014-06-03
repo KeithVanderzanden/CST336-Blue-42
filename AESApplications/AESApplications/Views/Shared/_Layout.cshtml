@@ -13,41 +13,28 @@
 
 </head>
 
-<body style="background-color: gray;">
+<body>
 
-    <div class="container box-shadow">
+    <div id="wrapper" style="display: table;">
 
-        <div style="display: table-row;">
-            <div class="header text-shadow background-header-footer" style="display: table-cell">
+        <div class="text-shadow layout-blue-dark" style="display: table-row;">
+            <div id="header" style="display: table-cell;">
                 A.E.S. Job Application Kiosk
             </div>
         </div>
-        @if (((string)Session["Status"]).CompareTo("LoggedIn") == 0 && ((string)Session["DisableMenu"]).CompareTo("No") == 0)
-        {
-            string incomplete = ((string)Session["LoginType"]).CompareTo("Return") == 0 ? "menu-incomplete-return" : "menu-incomplete";
-            <div id="menu" style="display: table-row;">
-                <div class="menu-container text-shadow background-nav">
-                    <ul>
-                        <li onclick="location.href = '@Url.Action("Index", "LocalJobs")';" class="@(((string)this.Session["LocalJobs"]).CompareTo("Done") == 0 ? "menu-complete" : incomplete)">Select Jobs</li>
-                        <li onclick="location.href = '@Url.Action("Index", "PersonalInfo")';" class="@(((string)this.Session["PersonalInfo"]).CompareTo("Done") == 0 ? "menu-complete" : incomplete)">About You</li>
-                        <li onclick="location.href = '@Url.Action("Index", "Availability")';" class="@(((string)this.Session["Availability"]).CompareTo("Done") == 0 ? "menu-complete" : incomplete)">Availability</li>
-                        <li onclick="location.href = '@Url.Action("Index", "JobHistory")';" class="@(((string)this.Session["JobHistory"]).CompareTo("Done") == 0 ? "menu-complete" : incomplete)">Job History</li>
-                        <li onclick="location.href = '@Url.Action("Index", "Education")';" class="@(((string)this.Session["Education"]).CompareTo("Done") == 0 ? "menu-complete" : incomplete)">Education</li>
-                        <li onclick="location.href = '@Url.Action("Index", "References")';" class="@(((string)this.Session["Reference"]).CompareTo("Done") == 0 ? "menu-complete" : incomplete)">References</li>
-                        <li onclick="location.href = '@Url.Action("Index", "ESignature")';" class="@(((string)this.Session["ESignature"]).CompareTo("Done") == 0 ? "menu-complete" : incomplete)">Submit Application</li>
-                        <li onclick="location.href = '@Url.Action("Welcome", "Home")';" class="menu-complete">Exit</li>
-                    </ul>
-                </div>
-            </div>
-        }
-        <div style="display: table-row;">
-            <div class="content" style="display: table-cell">
+
+        <div class="layout-blue-light" style="display: table-row;">
+            @Html.Partial("_Navigation")
+        </div>
+
+        <div style="display: table-row; vertical-align: middle;">
+            <div id="content" style="display: table-cell;">
                 @RenderBody()
             </div>
         </div>
 
-        <div style="display: table-row;">
-            <div class="footer background-header-footer" style="display: table-cell">
+        <div class="layout-blue-dark" style="display: table-row;">
+            <div id="footer" style="display: table-cell;">
                 &copy; @DateTime.Now.Year - A.E.S. Incorporated
             </div>
         </div>

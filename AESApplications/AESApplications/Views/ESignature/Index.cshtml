@@ -2,11 +2,11 @@
     ViewBag.Title = "E-Signature";
 }
 
-<div style="text-align: center; margin: 20px;">
+<div class="content">
 
-    <div class="content-header">@ViewBag.Title</div>
+    <h1>@ViewBag.Title</h1>
 
-    <div class="content-subheader">
+    <h2 style="font-size: 200%; text-align: center;">
         You're almost there!
         <br />
         <br />
@@ -14,8 +14,9 @@
         <br />
         <br />
         Click "I Agree" below to electronically sign your application.
-    </div>
-
-    <input type="button" value="I Agree" onclick="location.href='@Url.Action("ApplicationFinished", "ESignature")'" />
+        <br />
+        <br />
+        <input type="submit" value="I Agree" onclick="location.href='@Url.Action("ApplicationFinished", "ESignature")'" class="label-green text-shadow" />
+    </h2>
 
 </div>

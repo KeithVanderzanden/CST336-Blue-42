@@ -4,11 +4,11 @@
     ViewBag.Title = "Local Jobs";
 }
 
-<div style="text-align: center; margin: 20px;">
+<div class="content">
 
-    <div class="content-header">@ViewBag.Title</div>
+    <h1>@ViewBag.Title</h1>
 
-    <div class="content-subheader">Click a job position to show or hide details.</div>
+    <h2>Click a job position to show or hide details.</h2>
 
     @using (Html.BeginForm("Index", "Questionnaire", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
     {
@@ -119,18 +119,18 @@
 
                 </div>
 
-                <div class="position-apply text-shadow box-shadow" style="display: table-cell;">
+                <div class="position-apply text-shadow box-shadow" style="display: table-cell; text-align: center;">
                     @{var isChecked = job.selected == 1 ? "checked" : "";}
                     <input type="checkbox" id="@job.jobId" name="@job.jobId.ToString()" @isChecked/>
                     <br />
-                    Add
+                    Apply
                 </div>
 
             </div>
 
         }
 
-        <input type="submit" value="Apply" />
+        <input type="submit" value="Continue" class="label-green text-shadow" />
     }
 
     <script>

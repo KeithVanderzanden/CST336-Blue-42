@@ -2,15 +2,20 @@
     ViewBag.Title = "Kiosk Start";
 }
 
-<div style="text-align: center;">
+<div class="content">
 
-    <div class="content-header">Enter Store ID #</div>
+    <h1>Store Information</h1>
+    <h2>Enter Store ID #</h2>
 
     @using (Html.BeginForm("Welcome", "Home", FormMethod.Post, new { role = "form" }))
     {
         @Html.AntiForgeryToken()
         @Html.TextBox("storeId", null, new { placeholder = "Store Id #", @id = "storeid-textfield" })
-        <input type="submit" value="Continue" />
+        
+        <br />
+        <br />
+        
+        <input type="submit" value="Continue" class="label-green text-shadow" />
     }
 
 </div>

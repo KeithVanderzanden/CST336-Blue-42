@@ -2,11 +2,11 @@
     ViewBag.Title = "Phone Screening";
 }
 
-<div style="text-align: center; margin: 20px;">
+<div class="content">
 
-    <div class="content-header">@ViewBag.Title</div>
+    <h1>@ViewBag.Title</h1>
 
-    <div class="content-subheader">
+    <h2 style="font-size: 200%; text-align: center;">
         Your application is now complete and you are ready to be screened by one of our interviewers.
         <br />
         <br />
@@ -14,8 +14,9 @@
         <br />
         <br />
         <b style="color: black; font-size: 250%">1-800-1TO-HIRE</b>
-    </div>
-
-    <input type="button" value="Exit Application" onclick="location.href='@Url.Action("Welcome", "Home")'" />
+        <br />
+        <br />
+        <input type="submit" value="Exit Application" onclick="location.href='@Url.Action("Welcome", "Home")'" class="label-green text-shadow" />
+    </h2>
 
 </div>
