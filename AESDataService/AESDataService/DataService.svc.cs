@@ -591,6 +591,76 @@ namespace AESDataService
 
             return question;
         }
+
+        public AvailablePosition getAvailablePosition(int posId)
+        {
+            AvailablePosition ap = new AvailablePosition();
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    var found = (from p in context.AvailablePositions
+                                 where p.availablePosId == posId
+                                 select p).First();
+
+                    ap.storeId = found.storeId;
+                    ap.availablePosId = found.availablePosId;
+                    ap.positionId = found.positionId;
+                    ap.mondayFrom = found.mondayFrom;
+                    ap.mondayTo = found.mondayTo;
+                    ap.tuesdayFrom = found.tuesdayFrom;
+                    ap.tuesdayTo = found.tuesdayTo;
+                    ap.wednesdayFrom = found.wednesdayFrom;
+                    ap.wednesdayTo = found.wednesdayTo;
+                    ap.thursdayFrom = found.thursdayFrom;
+                    ap.thursdayTo = found.thursdayTo;
+                    ap.fridayFrom = found.fridayFrom;
+                    ap.fridayTo = found.fridayTo;
+                    ap.saturdayFrom = found.saturdayFrom;
+                    ap.saturdayTo = found.saturdayTo;
+                    ap.sundayFrom = found.sundayFrom;
+                    ap.sundayTo = found.sundayTo;
+                }
+            }
+            catch (Exception)
+            { }
+
+            return ap;
+        }
+
+        public List<AvailablePosition> getAllAvailablePositions()
+        {
+            var positions = new List<AvailablePosition>();
+            using (AESDatabaseEntities context = new AESDatabaseEntities())
+            {
+                var found = (from p in context.AvailablePositions
+                             select p).ToList();
+                foreach (var f in found)
+                {
+                    AvailablePosition ap = new AvailablePosition();
+                    ap.storeId = f.storeId;
+                    ap.availablePosId = f.availablePosId;
+                    ap.positionId = f.positionId;
+                    ap.mondayFrom = f.mondayFrom;
+                    ap.mondayTo = f.mondayTo;
+                    ap.tuesdayFrom = f.tuesdayFrom;
+                    ap.tuesdayTo = f.tuesdayTo;
+                    ap.wednesdayFrom = f.wednesdayFrom;
+                    ap.wednesdayTo = f.wednesdayTo;
+                    ap.thursdayFrom = f.thursdayFrom;
+                    ap.thursdayTo = f.thursdayTo;
+                    ap.fridayFrom = f.fridayFrom;
+                    ap.fridayTo = f.fridayTo;
+                    ap.saturdayFrom = f.saturdayFrom;
+                    ap.saturdayTo = f.saturdayTo;
+                    ap.sundayFrom = f.sundayFrom;
+                    ap.sundayTo = f.sundayTo;
+                    positions.Add(ap);
+                }
+            }
+
+            return positions;
+        }
         #endregion
 
         #region Create Methods
@@ -866,6 +936,27 @@ namespace AESDataService
                     qn.questionId = quesId;
 
                     context.Questionaires.Add(qn);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        private bool storeAvailablePosition(AvailablePosition ap)
+        {
+            bool result = true;
+
+            if (ap == null)
+                return false;
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    context.AvailablePositions.Add(ap);
                     context.SaveChanges();
                 }
             }
@@ -1386,6 +1477,50 @@ namespace AESDataService
             return success;
         }
 
+        public bool updateAvailablePosition(AvailablePosition ap)
+        {
+            bool success = true;
+            try
+            {
+                using (AESDatabaseEntities context = new AESDatabaseEntities())
+                {
+                    if (context.AvailablePositions.Any(o => o.availablePosId == ap.availablePosId))
+                    {
+                        var entry = (from p in context.AvailablePositions
+                                     where p.availablePosId == ap.availablePosId
+                                     select p).First();
+                        entry.positionId = ap.positionId;
+                        entry.storeId = ap.storeId;
+                        entry.mondayFrom = ap.mondayFrom;
+                        entry.mondayTo = ap.mondayTo;
+                        entry.tuesdayFrom = ap.tuesdayFrom;
+                        entry.tuesdayTo = ap.tuesdayTo;
+                        entry.wednesdayFrom = ap.wednesdayFrom;
+                        entry.wednesdayTo = ap.wednesdayTo;
+                        entry.thursdayFrom = ap.thursdayFrom;
+                        entry.thursdayTo = ap.thursdayTo;
+                        entry.fridayFrom = ap.fridayFrom;
+                        entry.fridayTo = ap.fridayTo;
+                        entry.saturdayFrom = ap.saturdayFrom;
+                        entry.saturdayTo = ap.saturdayTo;
+                        entry.sundayFrom = ap.sundayFrom;
+                        entry.sundayTo = ap.sundayTo;
+
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        success = storeAvailablePosition(ap);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                success = false;
+            }
+            return success;
+        }
+
         #endregion
 
         #region Delete Methods
@@ -1424,6 +1559,30 @@ namespace AESDataService
                                  select q).First();
 
                     context.Questionaires.Remove(entry);
+                    context.SaveChanges();
+
+                    success = true;
+                }
+                else
+                {
+                    success = true;
+                }
+            }
+            return success;
+        }
+
+        public bool deleteAvailablePosition(int posId)
+        {
+            bool success = false;
+            using (AESDatabaseEntities context = new AESDatabaseEntities())
+            {
+                if (context.AvailablePositions.Any(o => o.availablePosId == posId))
+                {
+                    var entry = (from q in context.AvailablePositions
+                                 where q.availablePosId == posId
+                                 select q).First();
+
+                    context.AvailablePositions.Remove(entry);
                     context.SaveChanges();
 
                     success = true;
