@@ -13,11 +13,16 @@ namespace AESApplications.Models
 
         [Display(Name = "Name")]
         public string name { get; set; }
-        [DataType(DataType.PhoneNumber)]
+
         [Display(Name = "Phone")]
+        [MaxLength(16)]
+        [RegularExpression(@"^(\d{1})?-?(\d{3})?-?\d{3}-?\d{4}$", ErrorMessage = "Invalid phone number Ex: 123-456-7890")]
+        [DataType(DataType.PhoneNumber)]
         public string phone { get; set; }
+        
         [Display(Name = "Company")]
         public string company { get; set; }
+        
         [Display(Name = "Title")]
         public string title { get; set; }
     }
