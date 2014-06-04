@@ -147,7 +147,6 @@ namespace AESDataService
             return authenticated;
         }
 
-
         public string authenticateManager(string userName, string password)
         {
             string perm = "None";
@@ -190,6 +189,20 @@ namespace AESDataService
                 }
             }
             return jobsAppliedFor;
+        }
+
+        public ApplicantAuth getApplicantAuthInfo(int applicantId)
+        {
+            var auth = new ApplicantAuth();
+            using (AESDatabaseEntities context = new AESDatabaseEntities())
+            {
+                if (context.PersonalInfoes.Any(o => o.applicantId == applicantId))
+                {
+                    var info = (from q in context.ApplicantAuths where q.applicantId == applicantId select q).First();
+                    auth.password = info.password;
+                }
+            }
+            return auth;
         }
         
         public PersonalInfo getPersonalInfo(int applicantId)

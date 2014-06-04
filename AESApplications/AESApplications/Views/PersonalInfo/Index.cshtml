@@ -26,7 +26,7 @@
                         <div class="validation">@Html.ValidationMessageFor(m => m.name_first)</div>
                     </div>
                 </div>
-            
+
                 <div style="display: table-row;">
                     <div class="question">@Html.LabelFor(m => m.name_middle)</div>
                     <div class="answer">
@@ -82,7 +82,7 @@
                         <div class="validation">@Html.ValidationMessageFor(m => m.zip)</div>
                     </div>
                 </div>
-            
+
                 <div style="display: table-row;">
                     <div class="question">@Html.LabelFor(m => m.phone_num)</div>
                     <div class="answer">
@@ -102,48 +102,54 @@
             </div>
 
         </fieldset>
-        
-        <br />
-        
-        <h1>Login Information</h1>
-        <h2 style="padding: 0 5px 0 5px;">The following is required to access your application at a future date.  Your social security number will become your login name.</h2>
-        
-        <br />
-        
-        <fieldset>
-            <legend class="label-blue text-shadow">Login</legend>
-            
-            <div style="display: table;">
 
-                <div style="display: table-row;">
-                    <div class="question">@Html.LabelFor(m => m.ssn)</div>
-                    <div class="answer">
-                        @Html.TextBoxFor(m => m.ssn, new { style = "width: 150px; float: left;", maxlength = "9"})
-                        <div class="validation">@Html.ValidationMessageFor(m => m.ssn)</div>
+        <br />
+
+        string visible = ((string)Session["PersonalInfo"]).CompareTo("Done") == 0 ? "none" : "block";
+
+        <div style="display: @visible;">
+
+            <h1>Login Information</h1>
+            <h2 style="padding: 0 5px 0 5px;">The following is required to access your application at a future date.  Your social security number will become your login name.</h2>
+
+            <br />
+
+            <fieldset>
+                <legend class="label-blue text-shadow">Login</legend>
+
+                <div style="display: table;">
+
+                    <div style="display: table-row;">
+                        <div class="question">@Html.LabelFor(m => m.ssn)</div>
+                        <div class="answer">
+                            @Html.TextBoxFor(m => m.ssn, new { style = "width: 150px; float: left;", maxlength = "9"})
+                            <div class="validation">@Html.ValidationMessageFor(m => m.ssn)</div>
+                        </div>
                     </div>
+
+                    <div style="display: table-row;">
+                        <div class="question">@Html.LabelFor(m => m.password)</div>
+                        <div class="answer">
+                            @Html.TextBoxFor(m => m.password, new { style = "width: 150px; float: left;", maxlength = "50", type = "password" })
+                            <div class="validation">@Html.ValidationMessageFor(m => m.password)</div>
+                        </div>
+                    </div>
+
+                    <div style="display: table-row;">
+                        <div class="question">@Html.LabelFor(m => m.passVerification)</div>
+                        <div class="answer">
+                            @Html.TextBoxFor(m => m.passVerification, new { style = "width: 150px; float: left;", maxlength = "50", type = "password" })
+                            <div class="validation">@Html.ValidationMessageFor(m => m.passVerification)</div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div style="display: table-row;">
-                    <div class="question">@Html.LabelFor(m => m.password)</div>
-                    <div class="answer">
-                        @Html.TextBoxFor(m => m.password, new { style = "width: 150px; float: left;", maxlength = "50", type = "password" })
-                        <div class="validation">@Html.ValidationMessageFor(m => m.password)</div>
-                    </div>
-                </div>
+            </fieldset>
 
-                <div style="display: table-row;">
-                    <div class="question">@Html.LabelFor(m => m.passVerification)</div>
-                    <div class="answer">
-                        @Html.TextBoxFor(m => m.passVerification, new { style = "width: 150px; float: left;", maxlength = "50", type = "password" })
-                        <div class="validation">@Html.ValidationMessageFor(m => m.passVerification)</div>
-                    </div>
-                </div>
+            <br />
 
-            </div>
-
-        </fieldset>
-        
-        <br />
+        </div>
 
         <input type="submit" value="Continue" class="label-green text-shadow" />
     }

@@ -58,6 +58,9 @@ namespace AESDataService
         List<int> getJobsAppliedFor(int applicantId);
 
         [OperationContract]
+        ApplicantAuth getApplicantAuthInfo(int applicantId);
+
+        [OperationContract]
         PersonalInfo getPersonalInfo(int applicantId);
 
         [OperationContract]

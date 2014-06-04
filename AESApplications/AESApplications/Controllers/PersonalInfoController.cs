@@ -24,6 +24,7 @@ namespace AESApplications.Controllers
                 {
                     client.Open();
                     var personalInfo = await client.getPersonalInfoAsync(Convert.ToInt32(Session["ApplicantId"]));
+                    var auth = await client.getApplicantAuthInfoAsync(Convert.ToInt32(Session["ApplicantId"]));
                     model.city = personalInfo.city;
                     model.name_alt = personalInfo.alias;
                     model.name_first = personalInfo.firstName;
@@ -32,6 +33,8 @@ namespace AESApplications.Controllers
                     model.email = personalInfo.email;
                     model.phone_num = personalInfo.Phone;
                     model.ssn = personalInfo.socialNum;
+                    model.password = auth.password;
+                    model.passVerification = auth.password;
                     model.state = personalInfo.state;
                     model.street = personalInfo.street;
                     model.zip = personalInfo.zip;
