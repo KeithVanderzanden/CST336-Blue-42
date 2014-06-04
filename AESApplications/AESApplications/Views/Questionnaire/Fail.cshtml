@@ -3,23 +3,23 @@
     ViewBag.Title = "Do you meet the requirements?";
 }
 
-<div style="text-align: center; margin: 20px;">
+<div class="content">
 
-    <div class="content-header">@ViewBag.Title</div>
+    <h1>@ViewBag.Title</h1>
 
-    <div class="content-subheader">
-        One or more of your answers disqualify you from the 
+    <h2 style="font-size: 200%;">
+        One or more of your answers disqualify you from the
         <br />
-        position(s) you are applying for.  
+        position(s) you are applying for.
         <br />
         <br />
-        Please contact us at 1-800-968-7825 for more information, 
-        <br/ >
+        Please contact us at 1-800-968-7825 for more information,
+        <br />
         or click below to continue searching for positions.
-        <br />
-        <br />
-    </div>
+    </h2>
 
-    <input type="button" value="Continue" onclick="location.href='@Url.Action("Index", "LocalJobs")'" />
+    <br />
+
+    <input type="submit" value="Continue" onclick="location.href='@Url.Action("Index", "LocalJobs")'" class="label-green text-shadow" />
 
 </div>

@@ -1,21 +1,17 @@
 ﻿@if (((string)Session["Status"]).CompareTo("LoggedIn") == 0 && ((string)Session["DisableMenu"]).CompareTo("No") == 0)
 {
     <div id="nav">
-
-        @{ string incomplete = ((string)Session["LoginType"]).CompareTo("Return") == 0 ? "label-orange" : "label-red"; }
-        
         <div style="display: table; table-layout: fixed; width: 100%;">
             <div style="display: table-row;">
-                <div onclick="location.href = '@Url.Action("Index", "LocalJobs")';" class="button text-shadow @(((string)this.Session["LocalJobs"]).CompareTo("Done") == 0 ? "label-blue" : incomplete)" style="display: table-cell;">Select Jobs</div>
-                <div onclick="location.href = '@Url.Action("Index", "PersonalInfo")';" class="button text-shadow @(((string)this.Session["PersonalInfo"]).CompareTo("Done") == 0 ? "label-blue" : incomplete)" style="display: table-cell;">About You</div>
-                <div onclick="location.href = '@Url.Action("Index", "Availability")';" class="button text-shadow @(((string)this.Session["Availability"]).CompareTo("Done") == 0 ? "label-blue" : incomplete)" style="display: table-cell;">Availability</div>
-                <div onclick="location.href = '@Url.Action("Index", "JobHistory")';" class="button text-shadow @(((string)this.Session["JobHistory"]).CompareTo("Done") == 0 ? "label-blue" : incomplete)" style="display: table-cell;">Job History</div>
-                <div onclick="location.href = '@Url.Action("Index", "Education")';" class="button text-shadow @(((string)this.Session["Education"]).CompareTo("Done") == 0 ? "label-blue" : incomplete)" style="display: table-cell;">Education</div>
-                <div onclick="location.href = '@Url.Action("Index", "References")';" class="button text-shadow @(((string)this.Session["Reference"]).CompareTo("Done") == 0 ? "label-blue" : incomplete)" style="display: table-cell;">References</div>
-                <div onclick="location.href = '@Url.Action("Index", "ESignature")';" class="button text-shadow @(((string)this.Session["ESignature"]).CompareTo("Done") == 0 ? "label-blue" : incomplete)" style="display: table-cell;">E-Signature</div>
+                <div onclick="location.href = '@Url.Action("Index", "LocalJobs")';" class="button text-shadow @(((string)this.Session["LocalJobs"]).CompareTo("Done") == 0 ? "label-blue" : "label-red")" style="display: table-cell;">Select Jobs</div>
+                <div onclick="location.href = '@Url.Action("Index", "PersonalInfo")';" class="button text-shadow @(((string)this.Session["PersonalInfo"]).CompareTo("Done") == 0 ? "label-blue" : "label-red")" style="display: table-cell;">About You</div>
+                <div onclick="location.href = '@Url.Action("Index", "Availability")';" class="button text-shadow @(((string)this.Session["Availability"]).CompareTo("Done") == 0 ? "label-blue" : "label-red")" style="display: table-cell;">Availability</div>
+                <div onclick="location.href = '@Url.Action("Index", "JobHistory")';" class="button text-shadow @(((string)this.Session["JobHistory"]).CompareTo("Done") == 0 ? "label-blue" : "label-red")" style="display: table-cell;">Job History</div>
+                <div onclick="location.href = '@Url.Action("Index", "Education")';" class="button text-shadow @(((string)this.Session["Education"]).CompareTo("Done") == 0 ? "label-blue" : "label-red")" style="display: table-cell;">Education</div>
+                <div onclick="location.href = '@Url.Action("Index", "References")';" class="button text-shadow @(((string)this.Session["Reference"]).CompareTo("Done") == 0 ? "label-blue" : "label-red")" style="display: table-cell;">References</div>
+                <div onclick="location.href = '@Url.Action("Index", "ESignature")';" class="button text-shadow @(((string)this.Session["ESignature"]).CompareTo("Done") == 0 ? "label-blue" : "label-red")" style="display: table-cell;">E-Signature</div>
                 <div onclick="location.href = '@Url.Action("Welcome", "Home")';" class="button text-shadow label-red" style="display: table-cell;">Exit</div>
             </div>
         </div>
-        
     </div>
 }

@@ -32,7 +32,7 @@ namespace AESApplications.Controllers
                     {
                         Session["ApplicantId"] = authenticated;
                         Session["Status"] = "LoggedIn";
-                        Session["LoginType"] = "Return";
+                        Session["PersonalInfo"] = "Done";
                         return RedirectToAction("Index", "PersonalInfo");
                     }
                     else

@@ -6,17 +6,18 @@
 
     <h1>@ViewBag.Title</h1>
 
-    <h2 style="font-size: 200%; text-align: center;">
+    <h2 style="font-size: 200%;">
         You're almost there!
         <br />
         <br />
-        By continuing to the next step, you verify that all information entered is accurate and correct.
+        By continuing to the next step, you verify that all information entered is accurate and true.
         <br />
         <br />
         Click "I Agree" below to electronically sign your application.
-        <br />
-        <br />
-        <input type="submit" value="I Agree" onclick="location.href='@Url.Action("ApplicationFinished", "ESignature")'" class="label-green text-shadow" />
     </h2>
+
+    <br />
+
+    <input type="submit" value="I Agree" onclick="location.href='@Url.Action("ApplicationFinished", "ESignature")'" class="label-green text-shadow" />
 
 </div>

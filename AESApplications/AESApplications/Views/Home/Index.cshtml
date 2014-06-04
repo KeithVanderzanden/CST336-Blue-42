@@ -2,17 +2,30 @@
     ViewBag.Title = "Kiosk Start";
 }
 
-<div class="content">
+<div class="content" >
 
     <h1>Store Information</h1>
-    <h2>Enter Store ID #</h2>
 
     @using (Html.BeginForm("Welcome", "Home", FormMethod.Post, new { role = "form" }))
     {
         @Html.AntiForgeryToken()
-        @Html.TextBox("storeId", null, new { placeholder = "Store Id #", @id = "storeid-textfield" })
         
-        <br />
+        <fieldset>
+            <legend class="label-blue text-shadow">Store Identification</legend>
+        
+            <div style="display: table;">
+                <div style="display: table-row;">
+
+                    <div class="question">Store ID #</div>
+                    <div class="answer">
+                        @Html.TextBox("storeId", null)
+                    </div>
+
+                </div>
+            </div>
+
+        </fieldset>
+
         <br />
         
         <input type="submit" value="Continue" class="label-green text-shadow" />
