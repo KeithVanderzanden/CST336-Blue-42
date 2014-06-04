@@ -19,6 +19,7 @@ namespace AESApplications.Controllers
             using (var client = new DataServiceClient())
             {
                 client.Open();
+                
                 var loadedJobs = await client.getJobsAsync(Convert.ToInt32(this.Session["storeId"]));
                 var jobsSelected = new List<int>();
                 if (((string)this.Session["Status"]).CompareTo("LoggedIn") == 0)
@@ -27,9 +28,11 @@ namespace AESApplications.Controllers
                 }
                 foreach (var job in loadedJobs)
                 {
+                    var availPos = client.getAvailablePosition(job.availablePositionId);
+                    var pos = client.getPosition(availPos.positionId);
                     var tempJob = new JobModel();
                     tempJob.selected = jobsSelected.Contains(job.availablePositionId) ? 1 : 0;
-                    tempJob.jobId = job.availablePositionId;
+                    tempJob.jobId = pos.positionId;
                     tempJob.description = job.description;
                     tempJob.requirements = job.requirements;
                     tempJob.education = job.education;
